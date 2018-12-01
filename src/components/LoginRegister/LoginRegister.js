@@ -51,6 +51,19 @@ register = () => {
   });
 };
 
+login = () => {
+  this.setState({ message: null });
+  const {username, password} = this.state;
+  axios.post('/api/login', {
+    username,
+    password
+  }).then(response => {
+    this.setState({ user: response.data });
+  }).catch(error => {
+    this.setState({ message: 'Something went wrong: ' + this.getMessage(error) });
+  });
+};
+
   render() {
     return (
       <div>

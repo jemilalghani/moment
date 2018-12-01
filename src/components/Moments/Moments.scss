@@ -1,0 +1,53 @@
+
+.moment-card{
+    display:flex;
+    width: 300px;
+    flex-direction: column;
+  }
+
+.moment-image{
+    width:290px;
+    height: 400px;
+    overflow:hidden;
+    //background-image: url('https://www.rd.com/wp-content/uploads/2016/11/03_shortcuts_dinner_table_faster_takes_delivery_prep_food_-franckreporter.jpg');
+    transition: all 1s ease-in-out;
+    background-repeat: no-repeat;
+    margin: 5px;
+    background-size: 290px 400px;
+    border-radius: 3px;
+  }
+
+  .moment-image > video {
+    width: 100%;
+  }
+    
+  
+// .moment-image:hover{
+//     overflow:hidden;
+//     animation: switch 8s infinite;
+//     background-repeat: repeat-n;
+//   }
+
+.moment-card-details{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 80px;
+}
+
+.description-city-line{
+    display: flex;
+}
+
+.moment-card-price-time{
+  display: flex;
+}
+  
+  @keyframes switch {
+      0% {background-image: url('https://www.rd.com/wp-content/uploads/2016/11/03_shortcuts_dinner_table_faster_takes_delivery_prep_food_-franckreporter.jpg');}
+      20% {background-image: url('https://food.fnr.sndimg.com/content/dam/images/food/fullset/2018/3/16/0/VB0104_valerie_cauliflower.jpg.rend.hgtvcom.616.462.suffix/1521564508493.jpeg');}
+      60% {background-image: url('https://cdn.shopify.com/s/files/1/0300/1545/files/boygirl3.jpg?v=1510246878');}
+      100% {background-image: url('https://thumbor.thedailymeal.com/JOaK2VBkkHuG8b7RHJuSdqW9d0s=/840x565/https://www.thedailymeal.com/sites/default/files/story/MAIN-skillsperfect-istock_thinkstock.jpg');}
+  }
+

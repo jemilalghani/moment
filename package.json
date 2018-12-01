@@ -2,6 +2,7 @@
   "name": "moment",
   "version": "0.1.0",
   "private": true,
+  "main": "server/index.js",
   "dependencies": {
     "axios": "^0.18.0",
     "bcrypt": "^3.0.2",
@@ -10,6 +11,7 @@
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "massive": "^5.6.0",
+    "moment": "^2.22.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts": "2.1.1",
@@ -30,5 +32,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "proxy": "http://localhost:3000"
 }

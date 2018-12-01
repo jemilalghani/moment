@@ -4,10 +4,10 @@ const saltRounds = 12;
 module.exports = {
     register: (req,res)=>{
         const db = req.app.get('db');
-        const { user_name, password, name_first, name_last, gender, email, phone, locale, about, prof_photo_url, date_joined } = req.body;
+        const { user_name, password, name_first, name_last, gender, email, phone, locale, about, prof_photo_url } = req.body;
         bcrypt.hash(password, saltRounds).then(hash=>{
             // make sure db sql file is called create_user as below
-            db.create_user([user_name, hash, name_first, name_last, gender, email, phone, locale, about, prof_photo_url, date_joined]).then(() => {
+            db.create_user([user_name, hash, name_first, name_last, gender, email, phone, locale, about, prof_photo_url]).then(() => {
                 req.session.user = { user_name };
                 res.json({ user: req.session.user })
             }).catch(error => {

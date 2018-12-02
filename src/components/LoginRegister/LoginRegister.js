@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './LoginRegister.scss';
+import withContext from '../ContextApi/Context_HOC';
 
 import axios from 'axios';
 
@@ -60,6 +61,15 @@ login = () => {
     password
   }).then(response => {
     this.setState({ user: response.data });
+    this.props.context.updateProfileInfo('user', response.data);
+  }).catch(error => {
+    this.setState({ message: 'Something went wrong: '});
+  });
+};
+
+logout = () => {
+  axios.post('/api/logout').then(response => {
+    this.setState({ user: null });
   }).catch(error => {
     this.setState({ message: 'Something went wrong: '});
   });
@@ -84,9 +94,12 @@ login = () => {
         <div>username:<input type="text" onChange={(e)=>this.handleChange('username',e)}/></div>
         <div>password:<input type="text" onChange={(e)=>this.handleChange('password', e)}/></div>
         <div><button onClick={this.login}>Login</button></div>
+        <div><button onClick={this.logout}>logout</button></div>
+        {this.props.context.user.user && this.props.context.user.user.user_name}
+
       </div>
     )
   }
 }
 
-export default LoginRegister;
+export default withContext(LoginRegister);

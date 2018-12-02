@@ -65,6 +65,14 @@ login = () => {
   });
 };
 
+logout = () => {
+  axios.post('/api/logout').then(response => {
+    this.setState({ user: null });
+  }).catch(error => {
+    this.setState({ message: 'Something went wrong: '});
+  });
+};
+
   render() {
     return (
       <div>
@@ -84,6 +92,7 @@ login = () => {
         <div>username:<input type="text" onChange={(e)=>this.handleChange('username',e)}/></div>
         <div>password:<input type="text" onChange={(e)=>this.handleChange('password', e)}/></div>
         <div><button onClick={this.login}>Login</button></div>
+        <div><button onClick={this.logout}>logout</button></div>
       </div>
     )
   }

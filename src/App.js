@@ -11,7 +11,7 @@ class App extends Component {
     console.log('CONTEXT', this.props.context)
     return (
       <div className="App">
-        <Admin />
+        {/* <Admin /> */}
         {/* <LoginRegister/>
         <Moments /> */}
         {routes}

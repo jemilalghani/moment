@@ -6,6 +6,7 @@ export default class ContextProvider extends React.Component {
     constructor(){
         super();
         this.state={
+            // login: false,
             user: {
                 // firstName: null,
                 // lastName: null,

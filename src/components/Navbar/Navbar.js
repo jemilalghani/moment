@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Navbar.scss';
+import withContext from '../ContextApi/Context_HOC';
 
 class Navbar extends Component {
   render() {
@@ -16,4 +17,4 @@ class Navbar extends Component {
 }
 
 
-export default Navbar;
+export default withContext(Navbar);

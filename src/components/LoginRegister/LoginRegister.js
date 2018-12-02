@@ -60,7 +60,8 @@ login = () => {
     username,
     password
   }).then(response => {
-    this.setState({ user: response.data });
+    this.setState({ user: true });
+    this.props.context.updateProfileInfo('login', true);
     this.props.context.updateProfileInfo('user', response.data);
   }).catch(error => {
     this.setState({ message: 'Something went wrong: '});
@@ -69,7 +70,9 @@ login = () => {
 
 logout = () => {
   axios.post('/api/logout').then(response => {
-    this.setState({ user: null });
+    this.props.context.updateProfileInfo('login', false);
+    this.props.context.updateProfileInfo('user', {});
+    this.setState({ user: false });
   }).catch(error => {
     this.setState({ message: 'Something went wrong: '});
   });

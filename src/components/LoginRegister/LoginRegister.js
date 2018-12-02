@@ -18,7 +18,7 @@ class LoginRegister extends Component {
       locale: '',
       userPhoto: '',
       message: '',
-      user: null
+      user: false
     }
     this.handleChange = this.handleChange.bind(this);
   }
@@ -46,7 +46,7 @@ register = () => {
     userPhoto
   })
   .then(response => {
-    this.setState({ user: response.data });
+    this.setState({ user: true });
   }).catch(error => {
     this.setState({ message: 'Something went wrong: '});
   });

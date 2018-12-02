@@ -3,6 +3,7 @@ import './App.css';
 import LoginRegister from './components/LoginRegister/LoginRegister';
 import withContext from './components/ContextApi/Context_HOC';
 import Moments from './components/Moments/Moments';
+import Admin from './components/Admin/Admin';
 
 class App extends Component {
   render() {
@@ -11,6 +12,7 @@ class App extends Component {
       <div className="App">
         <LoginRegister/>
         <Moments />
+        <Admin />
       </div>
     );
   }

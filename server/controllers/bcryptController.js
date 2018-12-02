@@ -24,8 +24,8 @@ module.exports = {
           if (users.length) {
             bcrypt.compare(password, users[0].password).then(passwordsMatch=>{
               if (passwordsMatch) {
-                req.session.user = { username: users[0].username };
-                res.json({ user: req.session.user });
+                req.session.user = { username: users[0].user_name };
+                res.json({ user: users[0] });
               } else {
                 res.status(403).json({ message: 'Wrong password' })
               }

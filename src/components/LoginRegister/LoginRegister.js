@@ -12,20 +12,21 @@ class LoginRegister extends Component {
       lastName: '',
       password: '',
       email: '',
-      phone: null,
+      phone: 0,
       gender: '',
       about: '',
       locale: '',
       userPhoto: '',
       message: '',
-      user: null
+      user: false
     }
+    this.handleChange = this.handleChange.bind(this);
   }
 
-handleChange = (key, value) => {
+handleChange(key, e){
     //console.log({[key]: value})
     this.setState({
-        [key]: value
+        [key]: e.target.value
     })
 }
 
@@ -45,6 +46,19 @@ register = () => {
     userPhoto
   })
   .then(response => {
+    this.setState({ user: true });
+  }).catch(error => {
+    this.setState({ message: 'Something went wrong: '});
+  });
+};
+
+login = () => {
+  this.setState({ message: null });
+  const {username, password} = this.state;
+  axios.post('/api/login', {
+    username,
+    password
+  }).then(response => {
     this.setState({ user: response.data });
   }).catch(error => {
     this.setState({ message: 'Something went wrong: '});
@@ -54,17 +68,22 @@ register = () => {
   render() {
     return (
       <div>
-        <div>username:<input type="text" onChange={this.handleChange}/></div>
-        <div>first name:<input type="text" onChange={this.handleChange}/></div>
-        <div>last name:<input type="text" onChange={this.handleChange}/></div>
-        <div>password:<input type="text" onChange={this.handleChange}/></div>
-        <div>email:<input type="text" onChange={this.handleChange}/></div>
-        <div>phone number:<input type="number" onChange={this.handleChange}/></div>
-        <div>gender:<input type="text" onChange={this.handleChange}/></div>
-        <div>about:<input type="text" onChange={this.handleChange}/></div>
-        <div>location:<input type="text" onChange={this.handleChange}/></div>
-        <div>user photo:<input type="text" onChange={this.handleChange}/></div>
+        <div>username:<input type="text" onChange={(e)=>this.handleChange('username',e)}/></div>
+        <div>first name:<input type="text" onChange={(e)=>this.handleChange('firstName', e)}/></div>
+        <div>last name:<input type="text" onChange={(e)=>this.handleChange('lastName', e)}/></div>
+        <div>password:<input type="text" onChange={(e)=>this.handleChange('password', e)}/></div>
+        <div>email:<input type="text" onChange={(e)=>this.handleChange('email', e)}/></div>
+        <div>phone number:<input type="number" onChange={(e)=>this.handleChange('phone', e)}/></div>
+        <div>gender:<input type="text" onChange={(e)=>this.handleChange('gender', e)}/></div>
+        <div>about:<input type="text" onChange={(e)=>this.handleChange('about', e)}/></div>
+        <div>location:<input type="text" onChange={(e)=>this.handleChange('locale', e)}/></div>
+        <div>user photo:<input type="text" onChange={(e)=>this.handleChange('userPhoto', e)}/></div>
         <div><button onClick={this.register}>Register as new user</button></div>
+        
+
+        <div>username:<input type="text" onChange={(e)=>this.handleChange('username',e)}/></div>
+        <div>password:<input type="text" onChange={(e)=>this.handleChange('password', e)}/></div>
+        <div><button onClick={this.login}>Login</button></div>
       </div>
     )
   }

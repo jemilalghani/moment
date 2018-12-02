@@ -8,7 +8,7 @@ module.exports = {
         bcrypt.hash(password, saltRounds).then(hash=>{
             // make sure db sql file is called create_user as below
             db.create_user([username, hash, firstName, lastName, gender, email, phone, locale, about, userPhoto]).then(() => {
-                req.session.user = { user_name };
+                req.session.user = { username };
                 res.json({ user: req.session.user })
             }).catch(error => {
                 console.log('error', error);

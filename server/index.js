@@ -5,6 +5,7 @@ const massive = require('massive');
 
 // controllers 
 const bcryptController = require('./controllers/bcryptController');
+const momentController = require('./controllers/momentController');
 
 require('dotenv').config();
 
@@ -29,18 +30,18 @@ app.post('/api/logout', bcryptController.logout);
 // ADMIN POST FOR EXERIENCE DUMMY DATA
 app.post('/api/moment/admin', momentController.addDummy); // FRONTEND READY
 // EXPERIENCES (MOMENTS) TABLE
-app.post('/api/moment/create', momentController.addMoment);
-app.get('/api/moment/hostFind', momentController.findByHost)
-app.get('/api/moment/:id', momentController.findId);
-app.get('/api/moment/:highlight', momentController.findHighlight);
-app.get('/api/moment/:locale', momentController.findLocale);
+// app.post('/api/moment/create', momentController.addMoment);
+// app.get('/api/moment/hostFind', momentController.findByHost)
+// app.get('/api/moment/:id', momentController.findId);
+// app.get('/api/moment/:highlight', momentController.findHighlight);
+// app.get('/api/moment/:locale', momentController.findLocale);
 // ORDERS TABLE
-app.get('/api/order/hostFind')
-app.post('/api/order/userCreate')
-app.get('/api/order/userFind')
+// app.get('/api/order/hostFind')
+// app.post('/api/order/userCreate')
+// app.get('/api/order/userFind')
 // REVIEWS TABLE
-app.post('/api/review/create')
-app.get('/api/review/find')
+// app.post('/api/review/create')
+// app.get('/api/review/find')
 
 const SERVER_PORT = 4000;
 app.listen(SERVER_PORT, ()=>{

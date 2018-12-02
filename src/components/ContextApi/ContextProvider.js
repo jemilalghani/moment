@@ -7,21 +7,21 @@ export default class ContextProvider extends React.Component {
         super();
         this.state={
             user: {
-                firstName: null,
-                lastName: null,
-                email: null,
-                phone: null,
-                gender: null, 
-                about: null,
-                locale: null,
-                userPhoto: null,
-                dateJoined: null,
-                loggedIn: false,
+                // firstName: null,
+                // lastName: null,
+                // email: null,
+                // phone: null,
+                // gender: null, 
+                // about: null,
+                // locale: null,
+                // userPhoto: null,
+                // dateJoined: null,
             }
+
         }
     }
     updateProfileInfo = (key, e) => {
-        this.setState({[key]: e.target.value})
+        this.setState({[key]: e})
     }
     render() {
         return(

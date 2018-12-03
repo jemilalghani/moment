@@ -56,6 +56,7 @@ sendHostData = () => {
       console.log('dattteetetetetetetteet',this.state.availableDate)
     return (
       <div className="admin-input">
+        <div className="test">Hdfhvkafdjgvua</div>
         title: <input type="text" onChange={(e)=>this.handleChange('title',e)}/>
         category: <input type="text" onChange={(e)=>this.handleChange('category',e)}/>
         duration: <input type="text" onChange={(e)=>this.handleChange('duration',e)}/>

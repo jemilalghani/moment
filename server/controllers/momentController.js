@@ -67,7 +67,7 @@ module.exports = {
 //   },
   findHighlight: (req,res) =>{
       const db = req.app.get('db');
-          db.get_moment_highlight().then(() => {
+          db.get_moment_highlight_photo().then(() => {
               res.json({ moment: res.data})
           }).catch(error => {
               console.log('error', error);

@@ -74,7 +74,7 @@ sendHostData = () => {
         <div>available time end: <input type="number" onChange={(e)=>this.handleChange('availableEndTime',e)}/></div>
         <SingleDatePicker
             date={this.state.date} // momentPropTypes.momentObj or null
-            onDateChange={date => this.setState( {availableDate: date })} // PropTypes.func.isRequired
+            onDateChange={date => this.setState( {availableDate: date._d })} // PropTypes.func.isRequired
             focused={this.state.focused} // PropTypes.bool
             onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
             id="your_unique_id" // PropTypes.string.isRequired,

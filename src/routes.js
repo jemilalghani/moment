@@ -4,10 +4,13 @@ import DetailedMoments from './components/DetailedMoments/DetailedMoments';
 import LoginRegister from './components/LoginRegister/LoginRegister';
 import Moments from './components/Moments/Moments';
 import Admin from './components/Admin/Admin';
+import StepOne from './components/CreateMoment/StepOne';
+import StepTwo from './components/CreateMoment/StepTwo';
 
 export default (
     <Switch>
-        <Route path='/admin' component={Admin}/>
+        <Route path='/basics' component={StepOne}/>
+        <Route path='/aboutexperience' component={StepTwo}/>
         {/* <Route path='/checkout' component ={} /> */}
         {/* <Route path='/host' component ={} /> */}
         {/* <Route path='/user' component ={} /> */}

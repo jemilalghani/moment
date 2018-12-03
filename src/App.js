@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import './reset.css';
 import LoginRegister from './components/LoginRegister/LoginRegister';
 import withContext from './components/ContextApi/Context_HOC';

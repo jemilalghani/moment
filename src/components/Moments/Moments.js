@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Moments.scss';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 
 class Moments extends Component {
@@ -24,26 +25,29 @@ class Moments extends Component {
 
   render() {
     let mappedMoments = this.state.moments.map(moment => {
+      console.log(moment.exp_photo_url)
       return (<div className="moment-card">
       <div className="moment-image">
-        <figure className="swap-hover">
-          <img  className="swap-hover-front-image" src="http://313ct818yszd3xd6xa2z47nm-wpengine.netdna-ssl.com/wp-content/uploads/2011/11/ChinaPavilion.jpg"/>
-          <img className="swap-hover-back-image" src="https://media.timeout.com/images/102875459/630/472/image.jpg"/>
-        </figure>
+        <Link to={{pathname: `/moments/${moment.id}`, state:{moment}}}>
+          <figure className="swap-hover">
+              <img  className="swap-hover-front-image" src={moment.exp_photo_url} />
+              <img className="swap-hover-back-image" src="https://media.timeout.com/images/102875459/630/472/image.jpg"/>       
+          </figure>
+        </Link>
       </div>
       <div className="moment-card-details">
         <div className="description-city-line">
-          <p>Design Walk</p>
+          <p>{moment.category}</p>
           <i className="fas fa-circle"></i>
-          <p>Shanghai</p>
+          <p>{moment.locale}</p>
         </div>
           <div className="moment-card-title">
-            <p>Discover Art deco of shanghai 1930s</p>
+            <p>{moment.title}</p>
           </div>
         <div className="moment-card-price-time">
-          <p>$40 per person</p>
+          <p>${moment.price} per person</p>
           <i className="fas fa-circle"></i>
-          <p>2.5 hours</p>
+          <p>{moment.duration}</p>
         </div>
       </div>
     </div>)

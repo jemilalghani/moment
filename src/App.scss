@@ -1,0 +1,28 @@
+///////////font sizes/////////////////
+$medium-text: 15px;
+$small-text: 12px;
+$tiny-text: 10px;
+
+///////////font style////////////////
+$robotoNormal: ‘Open Sans’,‘Roboto’, sans-serif;
+
+
+///////////font colors///////////////
+$font-light-grey: #767676;
+$font-black: #484848;
+$font-blue-green: #00898B;
+
+
+
+//////////backgroundcolors///////////
+$background-white: #ffffff;
+
+
+
+
+
+
+.App {
+  text-align: center;
+  font-family: $robotoNormal;
+}

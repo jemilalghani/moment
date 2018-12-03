@@ -1,3 +1,9 @@
+.moment-container{
+  display: flex;
+}
+
+
+
 
 .moment-card{
     display:flex;
@@ -78,7 +84,7 @@
 
 .swap-hover .swap-hover-front-image {
   z-index: 9999;
-  transition: opacity .5s linear;
+  transition: opacity .9s linear;
   cursor: pointer;
 }
 

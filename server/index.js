@@ -6,6 +6,7 @@ const massive = require('massive');
 // controllers 
 const bcryptController = require('./controllers/bcryptController');
 const momentController = require('./controllers/momentController');
+const bookingController = require('./controllers/bookingController');
 
 require('dotenv').config();
 
@@ -42,6 +43,12 @@ app.get('/api/moment/:locale', momentController.findLocale);
 // REVIEWS TABLE
 // app.post('/api/review/create')
 // app.get('/api/review/find')
+
+
+
+///////////////////stripe//////////////////
+app.post('/api/charge', bookingController.stripeCharge);
+
 
 const SERVER_PORT = 4000;
 app.listen(SERVER_PORT, ()=>{

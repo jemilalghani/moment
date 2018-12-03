@@ -9,12 +9,16 @@ class DetailedMoments extends Component {
       <div className="detailed-container">
         <div className="detailed-wrapper">
           <img src={moment.exp_photo_url} alt=""/>
-        <div>
-          <p>{moment.category}</p>
-          <p>{moment.title}</p>
-        </div>
-          <p>{moment.host_qualifications}</p>
-          <p>{moment.what_we_will_do}</p>
+          <div className="detailed-info-box">
+            <div className="detailed-category-title">
+              <p>{moment.category}</p>
+              <p>{moment.title}</p>
+            </div>
+            <div>
+              <p>{moment.host_qualifications}</p>
+              <p>{moment.what_we_will_do}</p>
+            </div>
+          </div>
         </div>
       </div>
     )

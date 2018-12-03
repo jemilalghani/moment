@@ -62,14 +62,14 @@ module.exports = {
               res.status(500).json({ message: 'Find Highlight Moment Failed'})
           });
   }
-//   findLocale:  (req,res)=>{
-//     const {locale} = req.body;
-//     const db = req.app.get('db');
-//     db.get_moment_locale([true]).then(() => {
-//         res.json({ moment: res.data.moment })
-//     }).catch(error => {
-//         console.log('error', error);
-//         res.status(500).json({ message: 'Find Highlight Moment Failed'})
-//     });
-//   }
+  findLocale:  (req,res)=>{
+    // const {locale} = req.body;
+    const db = req.app.get('db');
+    db.get_moment_locale(['Phoenix, AZ']).then(() => {
+        res.json({ moment: res.data.moment })
+    }).catch(error => {
+        console.log('error', error);
+        res.status(500).json({ message: 'Find Highlight Moment Failed'})
+    });
+  }
 }

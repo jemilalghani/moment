@@ -4,6 +4,7 @@ import LoginRegister from './components/LoginRegister/LoginRegister';
 import withContext from './components/ContextApi/Context_HOC';
 import Moments from './components/Moments/Moments';
 import Admin from './components/Admin/Admin';
+import Navbar from './components/Navbar/Navbar';
 import routes from './routes';
 
 class App extends Component {
@@ -14,6 +15,7 @@ class App extends Component {
         {/* <Admin /> */}
         {/* <LoginRegister/>
         <Moments /> */}
+        <Navbar />
         {routes}
       </div>
     );

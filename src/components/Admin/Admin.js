@@ -32,7 +32,6 @@ class Admin extends Component {
  }
 
  handleChange(key, e){
-    //console.log({[key]: value})
     this.setState({
         [key]: e.target.value
     })

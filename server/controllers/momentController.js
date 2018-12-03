@@ -32,40 +32,56 @@ module.exports = {
         console.log('error', error);
         res.status(500).json({ message: 'Add Moment Failed'})
     });
+    
+    // .then(() => {
+    //   res.json({ moment: res.data }).catch(error => {
+    //     console.log('error', error);
+    //     res.status(500).json({ message: 'Add Moment Failed'})
+    // });
+    // db.add_photos([]).then(() => {
+    // }),
+    // }), //RETURN ID FOR NEXT 2 POSTS
+    // db.add_available_dates([]).then(() => {
+    // }),
+    // db.add_moment_creator([]).then(() => {
+    // })
+    // addMoment()
+    // .then(addPhotos)
+    // .then(addDates)
+    // .then(addCreators)
+
+  },
+//   create: (req,res)=>{
+//     db.add_moment([]).then(() => {
+//     }), //RETURN ID FOR NEXT 2 POSTS
+//     db.add_photos([]).then(() => {
+//     }),
+//     db.add_available_dates([]).then(() => {
+//     }),
+//     db.add_moment_creator([]).then(() => {
+//     })
+//   },
+//   hostFind: (req,res)=>{
+//   },
+//   findId: (req,res)=>{
+//   },
+  findHighlight: (req,res) =>{
+      const db = req.app.get('db');
+          db.get_moment_highlight().then(() => {
+              res.json({ moment: res.data})
+          }).catch(error => {
+              console.log('error', error);
+              res.status(500).json({ message: 'Find Highlight Moment Failed'})
+          });
+  },
+  findLocale:  (req,res)=>{
+    // const {locale} = req.body;
+    const db = req.app.get('db');
+    db.get_moment_locale(['Phoenix, AZ']).then(() => {
+        res.json({ moment: res.data.moment })
+    }).catch(error => {
+        console.log('error', error);
+        res.status(500).json({ message: 'Find Highlight Moment Failed'})
+    });
   }
-
-  // create: (req,res)=>{
-  //   db.add_moment([]).then(() => {
-  //   }), //RETURN ID FOR NEXT 2 POSTS
-  //   db.add_photos([]).then(() => {
-  //   }),
-  //   db.add_available_dates([]).then(() => {
-  //   }),
-  //   db.add_moment_creator([]).then(() => {
-  //   })
-  // },
-  // hostFind: (req,res)=>{
-  // },
-  // findId: (req,res)=>{
-  // },
-  // findHighlight: (req,res)=>{
-  //     const db = req.app.get('db');
-  //         db.get_moment_highlight([true]).then(() => {
-  //             res.json({ moment: res.data.moment })
-  //         }).catch(error => {
-  //             console.log('error', error);
-  //             res.status(500).json({ message: 'Find Highlight Moment Failed'})
-  //         });
-  // },
-  // findLocale:  (req,res)=>{
-  //   const {locale} = req.body;
-  //   const db = req.app.get('db');
-  //   db.get_moment_locale([true]).then(() => {
-  //       res.json({ moment: res.data.moment })
-  //   }).catch(error => {
-  //       console.log('error', error);
-  //       res.status(500).json({ message: 'Find Highlight Moment Failed'})
-  //   });
-  // }
-
 }

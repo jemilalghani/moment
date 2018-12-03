@@ -67,8 +67,9 @@ module.exports = {
 //   },
   findHighlight: (req,res) =>{
       const db = req.app.get('db');
-          db.get_moment_highlight().then(() => {
-              res.json({ moment: res.data})
+          db.get_moment_highlight().then(moment => {
+              console.log('controller res',moment)
+              res.json(moment)
           }).catch(error => {
               console.log('error', error);
               res.status(500).json({ message: 'Find Highlight Moment Failed'})

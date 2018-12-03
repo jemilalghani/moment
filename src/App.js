@@ -3,7 +3,6 @@ import './App.css';
 import './reset.css';
 import LoginRegister from './components/LoginRegister/LoginRegister';
 import withContext from './components/ContextApi/Context_HOC';
-import Moments from './components/Moments/Moments';
 import Admin from './components/Admin/Admin';
 import Navbar from './components/Navbar/Navbar';
 import routes from './routes';
@@ -13,9 +12,6 @@ class App extends Component {
     console.log('CONTEXT', this.props.context)
     return (
       <div className="App">
-        {/* <Admin /> */}
-        {/* <LoginRegister/>
-        <Moments /> */}
         <Navbar />
         {routes}
       </div>

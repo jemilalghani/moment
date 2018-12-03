@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import './reset.css';
+import LoginRegister from './components/LoginRegister/LoginRegister';
 import withContext from './components/ContextApi/Context_HOC';
 import Admin from './components/Admin/Admin';
 import Navbar from './components/Navbar/Navbar';

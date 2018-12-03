@@ -78,7 +78,7 @@ sendHostData = () => {
             onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
             id="your_unique_id" // PropTypes.string.isRequired,
         />
-        <div><button onClick={this.sendHostData}>enter data</button></div>
+           <div><button onClick={this.sendHostData}>enter data</button></div>
       </div>
     )
   }

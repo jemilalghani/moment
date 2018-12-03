@@ -35,7 +35,7 @@ app.post('/api/moment/admin', momentController.addDummy); // FRONTEND READY
 // app.get('/api/moment/hostFind', momentController.findByHost)
 // app.get('/api/moment/:id', momentController.findId);
 app.get('/api/moment/:highlight', momentController.findHighlight);
-app.get('/api/moment/:locale', momentController.findLocale);
+app.get('/api/moment/locale', momentController.findLocale);
 // ORDERS TABLE
 // app.get('/api/order/hostFind')
 // app.post('/api/order/userCreate')

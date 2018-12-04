@@ -6,6 +6,7 @@ import withContext from './components/ContextApi/Context_HOC';
 import Admin from './components/Admin/Admin';
 import Navbar from './components/Navbar/Navbar';
 import routes from './routes';
+//import UserProfile from './components/UserProfile/UserProfile';
 
 class App extends Component {
   render() {
@@ -13,6 +14,7 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
+
         {routes}
       </div>
     );

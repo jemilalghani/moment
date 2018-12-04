@@ -10,14 +10,14 @@
   }
 
 .moment-image{
-    width:250px;
+    width:230px;
     height: 290px;
     overflow:hidden;
     //background-image: url('https://www.rd.com/wp-content/uploads/2016/11/03_shortcuts_dinner_table_faster_takes_delivery_prep_food_-franckreporter.jpg');
     transition: all 1s ease-in-out;
     background-repeat: no-repeat;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 3px;
   }
 
   .moment-image > video {
@@ -75,8 +75,9 @@
   top:0;
   left:0;
 	overflow: hidden;
-	width: 400px;
-	height: 400px;
+  //height: 250px;
+  width: 100%;
+  object-fit: cover;
 }
 
 .swap-hover .swap-hover-front-image {

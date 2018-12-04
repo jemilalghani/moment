@@ -25,13 +25,14 @@ class Moments extends Component {
 
   render() {
     let mappedMoments = this.state.moments.map(moment => {
-      console.log(moment.exp_photo_url)
-      return (<div className="moment-card">
-      <div className="moment-image">
+      console.log(moment.photos)
+      return (
+        <div className="moment-card" key={moment.id}>
+          <div className="moment-image">
         <Link to={{pathname: `/moments/${moment.id}`, state:{moment}}}>
           <figure className="swap-hover">
-              <img  className="swap-hover-front-image" src={moment.exp_photo_url} />
-              <img className="swap-hover-back-image" src="https://media.timeout.com/images/102875459/630/472/image.jpg"/>       
+              <img  className="swap-hover-front-image" src={moment.photos[1]} />
+              <img className="swap-hover-back-image" src={moment.photos[0]} />       
           </figure>
         </Link>
       </div>

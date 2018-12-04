@@ -8,7 +8,7 @@ class DetailedMoments extends Component {
     return (
       <div className="detailed-container">
         <div className="detailed-wrapper">
-          <img src={moment.exp_photo_url} alt=""/>
+          <img className="detailed-img" src={moment.photos[1]} alt=""/>
           <div className="detailed-info-box">
             <div className="detailed-category-title">
               <p>{moment.category}</p>

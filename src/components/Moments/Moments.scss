@@ -3,8 +3,6 @@
 }
 
 
-
-
 .moment-card{
     display:flex;
     width: 300px;
@@ -12,15 +10,14 @@
   }
 
 .moment-image{
-    width:260px;
-    height: 350px;
+    width:250px;
+    height: 290px;
     overflow:hidden;
     //background-image: url('https://www.rd.com/wp-content/uploads/2016/11/03_shortcuts_dinner_table_faster_takes_delivery_prep_food_-franckreporter.jpg');
     transition: all 1s ease-in-out;
     background-repeat: no-repeat;
     margin: 5px;
-    background-size: 290px 400px;
-    border-radius: 3px;
+    border-radius: 5px;
   }
 
   .moment-image > video {
@@ -84,7 +81,7 @@
 
 .swap-hover .swap-hover-front-image {
   z-index: 9999;
-  transition: opacity .9s linear;
+  transition: opacity .6s linear;
   cursor: pointer;
 }
 

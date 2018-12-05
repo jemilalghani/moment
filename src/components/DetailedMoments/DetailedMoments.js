@@ -2,17 +2,21 @@ import React, { Component } from 'react';
 import './DetailedMoments.scss';
 import { SingleDatePicker } from 'react-dates';
 import SimpleMap from '../Map/Map';
+import {Link} from 'react-router-dom';
 
 class DetailedMoments extends Component {
   constructor(){
     super();
     this.state = {
-      availableDate: '',
+      availableDate: ''
     }
   }
+
+
   render() {
     console.log('props in detail',this.props.location.state.moment)
     const {moment} = this.props.location.state
+    const sendDate = this.state.availableDate
     const chooseDate = new Date(this.state.availableDate)
     console.log('choosese', chooseDate)
     return (
@@ -51,9 +55,13 @@ class DetailedMoments extends Component {
                 :
                 <div>
                   <p>{`${chooseDate.toDateString()}`}</p>
-                  <p>{moment.available_time_start}</p>
-                  <p>{moment.available_time_end}</p>
+                  <p>{moment.available_time_start}-{moment.available_time_end}</p>
                   <p>{moment.price} per person</p>
+                  <button>
+                    <Link to={{pathname:"/checkout", moment:{moment}, date:{sendDate}}}>
+                      Choose
+                    </Link>
+                  </button>
                 </div>
               }
             </div>

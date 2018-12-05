@@ -1,5 +1,6 @@
 .detailed-container{
     display: flex;
+    flex-direction: column;
 }
 
 .detailed-wrapper{
@@ -21,4 +22,9 @@
 
 .detailed-img{
     height: 500px;
+}
+
+.date-price{
+    display: flex;
+    flex-direction: column;
 }

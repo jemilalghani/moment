@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import './Map.css'
-import Geocode from "react-geocode";
+//import './Map.css'
+import Geocode from 'react-geocode';
 
 // MDS Matt Shields note
 // GEN package creator note
@@ -61,9 +61,11 @@ class SimpleMap extends Component {
   };
 
   render() {
+    console.log(process.env.REACT_APP_GOOGLE_MAP_API_KEY)
+    console.log(process)
     return (
       // GEN Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '100%' }}>
+      <div style={{ height: '40vh', width: '100%' }}>
         { this.state.coordsLoaded ?
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY}}
@@ -73,7 +75,7 @@ class SimpleMap extends Component {
           <AnyReactComponent 
             lat={this.state.center.lat}
             lng={this.state.center.lng}
-            text={this.state.tower}
+            text={this.state.place}
           />
           <AnyReactComponent2
             lat={42} // rough coordinate for Chicago

@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import './DetailedMoments.scss';
 import { SingleDatePicker } from 'react-dates';
+import SimpleMap from '../Map/Map';
 
 class DetailedMoments extends Component {
   constructor(){
     super();
     this.state = {
-      date: ''
+      availableDate: '',
     }
   }
   render() {
     console.log('props in detail',this.props.location.state.moment)
     const {moment} = this.props.location.state
+    const chooseDate = new Date(this.state.availableDate)
+    console.log('choosese', chooseDate)
     return (
       <div className="detailed-container">
         <div className="detailed-wrapper">
@@ -33,16 +36,30 @@ class DetailedMoments extends Component {
             </div>
           </div>
           <div>
-            <SingleDatePicker
-            date={this.state.date} // momentPropTypes.momentObj or null
-            onDateChange={date => this.setState( {availableDate: date._d })} // PropTypes.func.isRequired
-            focused={this.state.focused} // PropTypes.bool
-            onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
-            id="your_unique_id" // PropTypes.string.isRequired,
-            />
-            
+            <div className="date-price">
+              <SingleDatePicker
+              date={this.state.date} // momentPropTypes.momentObj or null
+              onDateChange={date => this.setState( {availableDate: date._d })} // PropTypes.func.isRequired
+              focused={this.state.focused} // PropTypes.bool
+              onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+              id="your_unique_id" // PropTypes.string.isRequired,
+              />
+              {
+                chooseDate.toDateString() === 'Invalid Date'
+                ?
+                <div></div>
+                :
+                <div>
+                  <p>{`${chooseDate.toDateString()}`}</p>
+                  <p>{moment.available_time_start}</p>
+                  <p>{moment.available_time_end}</p>
+                  <p>{moment.price} per person</p>
+                </div>
+              }
+            </div>
           </div>
         </div>
+        <SimpleMap />
       </div>
     )
   }

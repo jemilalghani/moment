@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './LoginRegister.scss';
 import withContext from '../ContextApi/Context_HOC';
+import {Link} from 'react-router-dom';
 
 import axios from 'axios';
 
@@ -96,7 +97,7 @@ logout = () => {
 
         <div>username:<input type="text" onChange={(e)=>this.handleChange('username',e)}/></div>
         <div>password:<input type="text" onChange={(e)=>this.handleChange('password', e)}/></div>
-        <div><button onClick={this.login}>Login</button></div>
+        <div><Link to="/userprofile"><button onClick={this.login}>Login</button></Link></div>
         <div><button onClick={this.logout}>logout</button></div>
         {this.props.context.user.user && this.props.context.user.user.user_name}
 

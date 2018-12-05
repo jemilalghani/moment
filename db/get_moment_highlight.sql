@@ -1,5 +1,3 @@
 SELECT * 
-FROM experiences ex
-JOIN exp_photos p
-ON ex.id = p.exp_id
+FROM experiences
 WHERE highlight = true;

@@ -8,8 +8,7 @@ class CheckOut extends Component {
         super();
         this.state = {
             guests: 1,
-            price: 0,
-            total: 0
+            total: 95
         }
     }
 
@@ -23,17 +22,18 @@ onToken = (stripeToken) =>{
      })
     }
 
-handleGuestNumber = (e) => {
+handleGuestNumber(e){
     this.setState({guests: e.target.value});
 }
 
-setTotal = () => {
-    this.setState({total: this.props.location.moment.moment.price * this.state.guests})
+setTotal(){
+    setTimeout(()=>{this.setState({total: this.props.location.moment.moment.price * this.state.guests})}, 500)
 }
 
   render() {
       console.log('checkouttuttt passed props', this.props.location)
       console.log('this is the totatttal', this.state.total)
+      console.log('show stripe', this.state.showStripe)
       const {date} = this.props.location;
       const {moment} = this.props.location.moment;
       const total = moment.price * this.state.guests;
@@ -57,7 +57,8 @@ setTotal = () => {
                 <div className="checkout-whoscoming">
                     <h3>Who's coming?</h3>
                     <h5>Number of guests</h5>
-                    <select name="guests" onChange={this.handleGuestNumber}>
+                    <select name="guests" onChange={(e)=>{this.handleGuestNumber(e)
+                                                        this.setTotal()}}>
                         {options}
                     </select>
                 </div>
@@ -69,12 +70,17 @@ setTotal = () => {
                 </div>
                 <div className="checkout-stripe">
                     <p>By confirming this booking, you agree to the Guest Release and Waiver, the Cancellation Policy, and the Guest Refund Policy.</p>
+                    {
+                    this.state.total ?
                     <StripeCheckout
                     token={this.onToken}
                     stripeKey="pk_test_LjNm06RplXdJCIdfZJ7f9gTV"
                     amount={total * 100}
-                    label={`Pay $${this.state.total}.00`}
+                    label={`Pay $${total}.00`}
                     /> 
+                    :
+                    <div></div>
+                    }
                 </div>
             </div>
             <div className="checkout-left">
@@ -93,9 +99,6 @@ setTotal = () => {
                 </div>
                 <div className="checkout-total">
                     <p>Total (USD) ${total}</p>
-                </div>
-                <div className="checkout-confirmation">
-                    <button onClick={this.setTotal}>Confirm</button>
                 </div>
             </div>
         </div>

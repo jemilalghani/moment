@@ -85,7 +85,6 @@ module.exports = {
           });
   },
   findLocale:  (req,res)=>{
-    // const {locale} = req.body;
     const db = req.app.get('db');
     db.get_moment_locale(['Phoenix, AZ']).then(() => {
         res.json({ moment: res.data.moment })
@@ -93,7 +92,18 @@ module.exports = {
         console.log('error', error);
         res.status(500).json({ message: 'Find Highlight Moment Failed'})
     });
-  }
+  },
+  findAll:  (req,res)=>{
+    console.log('findAll hit!!!!!!!!!!')
+    const db = req.app.get('db');
+    db.get_moments().then((all) => {
+        res.json({ moment: all})
+    }).catch(error => {
+        console.log('error', error);
+        res.status(500).json({ message: 'Find Highlight Moment Failed'})
+    });
+  },
+
 }
 
 function addPhotosToMoment (resMoment, resPhoto){

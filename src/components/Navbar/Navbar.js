@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Navbar.scss';
 import withContext from '../ContextApi/Context_HOC';
 import { Link } from 'react-router-dom';
+import Search from './Search'
 
 class Navbar extends Component {
   render() {
@@ -11,7 +12,7 @@ class Navbar extends Component {
         <div className="navbar-wrapper">
           <div className="navbar-left">
             <div>Logo</div>
-            <div><input type="text" placeholder="Experiences"/></div>
+            <Search/>
           </div>
           {
           this.props.context.login ?

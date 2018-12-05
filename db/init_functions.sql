@@ -62,3 +62,20 @@ SELECT * FROM orders;
 
 ALTER TABLE orders
 ADD group_size INT NOT NULL;
+
+SELECT * FROM profiles;
+ALTER TABLE profiles
+ADD COLUMN phone BIGINT;
+
+ALTER TABLE profiles
+RENAME COLUMN phone TO phone_old;
+
+UPDATE profiles
+SET phone = phone_old;
+
+ALTER TABLE profiles
+DROP COLUMN phone_old;
+
+
+ALTER TABLE profiles
+ALTER COLUMN phone SET NOT NULL;

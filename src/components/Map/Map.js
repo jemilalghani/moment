@@ -61,8 +61,8 @@ class SimpleMap extends Component {
   };
 
   render() {
-    console.log(process.env.REACT_APP_GOOGLE_MAP_API_KEY)
-    console.log(process)
+    // console.log(process.env.REACT_APP_GOOGLE_MAP_API_KEY)
+    // console.log(process)
     return (
       // GEN Important! Always set the container height explicitly
       <div style={{ height: '40vh', width: '100%' }}>

@@ -7,10 +7,11 @@ import Moments from './components/Moments/Moments';
 import StepOne from './components/CreateMoment/StepOne';
 import StepTwo from './components/CreateMoment/StepTwo';
 import StepThree from './components/CreateMoment/StepThree';
+import Wizard from './components/CreateMoment/Wizard';
 
 export default (
     <Switch>
-        <Route path='/basics' component={StepOne}/>
+        <Route path='/basics' component={Wizard}/>
         <Route path='/aboutexperience' component={StepTwo}/>
         <Route path='/settings' component={StepThree}/>
         {/* <Route path='/checkout' component ={} /> */}

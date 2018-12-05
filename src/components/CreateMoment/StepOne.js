@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
+import withContext from '../ContextApi/Context_HOC';
 
-export default class StepOne extends Component {
+class StepOne extends Component {
     constructor(){
         super();
         this.state ={
@@ -10,6 +11,10 @@ export default class StepOne extends Component {
             selectedCategory: "Arts & Design",
             selectedOption: null
         }
+    }
+    submit(){
+        this.props.context.updateProfileInfo('locale', this.state.locale)
+        this.props.context.updateProfileInfo('category', this.state.selectedCategory)
     }
     handleChange(key, e){
         this.setState({
@@ -22,16 +27,18 @@ export default class StepOne extends Component {
         })
     }
     render() {
+        console.log(this.props.context)
         return (
             <div className="host-stepone">
             {
                 !this.state.pageTwo ?
-                <div className="stepone-locale">
+                <form className="stepone-locale" onSubmit={()=>this.toggle('pageTwo')}>
                     <h2>Location</h2>
                     <p>Which city will you host your experience in?</p>
-                    <input type="text" value={this.state.locale} onChange={(e)=>this.handleChange('locale',e)}></input>
-                    <button onClick={()=>this.toggle('pageTwo')}>Next</button>
-                </div> 
+                    <input type="text" value={this.state.locale} onChange={(e)=>this.handleChange('locale',e)} required></input>
+                    {/* <button onClick={()=>this.toggle('pageTwo')}>Next</button> */}
+                    <input type="submit" value="next"/>
+                </form> 
                 :
                 <div className="stepone-category">
                     <h2>What type of experience will you host?</h2>
@@ -70,11 +77,12 @@ export default class StepOne extends Component {
                             <span class="checkmark"></span>
                         </label>
                     </form>
-                    <button onClick={()=>this.toggle('pageTwo')}>Previous</button>
-                    <Link to ='/aboutexperience'><button>Next</button></Link>
+                    <button onClick={(e)=>this.toggle('pageTwo',e)}>Previous</button>
+                    <Link to ='/aboutexperience'><button onClick={()=>this.submit()}>Submit Part One</button></Link>
                 </div>
             }
             </div>
         );
     }
 }
+export default withContext(StepOne);

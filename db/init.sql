@@ -34,13 +34,14 @@ CREATE TABLE experiences (
   available_time_start TIME NOT NULL,
   available_time_end TIME NOT NULL,
   deleted BOOLEAN NOT NULL,
-  locale_google INT NOT NULL,
+  group_size_limit INT NOT NULL,
   highlight BOOLEAN NOT NULL
 );
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY,
   exp_id INT NOT NULL,
   prof_id INT NOT NULL,
+  group_size INT NOT NULL,
   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

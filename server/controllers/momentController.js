@@ -75,7 +75,7 @@ module.exports = {
           })
           .then( (data) => {
           db.get_photo_highlight().then(photo => {
-            console.log('controller photo highlight',photo)
+            // console.log('controller photo highlight',photo)
             res.json(addPhotosToMoment(moment, photo))
         })
       })

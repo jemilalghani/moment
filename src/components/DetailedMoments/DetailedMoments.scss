@@ -1,12 +1,22 @@
+.detailed-container{
+    display: flex;
+}
+
 .detailed-wrapper{
     display: flex;
+    width: 90%;
+    margin: 0 auto;
+    background: red;
+}
+
+.detailed-info-wrapper{
+    width: 60%;
+    background: blue;
 }
 
 .detailed-info-box{
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
 }
 
 .detailed-img{

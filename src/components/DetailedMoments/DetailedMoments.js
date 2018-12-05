@@ -1,23 +1,46 @@
 import React, { Component } from 'react';
 import './DetailedMoments.scss';
+import { SingleDatePicker } from 'react-dates';
 
 class DetailedMoments extends Component {
+  constructor(){
+    super();
+    this.state = {
+      date: ''
+    }
+  }
   render() {
     console.log('props in detail',this.props.location.state.moment)
     const {moment} = this.props.location.state
     return (
       <div className="detailed-container">
         <div className="detailed-wrapper">
-          <img className="detailed-img" src={moment.photos[1]} alt=""/>
-          <div className="detailed-info-box">
-            <div className="detailed-category-title">
-              <p>{moment.category}</p>
-              <p>{moment.title}</p>
+          <div>
+            <img className="detailed-img" src={moment.photos[1]} alt=""/>
+          </div>
+          <div className="detailed-info-wrapper">
+            <div className="detailed-info-box">
+              <div className="detailed-category-title">
+                <p>{moment.category}</p>
+                <p>{moment.title}</p>
+              </div>
+              <div className="detailed-descriptions">
+                <p>About your host,</p>
+                <p>{moment.host_qualifications}</p>
+                <p>What will we'll do</p>
+                <p>{moment.what_we_will_do}</p>
+              </div>
             </div>
-            <div>
-              <p>{moment.host_qualifications}</p>
-              <p>{moment.what_we_will_do}</p>
-            </div>
+          </div>
+          <div>
+            <SingleDatePicker
+            date={this.state.date} // momentPropTypes.momentObj or null
+            onDateChange={date => this.setState( {availableDate: date._d })} // PropTypes.func.isRequired
+            focused={this.state.focused} // PropTypes.bool
+            onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
+            id="your_unique_id" // PropTypes.string.isRequired,
+            />
+            
           </div>
         </div>
       </div>

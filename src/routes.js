@@ -3,17 +3,13 @@ import {Switch, Route } from 'react-router-dom';
 import DetailedMoments from './components/DetailedMoments/DetailedMoments';
 import LoginRegister from './components/LoginRegister/LoginRegister';
 import Moments from './components/Moments/Moments';
-// import Admin from './components/Admin/Admin';
-import StepOne from './components/CreateMoment/StepOne';
-import StepTwo from './components/CreateMoment/StepTwo';
-import StepThree from './components/CreateMoment/StepThree';
 import Wizard from './components/CreateMoment/Wizard';
+import UserProfile from './components/UserProfile/UserProfile';
+import CheckOut from './components/CheckOut/CheckOut';
 
 export default (
     <Switch>
         <Route path='/basics' component={Wizard}/>
-        <Route path='/aboutexperience' component={StepTwo}/>
-        <Route path='/settings' component={StepThree}/>
         {/* <Route path='/checkout' component ={} /> */}
         {/* <Route path='/host' component ={} /> */}
         {/* <Route path='/user' component ={} /> */}

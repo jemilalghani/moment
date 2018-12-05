@@ -22,12 +22,12 @@ class SimpleMap extends Component {
   constructor(){
     super()
     this.state = {
-      place: 'Indianapolis',
+      place: 'Sacramento',
       center: { // MDS Center needed for default zoom
         lat: 0,
         lng: 0
     },
-    zoom: 11, // MDS Initial zoom of map
+    zoom: 5, // MDS Initial zoom of map
     coordsLoaded: false,
       }
     }

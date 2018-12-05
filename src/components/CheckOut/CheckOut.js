@@ -8,25 +8,32 @@ class CheckOut extends Component {
         super();
         this.state = {
             guests: 1,
-            price: 0
+            price: 0,
+            total: 0
         }
     }
 
-// onToken = (stripeToken) =>{
-//     console.log('onToken', stripeToken)
-//     axios.post('/api/charge',
-//      {
-//         method: 'POST',
-//         body: stripeToken,
-//         amount: this.state.total * 100
-//      })
-//     }
+onToken = (stripeToken) =>{
+    console.log('onToken', stripeToken)
+    axios.post('/api/charge',
+     {
+        method: 'POST',
+        body: stripeToken,
+        amount: this.state.total * 100
+     })
+    }
+
 handleGuestNumber = (e) => {
     this.setState({guests: e.target.value});
 }
 
+setTotal = () => {
+    this.setState({total: this.props.location.moment.moment.price * this.state.guests})
+}
+
   render() {
       console.log('checkouttuttt passed props', this.props.location)
+      console.log('this is the totatttal', this.state.total)
       const {date} = this.props.location;
       const {moment} = this.props.location.moment;
       const total = moment.price * this.state.guests;
@@ -65,8 +72,8 @@ handleGuestNumber = (e) => {
                     <StripeCheckout
                     token={this.onToken}
                     stripeKey="pk_test_LjNm06RplXdJCIdfZJ7f9gTV"
-                    card='424242424242424242'
                     amount={total * 100}
+                    label={`Pay $${this.state.total}.00`}
                     /> 
                 </div>
             </div>
@@ -86,6 +93,9 @@ handleGuestNumber = (e) => {
                 </div>
                 <div className="checkout-total">
                     <p>Total (USD) ${total}</p>
+                </div>
+                <div className="checkout-confirmation">
+                    <button onClick={this.setTotal}>Confirm</button>
                 </div>
             </div>
         </div>

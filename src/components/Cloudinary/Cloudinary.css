@@ -1,0 +1,42 @@
+.Cloudinary-hover{
+    width:180px;
+    height: 240px;
+    border: black dashed 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5px;
+    overflow: hidden;
+    cursor: pointer;
+    background-position:50% 50%;
+}
+.Cloudinary{
+    width:180px;
+    height: 260px;
+    border: black dashed 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+    background-position:50% 50%;
+}
+.Cloudinary-hover:hover{
+    background: rgb(179,218,218)
+}
+.Cloudinary p {
+    padding: 5px;
+    background: white;
+    border-radius: 2px;
+}
+/* .Cloudinary>form {
+    width:180px;
+    height: 250px;
+    margin: 0;
+} */
+.Cloudinary-image{
+    width: 30px;
+    padding: 100px;
+}

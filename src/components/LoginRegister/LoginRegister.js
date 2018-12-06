@@ -62,8 +62,8 @@ login = () => {
     password
   }).then(response => {
     this.setState({ user: true });
-    this.props.context.updateProfileInfo('login', true);
-    this.props.context.updateProfileInfo('user', response.data);
+    this.props.context.updateInfo('login', true);
+    this.props.context.updateInfo('user', response.data);
   }).catch(error => {
     this.setState({ message: 'Something went wrong: '});
   });
@@ -71,8 +71,8 @@ login = () => {
 
 logout = () => {
   axios.post('/api/logout').then(response => {
-    this.props.context.updateProfileInfo('login', false);
-    this.props.context.updateProfileInfo('user', {});
+    this.props.context.updateInfo('login', false);
+    this.props.context.updateInfo('user', {});
     this.setState({ user: false });
   }).catch(error => {
     this.setState({ message: 'Something went wrong: '});

@@ -28,6 +28,7 @@ massive(process.env.CONNECTION_STRING).then(database=>{
 app.post('/api/login', bcryptController.login); // COMPLETE
 app.post('/api/register', bcryptController.register); // COMPLETE
 app.post('/api/logout', bcryptController.logout);
+app.get('/api/sessions', bcryptController.getSession);
 // ADMIN POST FOR EXERIENCE DUMMY DATA
 app.post('/api/moment/admin', momentController.addDummy); // FRONTEND READY
 // EXPERIENCES (MOMENTS) TABLE

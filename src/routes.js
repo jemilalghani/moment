@@ -9,7 +9,7 @@ import CheckOut from './components/CheckOut/CheckOut';
 
 export default (
     <Switch>
-        <Route path='/basics' component={Wizard}/>
+        <Route path='/host/create' component={Wizard}/>
         {/* <Route path='/checkout' component ={} /> */}
         {/* <Route path='/host' component ={} /> */}
         {/* <Route path='/user' component ={} /> */}

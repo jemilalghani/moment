@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import withContext from '../ContextApi/Context_HOC';
+import './Wizard.scss';
 import WizardOne from './WizardOne';
 import WizardTwo from './WizardTwo';
 import WizardThree from './WizardThree';
@@ -48,7 +49,7 @@ class Wizard extends Component {
     render() {
         let array = [<WizardOne />, <WizardTwo/>, <WizardThree/>, <WizardFour/>, <WizardFive/>, <WizardSix/>, <WizardSeven/>, <WizardEight/>, <WizardNine/>, <WizardTen/>, <WizardEleven/>]
         return (
-            <div>
+            <div className="wizard">
                 <form onSubmit={(e)=>this.increment(e)}>
                     {array[this.state.pageNumber]}
                     {this.state.pageNumber === 0 ? <Link to='/'><button>Escape</button></Link> 

@@ -1,27 +1,4 @@
-///////////font sizes/////////////////
-$font-medium: 15px;
-$font-small: 12px;
-$font-tiny: 10px;
-
-///////////font style////////////////
-$robotoNormal: ‘Open Sans’,‘Roboto’, sans-serif;
-
-
-///////////font colors///////////////
-$font-light-grey: #767676;
-$font-black: #484848;
-$font-blue-green: #00898B;
-
-
-
-//////////backgroundcolors///////////
-$background-white: #ffffff;
-
-/////////font weights//////////////
-$font-bold: 600;
-
-
-
+@import './variables';
 
 .App {
   text-align: center;

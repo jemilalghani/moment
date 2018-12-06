@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import withContext from '../ContextApi/Context_HOC';
+import './WizardOne.scss'
 
 class WizardOne extends Component {
     render() {

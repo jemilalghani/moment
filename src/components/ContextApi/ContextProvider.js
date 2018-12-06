@@ -26,7 +26,7 @@ export default class ContextProvider extends React.Component {
         this.setState({[key]: e})
     }
     postToDatabase(){
-        const { title, category, duration, price, locale, hostQualification, meetingLocation, whatWeWillDo, whereWeWillBe, availableStartTime,availableEndTime, photoOne, photoTwo} = this.state;
+        const { title, category, duration, price, locale, hostQualification, meetingLocation, whatWeWillDo, whereWeWillBe, availableStartTime,availableEndTime, photoOne, photoTwo, availableDate, groupSize} = this.state;
         axios.post('/api/moment/admin', {
             title,
             category,
@@ -40,11 +40,11 @@ export default class ContextProvider extends React.Component {
             availableStartTime,
             availableEndTime,
             deleted : false,
-            // locale_google
-            highlight: false,
+            highlight: true,
             photoOne,
             photoTwo,
-            // availableDate
+            availableDate,
+            groupSize
         }).then(()=>{
             this.setState({uploaded: true})
         }).catch(()=>{

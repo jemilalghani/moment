@@ -1,11 +1,13 @@
 import React from 'react';
 import withContext from '../ContextApi/Context_HOC';
+import './WizardTwo.scss';
 
 const WizardTwo = (props) => {
     return (
         <div className="wizard-category">
             <h2>What type of experience will you host?</h2>
             <p>Choose the category that best describes your experience.</p>
+            {/* <div className="custom-select" style={{width:"200px"}}> */}
                 <select value={props.context.selectedCategory} onChange={(e)=>props.context.updateInfo('selectedCategory',e.target.value)} required>
                     <option value="">selected a category</option>
                     <option value="Arts & Design">Arts & Design</option>
@@ -21,6 +23,7 @@ const WizardTwo = (props) => {
                     <option value="Business">Business</option>
                     <option value="Nightlife">Nightlife</option>
                 </select>
+            {/* </div> */}
         </div>
     );
 };

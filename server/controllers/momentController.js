@@ -75,7 +75,7 @@ module.exports = {
           })
           .then( (data) => {
           db.get_photo_highlight().then(photo => {
-            console.log('controller photo highlight',photo)
+            // console.log('controller photo highlight',photo)
             res.json(addPhotosToMoment(moment, photo))
         })
       })
@@ -85,7 +85,6 @@ module.exports = {
           });
   },
   findLocale:  (req,res)=>{
-    // const {locale} = req.body;
     const db = req.app.get('db');
     db.get_moment_locale(['Phoenix, AZ']).then(() => {
         res.json({ moment: res.data.moment })
@@ -93,7 +92,17 @@ module.exports = {
         console.log('error', error);
         res.status(500).json({ message: 'Find Highlight Moment Failed'})
     });
-  }
+  },
+  findAll:  (req,res)=>{
+    const db = req.app.get('db');
+    db.get_moments().then((all) => {
+        res.json({ moment: all})
+    }).catch(error => {
+        console.log('error', error);
+        res.status(500).json({ message: 'Find Highlight Moment Failed'})
+    });
+  },
+
 }
 
 function addPhotosToMoment (resMoment, resPhoto){

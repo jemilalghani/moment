@@ -7,6 +7,7 @@ const massive = require('massive');
 const bcryptController = require('./controllers/bcryptController');
 const momentController = require('./controllers/momentController');
 const bookingController = require('./controllers/bookingController');
+const orderController = require('./controllers/orderController');
 
 require('dotenv').config();
 
@@ -41,6 +42,8 @@ app.get('/api/moment/locale', momentController.findLocale);
 // app.get('/api/order/hostFind')
 // app.post('/api/order/userCreate')
 // app.get('/api/order/userFind')
+app.get('/api/order/:id', orderController.getOrders)
+app.post('/api/orderCheckout', orderController.addToOrders);
 // REVIEWS TABLE
 // app.post('/api/review/create')
 // app.get('/api/review/find')

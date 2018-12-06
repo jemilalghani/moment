@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './DetailedMoments.scss';
 import { SingleDatePicker } from 'react-dates';
-import SimpleMap from '../Map/Map';
+import Map from '../Map/Map';
 import {Link} from 'react-router-dom';
 
 class DetailedMoments extends Component {
@@ -67,7 +67,7 @@ class DetailedMoments extends Component {
             </div>
           </div>
         </div>
-        <SimpleMap />
+        <Map city={moment.locale}/>
       </div>
     )
   }

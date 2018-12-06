@@ -1,9 +1,9 @@
 module.exports = {
   addDummy:(req,res)=>{
     const db = req.app.get('db');
-    const { title, category, duration, price, locale, hostQualification, meetingLocation, whatWeWillDo, whereWeWillBe, availableStartTime,availableEndTime, deleted, locale_google, highlight, photoOne, photoTwo, availableDate } = req.body;
+    const { title, category, duration, price, locale, hostQualification, meetingLocation, whatWeWillDo, whereWeWillBe, availableStartTime,availableEndTime, deleted, groupSize, highlight, photoOne, photoTwo, availableDate } = req.body;
     const userId = 1; //(USER)
-    db.add_moment([title, category, duration, price, locale, hostQualification, meetingLocation, whatWeWillDo, whereWeWillBe, availableStartTime,availableEndTime, deleted, locale_google, highlight])
+    db.add_moment([title, category, duration, price, locale, hostQualification, meetingLocation, whatWeWillDo, whereWeWillBe, availableStartTime,availableEndTime, deleted, groupSize, highlight])
       .then( (data) => {
 
         db.add_photo([data[0].id, photoOne, photoTwo])

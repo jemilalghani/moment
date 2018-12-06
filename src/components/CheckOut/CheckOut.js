@@ -8,25 +8,51 @@ class CheckOut extends Component {
         super();
         this.state = {
             guests: 1,
-            price: 0
+            total: 95,
+            user: null
         }
     }
 
-// onToken = (stripeToken) =>{
-//     console.log('onToken', stripeToken)
-//     axios.post('/api/charge',
-//      {
-//         method: 'POST',
-//         body: stripeToken,
-//         amount: this.state.total * 100
-//      })
-//     }
-handleGuestNumber = (e) => {
+onToken = (stripeToken) =>{
+    console.log('onToken', stripeToken)
+    let expId = this.props.location.moment.moment.id
+    //let selectedDate = this.props.location.date.sendDate
+    axios.post('/api/charge',
+     {
+        method: 'POST',
+        body: stripeToken,
+        amount: this.state.total * 100
+     }).then(response => {
+         console.log('succcccccessss', response.data);
+         axios.post('/api/orderCheckout', {
+            exp_id: expId,
+            prof_id: this.state.user,
+            group_size: this.state.guests
+
+        }).then(()=>{
+            alert('sent')
+        })
+      })
+    }
+
+handleGuestNumber(e){
     this.setState({guests: e.target.value});
+}
+
+setTotal(){
+    setTimeout(()=>{this.setState({total: this.props.location.moment.moment.price * this.state.guests})}, 500)
+}
+
+componentDidMount(){
+    axios.get('/api/sessions').then(res => {
+        console.log('profile data here?',res.data)
+        this.setState({user: res.data.user.id})
+    })
 }
 
   render() {
       console.log('checkouttuttt passed props', this.props.location)
+      console.log('this is the totatttal', this.state.total)
       const {date} = this.props.location;
       const {moment} = this.props.location.moment;
       const total = moment.price * this.state.guests;
@@ -50,7 +76,8 @@ handleGuestNumber = (e) => {
                 <div className="checkout-whoscoming">
                     <h3>Who's coming?</h3>
                     <h5>Number of guests</h5>
-                    <select name="guests" onChange={this.handleGuestNumber}>
+                    <select name="guests" onChange={(e)=>{this.handleGuestNumber(e)
+                                                        this.setTotal()}}>
                         {options}
                     </select>
                 </div>
@@ -62,12 +89,17 @@ handleGuestNumber = (e) => {
                 </div>
                 <div className="checkout-stripe">
                     <p>By confirming this booking, you agree to the Guest Release and Waiver, the Cancellation Policy, and the Guest Refund Policy.</p>
+                    {
+                    this.state.total ?
                     <StripeCheckout
                     token={this.onToken}
                     stripeKey="pk_test_LjNm06RplXdJCIdfZJ7f9gTV"
-                    card='424242424242424242'
                     amount={total * 100}
+                    label={`Pay $${total}.00`}
                     /> 
+                    :
+                    <div></div>
+                    }
                 </div>
             </div>
             <div className="checkout-left">
@@ -95,4 +127,6 @@ handleGuestNumber = (e) => {
 }
 
 export default CheckOut;
+
+
 

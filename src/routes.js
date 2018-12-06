@@ -6,6 +6,8 @@ import Moments from './components/Moments/Moments';
 import Wizard from './components/CreateMoment/Wizard';
 import UserProfile from './components/UserProfile/UserProfile';
 import CheckOut from './components/CheckOut/CheckOut';
+import Trips from './components/Trips/Trips';
+import Admin from './components/Admin/Admin';
 
 export default (
     <Switch>
@@ -17,6 +19,8 @@ export default (
         <Route path='/login' component={LoginRegister}/>
         <Route path='/userprofile' component={UserProfile}/>
         <Route path='/checkout' component={CheckOut} />
+        <Route path='/trips' component={Trips}/>
+        <Route path='/admin' component={Admin} />
         <Route exact path='/' component ={Moments} />
     </Switch>
 )

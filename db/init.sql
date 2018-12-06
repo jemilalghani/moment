@@ -42,6 +42,7 @@ CREATE TABLE orders (
   exp_id INT NOT NULL,
   prof_id INT NOT NULL,
   group_size INT NOT NULL,
+  date_id INT NOT NULL, --ADD PLEASE!!!!!!!!!!!!!!!!
   TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -58,7 +59,8 @@ CREATE TABLE exp_photos (
 CREATE TABLE available_dates (
   id SERIAL PRIMARY KEY,
   exp_id INT NOT NULL,
-  available_date TIMESTAMP NOT NULL
+  available_date TIMESTAMP NOT NULL,
+  group_size_remaining INT NOT NULL --ADD PLEASE!!!!!!!!!!!!!!!!
 );
 CREATE TABLE reviews (
   id SERIAL PRIMARY KEY,

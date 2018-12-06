@@ -94,7 +94,6 @@ module.exports = {
     });
   },
   findAll:  (req,res)=>{
-    console.log('findAll hit!!!!!!!!!!')
     const db = req.app.get('db');
     db.get_moments().then((all) => {
         res.json({ moment: all})

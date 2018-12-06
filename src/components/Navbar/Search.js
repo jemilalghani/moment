@@ -38,9 +38,10 @@ export default class Search extends Component {
     console.log('sorting moments')
     let mapped = objArr.map( moment => {
       moment.searchResult = this.searchMoment(moment)
-      console.log(moment.searchResult)
+      // console.log('moment.searchResult',moment.searchResult)
       return moment
     })
+    mapped = mapped.filter( elem =>  elem.searchResult.result )
     let resultSort = sort(mapped).desc( a => a.searchResult.counter)
     console.log(resultSort)
     return resultSort
@@ -51,11 +52,10 @@ export default class Search extends Component {
     let final = {}
     console.log(this.state.searchArr)
     for (let key in this.state.searchArr){
-      console.log('starting searchArr loop')
-      searchRecursiveForText(this.state.searchArr[key],moment)
-      console.log('finished loop trueCounter is', trueCounter)
+      let word = this.state.searchArr[key]
+      word = word.toLowerCase();
+      searchRecursiveForText(word,moment)
     }
-    console.log('trueCounter is', trueCounter)
     if (trueCounter === 0){
       return final = {results: false}
     } else {
@@ -77,11 +77,12 @@ export default class Search extends Component {
         console.log('number')
       } else if (typeof item === 'string'){
         console.log('found a string, starting search')
+        let itemLC = item.toLowerCase();
         let textLength = text.length
-        for ( let i = 0; i < item.length; i++){
-          let itemslice = item.slice(i, i+textLength)
+        for ( let i = 0; i < itemLC.length; i++){
+          let itemslice = itemLC.slice(i, i+textLength)
           if ( text === itemslice){
-            console.log('found a match, text is', text, 'text')
+            console.log('found a match, text is', text, 'truecounter+=1')
             trueCounter += 1
           }
         }

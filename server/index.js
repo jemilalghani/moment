@@ -7,6 +7,7 @@ const massive = require('massive');
 const bcryptController = require('./controllers/bcryptController');
 const momentController = require('./controllers/momentController');
 const bookingController = require('./controllers/bookingController');
+const orderController = require('./controllers/orderController');
 
 require('dotenv').config();
 
@@ -28,6 +29,7 @@ massive(process.env.CONNECTION_STRING).then(database=>{
 app.post('/api/login', bcryptController.login); // COMPLETE
 app.post('/api/register', bcryptController.register); // COMPLETE
 app.post('/api/logout', bcryptController.logout);
+app.get('/api/sessions', bcryptController.getSession);
 // ADMIN POST FOR EXERIENCE DUMMY DATA
 app.post('/api/moment/admin', momentController.addDummy); // FRONTEND READY
 // EXPERIENCES (MOMENTS) TABLE
@@ -41,6 +43,8 @@ app.get('/api/moment', momentController.findAll);
 // app.get('/api/order/hostFind')
 // app.post('/api/order/userCreate')
 // app.get('/api/order/userFind')
+app.get('/api/order/:id', orderController.getOrders)
+app.post('/api/orderCheckout', orderController.addToOrders);
 // REVIEWS TABLE
 // app.post('/api/review/create')
 // app.get('/api/review/find')

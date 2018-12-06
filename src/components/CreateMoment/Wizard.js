@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import withContext from '../ContextApi/Context_HOC';
+import './Wizard.scss';
 import WizardOne from './WizardOne';
 import WizardTwo from './WizardTwo';
 import WizardThree from './WizardThree';
@@ -12,6 +13,7 @@ import WizardEight from './WizardEight';
 import WizardNine from './WizardNine';
 import WizardTen from './WizardTen';
 import WizardEleven from './WizardEleven';
+import WizardTwelve from './WizardTwelve';
 
 class Wizard extends Component {
     constructor(){
@@ -46,14 +48,14 @@ class Wizard extends Component {
         }
     }
     render() {
-        let array = [<WizardOne />, <WizardTwo/>, <WizardThree/>, <WizardFour/>, <WizardFive/>, <WizardSix/>, <WizardSeven/>, <WizardEight/>, <WizardNine/>, <WizardTen/>, <WizardEleven/>]
+        let array = [<WizardOne />, <WizardTwo/>, <WizardThree/>, <WizardFour/>, <WizardFive/>, <WizardSix/>, <WizardSeven/>, <WizardEight/>, <WizardNine/>, <WizardTen/>, <WizardEleven/>, <WizardTwelve/>]
         return (
-            <div>
+            <div className="wizard">
                 <form onSubmit={(e)=>this.increment(e)}>
                     {array[this.state.pageNumber]}
                     {this.state.pageNumber === 0 ? <Link to='/'><button>Escape</button></Link> 
                     : <button onClick={(e)=>this.decrement(e)}>Previous</button>}
-                    {this.state.pageNumber === 10? <button onClick={()=>this.duration()}>Review</button> : <input type="submit" value={this.state.review ? "Finialize" : "next"}/>}
+                    {this.state.pageNumber === 11? <button onClick={()=>this.duration()}>Review</button> : <input type="submit" value={this.state.review ? "Finialize" : "next"}/>}
                 </form>
             </div>
         );

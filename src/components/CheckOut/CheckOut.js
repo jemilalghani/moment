@@ -16,6 +16,7 @@ class CheckOut extends Component {
 onToken = (stripeToken) =>{
     console.log('onToken', stripeToken)
     let expId = this.props.location.moment.moment.id
+    //let selectedDate = this.props.location.date.sendDate
     axios.post('/api/charge',
      {
         method: 'POST',
@@ -27,6 +28,7 @@ onToken = (stripeToken) =>{
             exp_id: expId,
             prof_id: this.state.user,
             group_size: this.state.guests
+
         }).then(()=>{
             alert('sent')
         })

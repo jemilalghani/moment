@@ -44,7 +44,7 @@ class Navbar extends Component {
                 this.props.context.user.user ?
                 <div className="navbar-loggedin">
                   <Link to='/host/create'><div>Host</div></Link>
-                  <div><p>Trips</p></div>
+                  <Link to="/trips"><div><p>Trips</p></div></Link>
                   <img src={this.props.context.user.user.prof_photo_url} className="nav-profile-img" onClick={()=>this.toggle('dropdown')}/>
                 </div> 
                 :

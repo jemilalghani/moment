@@ -42,6 +42,7 @@ app.get('/api/moment/locale', momentController.findLocale);
 // app.get('/api/order/hostFind')
 // app.post('/api/order/userCreate')
 // app.get('/api/order/userFind')
+app.get('/api/order/:id', orderController.getOrders)
 app.post('/api/orderCheckout', orderController.addToOrders);
 // REVIEWS TABLE
 // app.post('/api/review/create')

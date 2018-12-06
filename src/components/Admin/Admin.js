@@ -42,7 +42,7 @@ sendHostData = () => {
     axios.post('/api/moment/admin', {
         title, category, duration, price, locale, hostQualification, 
         meetingLocation, whatWeWillDo, whereWeWillBe, availableStartTime, 
-        availableEndTime, deleted, locale_google, highlight, 
+        availableEndTime, deleted, groupSize: 4, highlight, 
         photoOne, photoTwo, photoThree, availableDate
     }).then(response => {
         console.log('sent', response)

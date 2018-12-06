@@ -19,7 +19,9 @@ onToken = (stripeToken) =>{
         method: 'POST',
         body: stripeToken,
         amount: this.state.total * 100
-     })
+     }).then(response => {
+         console.log('succcccccessss', response.data);
+      })
     }
 
 handleGuestNumber(e){
@@ -107,4 +109,9 @@ setTotal(){
 }
 
 export default CheckOut;
+
+// axios.post('/api/sadas', {
+//     expId: this.props.location.moment.moment.id,
+//     groupSize: this.state.guests
+// })
 

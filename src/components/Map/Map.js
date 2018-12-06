@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-//import './Map.css'
-import Geocode from 'react-geocode';
+import './Map.scss'
+import Geocode from "react-geocode";
 
 // MDS Matt Shields note
 // GEN package creator note
 
-// MDS yarn add gogole-map-react
+// MDS yarn add google-map-react
 // MDS yarn add react-app-env
-// MDS yarn add dotenv-webpack  *NOTE: frontend env version*
+// MDS yarn add dotenv-webpack  *NOTE: frontend env version*hello
 
 // MDS Get your free Google API key from google, free unless it gets 25K+ hits per week.
 // MDS Put key in env file
@@ -18,16 +18,15 @@ const AnyReactComponent = ({ text }) => <div className='circle'>{text}</div>;
 // MDS Example of a second made-up object, based roughly on Chicago lat, long
 const AnyReactComponent2 = ({ text }) => <div className='circle'>{text}</div>;
 
-class SimpleMap extends Component {
+class Map extends Component {
   constructor(){
     super()
     this.state = {
-      place: 'Sacramento',
+      place: 'Tuscon',
       center: { // MDS Center needed for default zoom
-        lat: 38.5816,
-        lng: -121.4944
+
     },
-    zoom: 10, // MDS Initial zoom of map
+    zoom: 15, // MDS Initial zoom of map
     coordsLoaded: false,
       }
     }
@@ -45,7 +44,7 @@ class SimpleMap extends Component {
         // GEN Enable or disable logs. Its optional.
         Geocode.enableDebug();
 
-        Geocode.fromAddress(this.state.place).then(
+        Geocode.fromAddress(this.props.city).then(
           response => {
             const { lat, lng } = response.results[0].geometry.location;
             const center = {lng: lng, lat: lat}
@@ -61,21 +60,23 @@ class SimpleMap extends Component {
   };
 
   render() {
-    console.log(process.env.REACT_APP_GOOGLE_MAP_API_KEY)
-    console.log(process)
+    console.log('map state', this.state)
+    console.log('propppspss to map', this.props.city)
     return (
       // GEN Important! Always set the container height explicitly
       <div style={{ height: '40vh', width: '100%' }}>
         { this.state.coordsLoaded ?
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY}}
-          defaultCenter={this.state.center}
+          center={this.state.center}
           defaultZoom={this.state.zoom}
         >
-          <AnyReactComponent 
+          
+        <AnyReactComponent 
+
             lat={this.state.center.lat}
             lng={this.state.center.lng}
-            text={this.state.place}
+            text={this.props.city}
           />
           <AnyReactComponent2
             lat={42} // rough coordinate for Chicago
@@ -89,4 +90,4 @@ class SimpleMap extends Component {
   }
 }
  
-export default SimpleMap;
+export default Map;

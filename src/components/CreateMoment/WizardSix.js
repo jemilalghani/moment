@@ -5,7 +5,7 @@ class WizardSix extends Component {
     constructor(){
         super();
         this.state={
-            toggle: false,
+            toggle: true,
         }
     }
     toggle(key){

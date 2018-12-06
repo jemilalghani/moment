@@ -24,10 +24,10 @@ class SimpleMap extends Component {
     this.state = {
       place: 'Sacramento',
       center: { // MDS Center needed for default zoom
-        lat: 0,
-        lng: 0
+        lat: 38.5816,
+        lng: -121.4944
     },
-    zoom: 5, // MDS Initial zoom of map
+    zoom: 10, // MDS Initial zoom of map
     coordsLoaded: false,
       }
     }

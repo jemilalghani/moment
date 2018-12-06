@@ -33,7 +33,6 @@ setTotal(){
   render() {
       console.log('checkouttuttt passed props', this.props.location)
       console.log('this is the totatttal', this.state.total)
-      console.log('show stripe', this.state.showStripe)
       const {date} = this.props.location;
       const {moment} = this.props.location.moment;
       const total = moment.price * this.state.guests;

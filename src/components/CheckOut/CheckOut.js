@@ -8,12 +8,14 @@ class CheckOut extends Component {
         super();
         this.state = {
             guests: 1,
-            total: 95
+            total: 95,
+            user: null
         }
     }
 
 onToken = (stripeToken) =>{
     console.log('onToken', stripeToken)
+    let expId = this.props.location.moment.moment.id
     axios.post('/api/charge',
      {
         method: 'POST',
@@ -21,6 +23,13 @@ onToken = (stripeToken) =>{
         amount: this.state.total * 100
      }).then(response => {
          console.log('succcccccessss', response.data);
+         axios.post('/api/orderCheckout', {
+            exp_id: expId,
+            prof_id: this.state.user,
+            group_size: this.state.guests
+        }).then(()=>{
+            alert('sent')
+        })
       })
     }
 
@@ -30,6 +39,13 @@ handleGuestNumber(e){
 
 setTotal(){
     setTimeout(()=>{this.setState({total: this.props.location.moment.moment.price * this.state.guests})}, 500)
+}
+
+componentDidMount(){
+    axios.get('/api/sessions').then(res => {
+        console.log('profile data here?',res.data)
+        this.setState({user: res.data.user.id})
+    })
 }
 
   render() {
@@ -110,8 +126,5 @@ setTotal(){
 
 export default CheckOut;
 
-// axios.post('/api/sadas', {
-//     expId: this.props.location.moment.moment.id,
-//     groupSize: this.state.guests
-// })
+
 

@@ -76,7 +76,7 @@ class Map extends Component {
 
             lat={this.state.center.lat}
             lng={this.state.center.lng}
-            text={this.props.city}
+            text='Event takes place here'
           />
           <AnyReactComponent2
             lat={42} // rough coordinate for Chicago

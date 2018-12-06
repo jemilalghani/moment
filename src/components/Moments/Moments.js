@@ -25,7 +25,7 @@ class Moments extends Component {
 
   render() {
     let mappedMoments = this.state.moments.map(moment => {
-      console.log(moment.photos)
+      // console.log(moment.photos)
       return (
         <div className="moment-card" key={moment.id}>
           <div className="moment-image">

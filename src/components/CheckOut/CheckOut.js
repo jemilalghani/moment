@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import './CheckOut.scss';
+import withContext from '../ContextApi/Context_HOC';
 
 class CheckOut extends Component {
     constructor() {
@@ -53,6 +54,7 @@ componentDidMount(){
   render() {
       console.log('checkouttuttt passed props', this.props.location)
       console.log('this is the totatttal', this.state.total)
+      console.log('context in checkout', this.props.context.login)
       const {date} = this.props.location;
       const {moment} = this.props.location.moment;
       const total = moment.price * this.state.guests;
@@ -126,7 +128,7 @@ componentDidMount(){
   }
 }
 
-export default CheckOut;
+export default withContext(CheckOut);
 
 
 

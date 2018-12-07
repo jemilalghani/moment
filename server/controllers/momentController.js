@@ -50,6 +50,9 @@ module.exports = {
     // .then(addCreators)
 
   },
+  findHost: (req,res) => {
+    const db = req.app.get('db');
+  },
 //   create: (req,res)=>{
 //     db.add_moment([]).then(() => {
 //     }), //RETURN ID FOR NEXT 2 POSTS

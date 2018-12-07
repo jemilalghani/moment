@@ -70,6 +70,7 @@ class Map extends Component {
           bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY}}
           center={this.state.center}
           defaultZoom={this.state.zoom}
+          gestureHandling='none'
         >
           
         <AnyReactComponent 

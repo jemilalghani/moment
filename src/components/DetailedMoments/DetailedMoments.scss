@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .detailed-container{
     display: flex;
     flex-direction: column;
@@ -7,21 +9,50 @@
     display: flex;
     width: 90%;
     margin: 0 auto;
-    background: red;
 }
 
 .detailed-info-wrapper{
     width: 60%;
-    background: blue;
+
 }
 
 .detailed-info-box{
     display: flex;
     flex-direction: column;
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+.detailed-category-title{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.detailed-moment-title{
+    font-size: 45px;
+}
+
+.detailed-about{
+    color: $font-darker-grey-p-titles;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.detailed-moment-category{
+    font-weight: bold;
+    color: $font-black;
 }
 
 .detailed-img{
-    width: 400px;
+    width: 300px;
+}
+
+.detailed-paragraphs{
+    font-size: 17px;
 }
 
 .date-price{

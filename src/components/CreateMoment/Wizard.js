@@ -14,6 +14,8 @@ import WizardNine from './WizardNine';
 import WizardTen from './WizardTen';
 import WizardEleven from './WizardEleven';
 import WizardTwelve from './WizardTwelve';
+import WizardEnd from './WizardEnd';
+import Axios from 'axios';
 
 class Wizard extends Component {
     constructor(){
@@ -21,6 +23,15 @@ class Wizard extends Component {
         this.state={
             pageNumber: 0,
         };
+        this.postToDatabase = this.postToDatabase.bind(this);
+    }
+    async componentDidMount(){
+        const user = await Axios.get('/api/sessions');
+        if( user.data){
+            this.props.context.updateInfo('userId', user.data.user.id);
+        } else {
+            alert('Please login')
+        }
     }
     increment(e){
         e.preventDefault();
@@ -47,8 +58,36 @@ class Wizard extends Component {
             this.setState({review: true})
         }
     }
+    postToDatabase(){
+        const { title, selectedCategory, duration, price, locale, hostQualification, streetAddress, city, state, zipcode, whatWeWillDo, whereWeWillBe, availableStartTime,availableEndTime, photoOne, photoTwo, availableDate, groupSizeLimit, userId} = this.props.context;
+        let meetingLocation = streetAddress +", "+ city +", "+ state +", "+ zipcode;
+        Axios.post('/api/moment/admin', {
+            title,
+            category: selectedCategory,
+            duration,
+            price,
+            locale,
+            hostQualification,
+            meetingLocation,
+            whatWeWillDo,
+            whereWeWillBe,
+            availableStartTime,
+            availableEndTime,
+            deleted : false,
+            groupSize: groupSizeLimit,
+            highlight: true,
+            photoOne,
+            photoTwo,
+            availableDate: availableDate[0],
+            userId
+        }).then(()=>{
+            this.setState({uploaded: true})
+        }).catch(()=>{
+            this.setState({uploaded: false})
+        })
+    }
     render() {
-        let array = [<WizardOne />, <WizardTwo/>, <WizardThree/>, <WizardFour/>, <WizardFive/>, <WizardSix/>, <WizardSeven/>, <WizardEight/>, <WizardNine/>, <WizardTen/>, <WizardEleven/>, <WizardTwelve/>]
+        let array = [<WizardOne />, <WizardTwo/>, <WizardThree/>, <WizardFour/>, <WizardFive/>, <WizardSix/>, <WizardSeven/>, <WizardEight/>, <WizardNine/>, <WizardTen/>, <WizardEleven/>, <WizardTwelve/>, <WizardEnd post={this.postToDatabase}/>]
         return (
             <div className="wizard">
                 <form onSubmit={(e)=>this.increment(e)}>

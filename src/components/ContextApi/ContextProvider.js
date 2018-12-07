@@ -25,32 +25,6 @@ export default class ContextProvider extends React.Component {
     updateInfo = (key, e) => {
         this.setState({[key]: e})
     }
-    postToDatabase(){
-        const { title, category, duration, price, locale, hostQualification, meetingLocation, whatWeWillDo, whereWeWillBe, availableStartTime,availableEndTime, photoOne, photoTwo, availableDate, groupSize} = this.state;
-        axios.post('/api/moment/admin', {
-            title,
-            category,
-            duration,
-            price,
-            locale,
-            hostQualification,
-            meetingLocation,
-            whatWeWillDo,
-            whereWeWillBe,
-            availableStartTime,
-            availableEndTime,
-            deleted : false,
-            highlight: true,
-            photoOne,
-            photoTwo,
-            availableDate,
-            groupSize
-        }).then(()=>{
-            this.setState({uploaded: true})
-        }).catch(()=>{
-            this.setState({uploaded: false})
-        })
-    }
     render() {
         return(
             <AppContext.Provider value={{...this.state, updateInfo: this.updateInfo}}>

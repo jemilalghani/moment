@@ -35,4 +35,12 @@ auau
 aus tin
 a 
 
+new
+plane mane
+new
+
+madchad
+chad mad 
+c 
+
 

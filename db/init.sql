@@ -39,13 +39,10 @@ CREATE TABLE experiences (
 );
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY,
-  exp_id INT NOT NULL,
   prof_id INT NOT NULL,
   group_size INT NOT NULL,
-  date_id INT NOT NULL, --ADD PLEASE!!!!!!!!!!!!!!!!
-  TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  date_id INT NOT NULL REFERENCES available_dates(id), 
 );
-
 CREATE TABLE prof_exp_creators (
   id SERIAL PRIMARY KEY,
   prof_id INT NOT NULL,
@@ -64,11 +61,23 @@ CREATE TABLE available_dates (
 );
 CREATE TABLE reviews (
   id SERIAL PRIMARY KEY,
+  order_id INT NOT NULL 
   title VARCHAR(50) NOT NULL,
   stars INT NOT NULL,
   date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
+INSERT INTO orders 
+(prof_id, group_size, date_id)
+VALUES
+(6,1,1),
+(6,1,11),
+(6,2,22),
+(7,2,15),
+(7,1,2),
+(7,1,8),
+(5,3,13),
+(8,4,5),
+(8,2,19);
 INSERT INTO available_dates 
 (exp_id, available_date, group_size_remaining)
 VALUES

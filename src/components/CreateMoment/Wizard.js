@@ -92,9 +92,11 @@ class Wizard extends Component {
             <div className="wizard">
                 <form onSubmit={(e)=>this.increment(e)}>
                     {array[this.state.pageNumber]}
-                    {this.state.pageNumber === 0 ? <Link to='/'><button>Escape</button></Link> 
-                    : <button onClick={(e)=>this.decrement(e)}>Previous</button>}
-                    {this.state.pageNumber === 11? <button onClick={()=>this.duration()}>Review</button> : <input type="submit" value={this.state.review ? "Finialize" : "next"}/>}
+                    <div className="wizard-button-container">
+                        {this.state.pageNumber === 0 ? <Link to='/'><button>Escape</button></Link> 
+                        : <button onClick={(e)=>this.decrement(e)}>Previous</button>}
+                        {this.state.pageNumber === 11? <button onClick={()=>this.duration()}>Review</button> : <input className="wizard-nextbutton" type="submit" value={this.state.review ? "Finialize" : "Next"}/>}
+                    </div>
                 </form>
             </div>
         );

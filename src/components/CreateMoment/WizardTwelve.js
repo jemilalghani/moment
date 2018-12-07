@@ -57,7 +57,7 @@ const WizardTwelve = (props) => {
                 <option value="23:00:00">11:00 PM</option>
                 <option value="23:30:00">11:30 PM</option>  
             </select>
-            <p>to</p>
+            <p className="wizard-to">to</p>
             <select onChange={(e)=>props.context.updateInfo('availableEndTime',e.target.value)} value={props.context.availableEndTime} required>
                 <option value=''>Select End Time</option>
                 <option value="24:00:00">12:00 AM</option>

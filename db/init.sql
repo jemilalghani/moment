@@ -59,8 +59,8 @@ CREATE TABLE exp_photos (
 CREATE TABLE available_dates (
   id SERIAL PRIMARY KEY,
   exp_id INT NOT NULL,
-  available_date TIMESTAMP NOT NULL,
-  group_size_remaining INT NOT NULL --ADD PLEASE!!!!!!!!!!!!!!!!
+  available_date VARCHAR(20) NOT NULL,
+  group_size_remaining INT NOT NULL
 );
 CREATE TABLE reviews (
   id SERIAL PRIMARY KEY,
@@ -68,6 +68,33 @@ CREATE TABLE reviews (
   stars INT NOT NULL,
   date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO available_dates 
+(exp_id, available_date, group_size_remaining)
+VALUES
+(1, 'Sat Dec 01 2018', 10),
+(1, 'Sat Dec 08 2018', 10),
+(1, 'Sat Dec 15 2018', 10),
+(1, 'Sat Dec 22 2018', 10),
+(1, 'Sat Jan 05 2018', 10),
+(1, 'Sat Jan 12 2018', 10),
+(2, 'Tue Dec 04 2018', 6),
+(2, 'Tue Dec 11 2018', 6),
+(2, 'Tue Dec 18 2018', 6),
+(2, 'Tue Jan 08 2018', 6),
+(8, 'Tue Jan 08 2018', 6),
+(8, 'Fri Dec 07 2018', 6),
+(8, 'Fri Dec 14 2018', 6),
+(8, 'Fri Dec 21 2018', 6),
+(8, 'Fri Jan 04 2018', 6),
+(9, 'Mon Dec 03 2018', 9),
+(9, 'Wed Dec 05 2018', 9),
+(9, 'Mon Dec 10 2018', 9),
+(9, 'Wed Dec 12 2018', 9),
+(9, 'Mon Dec 17 2018', 9),
+(9, 'Wed Dec 19 2018', 9),
+(9, 'Mon Jan 07 2018', 9),
+(9, 'Wed Jan 09 2018', 9);
 
 SELECT * FROM profiles;
 SELECT * FROM experiences;

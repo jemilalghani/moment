@@ -14,11 +14,11 @@ class DetailedMoments extends Component {
 
 
   render() {
-    console.log('props in detail',this.props.location.state.moment)
+    //console.log('props in detail',this.props.location.state.moment)
     const {moment} = this.props.location.state
     const sendDate = this.state.availableDate
     const chooseDate = new Date(this.state.availableDate)
-    console.log('choosese', chooseDate)
+    //console.log('choosese', chooseDate)
     return (
       <div className="detailed-container">
         <div className="detailed-wrapper">
@@ -28,14 +28,14 @@ class DetailedMoments extends Component {
           <div className="detailed-info-wrapper">
             <div className="detailed-info-box">
               <div className="detailed-category-title">
-                <p>{moment.category}</p>
-                <p>{moment.title}</p>
+                <h4 className="detailed-moment-category">{moment.category}</h4>
+                <h1 className="detailed-moment-title">{moment.title}</h1>
               </div>
               <div className="detailed-descriptions">
-                <p>About your host,</p>
-                <p>{moment.host_qualifications}</p>
-                <p>What will we'll do</p>
-                <p>{moment.what_we_will_do}</p>
+                <p className="detailed-about">About your host</p> <br/>
+                <p className="detailed-paragraphs">{moment.host_qualifications}</p>  <br/>
+                <p className="detailed-about">What will we'll do</p> <br/>
+                <p className="detailed-paragraphs">{moment.what_we_will_do}</p>
               </div>
             </div>
           </div>
@@ -47,6 +47,7 @@ class DetailedMoments extends Component {
               focused={this.state.focused} // PropTypes.bool
               onFocusChange={({ focused }) => this.setState({ focused })} // PropTypes.func.isRequired
               id="your_unique_id" // PropTypes.string.isRequired,
+              noBorder
               />
               {
                 chooseDate.toDateString() === 'Invalid Date'
@@ -56,7 +57,7 @@ class DetailedMoments extends Component {
                 <div>
                   <p>{`${chooseDate.toDateString()}`}</p>
                   <p>{moment.available_time_start}-{moment.available_time_end}</p>
-                  <p>{moment.price} per person</p>
+                  <p>${moment.price} per person</p>
                   <button>
                     <Link to={{pathname:"/checkout", moment:{moment}, date:{sendDate}}}>
                       Choose
@@ -67,7 +68,10 @@ class DetailedMoments extends Component {
             </div>
           </div>
         </div>
-        <Map city={moment.locale}/>
+        <div className="box-over-map">
+          <div className="map-box"></div>
+          <Map city={moment.locale}/>
+        </div>
       </div>
     )
   }

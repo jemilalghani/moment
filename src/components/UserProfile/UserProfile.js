@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './UserProfile.scss';
+import Footer from '../Footer/Footer';
 
 import withContext from '../ContextApi/Context_HOC';
 
@@ -16,7 +17,7 @@ class UserProfile extends Component {
   
     return (
       <div className="user-profile-container">
-      { this.props.context.user.user && 
+      { this.props.context.user.user ? 
         <div className="user-profile-wrapper">
             <div className="user-profile-img">
                 <img className="user-img" src={user.prof_photo_url} alt=""/>
@@ -29,7 +30,7 @@ class UserProfile extends Component {
                             <h1 className="user-greeting">Hey, I'm {user.name_first}!</h1>
                         </div>
                         <div className="user-location">
-                            <p>
+                            <p className="location-date">
                             {
                                 user.locale.charAt(0).toUpperCase() + user.locale.slice(1)
                             }  
@@ -42,10 +43,13 @@ class UserProfile extends Component {
                         </div>
                     </div>
                 </div>
-                <button className="user-edit-button">Edit</button> 
+                
             </div>  
         </div>
+        :
+        <img src="https://cdn-images-1.medium.com/max/1600/0*smsSMhaW2J5RgY8G.gif" width="300" alt=""/>
       }
+        <Footer />
       </div>
     )
   }

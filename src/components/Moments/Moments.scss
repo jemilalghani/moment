@@ -1,5 +1,16 @@
-.moment-container{
+
+* {
+  text-decoration: none;
+}
+
+
+.moment-wrapper{
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  //align-items: center;
+  width: 80%;
+  margin: 0 auto;
 }
 
 
@@ -88,4 +99,8 @@
 
 .swap-hover:hover > .swap-hover-front-image{
   opacity: 0;
+}
+
+.moment-category{
+  text-transform: uppercase;
 }

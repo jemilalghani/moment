@@ -8,20 +8,28 @@ class Moments extends Component {
   constructor(){
     super();
     this.state = {
-      moments: []
+      moments: [],
+      user:[]
     }
   }
 
   componentDidMount(){
     this.getMoments();
+    //this.getHost();
   }
   
   getMoments = () => {
     axios.get('/api/moment/:highlight').then(res => {
-      console.log('moment highligghghht',res.data)
+      //console.log('moment highligghghht',res.data)
       this.setState({moments: res.data})
     })
   }
+
+  // getHost = () => {
+  //   axios.get('/api/moment/hostFind').then(response => {
+  //     console.log('found host', response.data)
+  //   })
+  // }
 
   render() {
     let mappedMoments = this.state.moments.map(moment => {

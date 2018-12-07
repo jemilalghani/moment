@@ -62,6 +62,18 @@ class Map extends Component {
   render() {
     console.log('map state', this.state)
     console.log('propppspss to map', this.props.city)
+    let mapOptions = {
+      scrollwheel: false,
+      zoomControlOptions: {
+        //   position: 'RIGHT_CENTER',    // as long as this is not set it works
+        style: 'LARGE'
+    },
+      draggable: false,
+      rotateControl: false,
+      scaleControl: false,
+      panControl: false,
+      disableDefaultUI: true
+    }
     return (
       // GEN Important! Always set the container height explicitly
       <div style={{ height: '40vh', width: '100%' }}>
@@ -71,6 +83,7 @@ class Map extends Component {
           center={this.state.center}
           defaultZoom={this.state.zoom}
           gestureHandling='none'
+          options={mapOptions}
         >
           
         <AnyReactComponent 

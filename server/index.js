@@ -34,7 +34,7 @@ app.get('/api/sessions', bcryptController.getSession);
 app.post('/api/moment/admin', momentController.addDummy); // FRONTEND READY
 // EXPERIENCES (MOMENTS) TABLE
 // app.post('/api/moment/create', momentController.addMoment);
-app.get('/api/moment/hostFind', momentController.findHost)
+//app.get('/api/moment/hostFind', momentController.findHost)
 // app.get('/api/moment/:id', momentController.findId);
 app.get('/api/moment/:highlight', momentController.findHighlight);
 app.get('/api/moment/locale', momentController.findLocale);

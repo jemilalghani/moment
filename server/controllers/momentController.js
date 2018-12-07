@@ -50,9 +50,12 @@ module.exports = {
     // .then(addCreators)
 
   },
-  findHost: (req,res) => {
-    const db = req.app.get('db');
-  },
+  // findHost: (req,res) => {
+  //   const db = req.app.get('db');
+  //   db.get_experience_host([11]).then(host => {
+  //     console.log('got host info', host)
+  //   })
+  // },
 //   create: (req,res)=>{
 //     db.add_moment([]).then(() => {
 //     }), //RETURN ID FOR NEXT 2 POSTS

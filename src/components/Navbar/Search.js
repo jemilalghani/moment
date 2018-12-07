@@ -106,8 +106,10 @@ export default class Search extends Component {
       <div>
           <div><input name='searchField' value={searchField}onChange={this.handleChange} type="text" placeholder="Experiences"/></div>
           <button  onClick={this.submitSearch}>Search</button>
-          <button onClick={this.seeState}>See Search State</button>
+         
       </div>
     )
   }
 }
+
+// <button onClick={this.seeState}>See Search State</button>

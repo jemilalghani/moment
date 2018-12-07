@@ -35,7 +35,7 @@ class Navbar extends Component {
       <div className="navbar-container">
         <div className="navbar-wrapper">
           <div className="navbar-left">
-            <div>Logo</div>
+           <Link to="/"><div>Logo</div></Link>
             <Search/>
           </div>
           {

@@ -28,14 +28,13 @@ class Moments extends Component {
       // console.log(moment.photos)
       return (
         <div className="moment-card" key={moment.id}>
-          <div className="moment-image">
         <Link to={{pathname: `/moments/${moment.id}`, state:{moment}}}>
+          <div className="moment-image">
           <figure className="swap-hover">
               <img  className="swap-hover-front-image" src={moment.photos[1]} />
               <img className="swap-hover-back-image" src={moment.photos[0]} />       
           </figure>
-        </Link>
-      </div>
+          </div>
       <div className="moment-card-details">
         <div className="description-city-line">
           <p>{moment.category}</p>
@@ -46,11 +45,12 @@ class Moments extends Component {
             <p>{moment.title}</p>
           </div>
         <div className="moment-card-price-time">
-          <p>${moment.price} per person</p>
+          <p>${moment.price} per person </p>
           <i className="fas fa-circle"></i>
           <p>{moment.duration}</p>
         </div>
       </div>
+      </Link>
     </div>)
     })
     return (

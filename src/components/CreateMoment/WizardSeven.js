@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import withContext from '../ContextApi/Context_HOC';
 import Cloudinary from '../Cloudinary/Cloudinary';
+import pointer from '../../Image/down-arrow.png'
 
 class WizardSeven extends Component {
     constructor(){
@@ -19,8 +20,11 @@ class WizardSeven extends Component {
             <div className="steptwo-photo">
                 <h2>Add photos to your experience</h2>
                 <p>These images will be at the top of your experience page, so try uploading high quality photos of your experience to make a great first impression.</p>
-                <p onClick={()=>this.toggle('tips')}>Tips</p>
-                <div className="steptwo-tips" style={{display: this.state.tips ? 'inline' : 'none'}}>
+                <div className="wizard-tips-pointer" onClick={()=>this.toggle('tips')}>
+                    <p className="tips">Tips</p>
+                    <img src={pointer} alt='' className={this.state.tips ? "tips-pointer-up" : "tips-pointer"}/>
+                </div>
+                <div className="wizard-tips" style={{display: this.state.tips ? 'inline-block' : 'none'}}>
                     <div className="tips-top">
                         <div className="tips-whatworks">
                             <h4>What Works</h4>
@@ -42,8 +46,10 @@ class WizardSeven extends Component {
                 </div>
                 <h3>Cover photo</h3>
                 <p>Choose a photo that represents your experience. This is the first photo that will appear when guests browse for things to do.</p>
-                <Cloudinary name='photoOne'/>
-                <Cloudinary name='photoTwo'/>
+                <div className="wizard-cloudinary">
+                    <Cloudinary name='photoOne'/>
+                    <Cloudinary name='photoTwo'/>
+                </div>
             </div>
         );
     }

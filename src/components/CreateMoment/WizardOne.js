@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import withContext from '../ContextApi/Context_HOC';
-import './WizardOne.scss'
 
 class WizardOne extends Component {
     render() {
@@ -11,6 +10,7 @@ class WizardOne extends Component {
                 <input type="text" 
                 value={this.props.context.locale} 
                 onChange={(e)=>{this.props.context.updateInfo('locale', e.target.value)}} 
+                className="wizard-input"
                 required>
                 </input>
             </div>

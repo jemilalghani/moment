@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import withContext from '../ContextApi/Context_HOC';
 import { SingleDatePicker } from 'react-dates';
+import './WizardEleven.scss';
 
 let array = [];
 class WizardEleven extends Component {
@@ -33,7 +34,7 @@ class WizardEleven extends Component {
             
         // })
         let datesPicks = this.props.context.availableDate && this.props.context.availableDate.map((el, key)=>{
-            return <div>
+            return <div className="wizard-date">
                         <p>{`${el}`}</p>
                         <div onClick={()=>this.deleteFromDate(key)}>X</div>
                     </div>
@@ -51,7 +52,6 @@ class WizardEleven extends Component {
                 id="your_unique_id" // PropTypes.string.isRequired,
                 />
                 {datesPicks}
-
             </div>
         );
     }

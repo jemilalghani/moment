@@ -3,7 +3,7 @@ import withContext from '../ContextApi/Context_HOC';
 
 const WizardEnd = (props) => {
     return (
-        <button onClick={()=>props.post()}></button>
+        <button onClick={()=>props.post()}>POST TO DATABASE</button>
     );
 };
 

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import withContext from '../ContextApi/Context_HOC';
+import pointer from '../../Image/down-arrow.png'
+
 
 class WizardFour extends Component {
     constructor(){
@@ -18,8 +20,11 @@ class WizardFour extends Component {
             <div className="wizard-whatWeWillDo">
                 <h2>Describe what you’ll do</h2>
                 <p>Your activity description is a chance to inspire guests to take your experience. Talk about the details of the itinerary you have planned for them.</p>
-                <p onClick={()=>this.toggle('tips')}>Tips</p>
-                <div className="wizard-tips" style={{display: this.state.tips ? 'inline' : 'none'}}>
+                <div className="wizard-tips-pointer" onClick={()=>this.toggle('tips')}>
+                    <p className="tips">Tips</p>
+                    <img src={pointer} alt='' className={this.state.tips ? "tips-pointer-up" : "tips-pointer"}/>
+                </div>
+                <div className="wizard-tips" style={{display: this.state.tips ? 'inline-block' : 'none'}}>
                     <div className="tips-top">
                         <div className="tips-whatworks">
                             <h4>What Works</h4>

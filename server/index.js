@@ -8,6 +8,7 @@ const bcryptController = require('./controllers/bcryptController');
 const momentController = require('./controllers/momentController');
 const bookingController = require('./controllers/bookingController');
 const orderController = require('./controllers/orderController');
+const hostController = require('./controllers/hostController');
 
 require('dotenv').config();
 
@@ -34,7 +35,7 @@ app.get('/api/sessions', bcryptController.getSession);
 app.post('/api/moment/admin', momentController.addDummy); // FRONTEND READY
 // EXPERIENCES (MOMENTS) TABLE
 // app.post('/api/moment/create', momentController.addMoment);
-// app.get('/api/moment/hostFind', momentController.findByHost)
+//app.get('/api/moment/hostFind', momentController.findHost)
 // app.get('/api/moment/:id', momentController.findId);
 app.get('/api/moment/:highlight', momentController.findHighlight);
 app.get('/api/moment/locale', momentController.findLocale);
@@ -49,7 +50,7 @@ app.post('/api/orderCheckout', orderController.addToOrders);
 // app.post('/api/review/create')
 // app.get('/api/review/find')
 
-
+app.get('/api/host/:id', hostController.getCreatorMoments)
 
 ///////////////////stripe//////////////////
 app.post('/api/charge', bookingController.stripeCharge);

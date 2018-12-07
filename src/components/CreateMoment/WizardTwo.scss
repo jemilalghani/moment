@@ -1,16 +1,6 @@
 @import '../../variables';
 
 .wizard-category{
-    text-align: start;
-    h2{
-        margin:0px;
-        margin-bottom: 10px;
-        color: $font-black;
-    }
-    p{
-        margin-bottom: 25px;
-        color: $font-black;
-    }
     select{
         width: 400px;
         height: 40px;

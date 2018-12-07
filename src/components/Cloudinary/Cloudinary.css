@@ -26,6 +26,12 @@
 .Cloudinary-hover:hover{
     background: rgb(179,218,218)
 }
+.Cloudinary>form{
+    margin: 0;
+}
+.Cloudinary-hover>form{
+    margin: 0;
+}
 .Cloudinary p {
     padding: 5px;
     background: white;

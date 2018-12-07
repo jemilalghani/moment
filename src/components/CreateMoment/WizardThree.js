@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import withContext from '../ContextApi/Context_HOC';
+import pointer from '../../Image/down-arrow.png'
 
 class WizardThree extends Component {
     constructor(){
@@ -18,8 +19,11 @@ class WizardThree extends Component {
             <div className="wizard-qualifications">
                     <h2>Describe your qualifications</h2>
                     <p>Your qualifications show why you’re the best person to host this experience. Take some time to tell guests why you’re passionate and knowledgeable about the subject.</p>
-                    <p onClick={()=>this.toggle('tips')}>Tips</p>
-                    <div className="wizard-tips" style={{display: this.state.tips ? 'inline' : 'none'}}>
+                    <div className="wizard-tips-pointer" onClick={()=>this.toggle('tips')}>
+                        <p className="tips">Tips</p>
+                        <img src={pointer} alt='' className={this.state.tips ? "tips-pointer-up" : "tips-pointer"}/>
+                    </div>
+                    <div className="wizard-tips" style={{display: this.state.tips ? 'inline-block' : 'none'}}>
                         <div className="tips-top">
                             <div className="tips-whatworks">
                                 <h4>What Works</h4>
@@ -43,8 +47,8 @@ class WizardThree extends Component {
                     </div>
                     <h3>Describe yourself and your qualifications to guests</h3>
                     <textarea cols="80" rows="10" value={this.props.context.hostQualification} onChange={(e)=>this.props.context.updateInfo('hostQualification',e.target.value)} style={{resize: 'vertical'}} required></textarea>
-                    <p>Do you have a social media following or website related to this interest or hobby? Add in links to your Instagram, Twitter, Facebook, website, blog, or articles written by you or about you.</p>
-                    <button>Add a Link</button>
+                    {/* <p>Do you have a social media following or website related to this interest or hobby? Add in links to your Instagram, Twitter, Facebook, website, blog, or articles written by you or about you.</p>
+                    <button>Add a Link</button> */}
             </div>
         );
     }

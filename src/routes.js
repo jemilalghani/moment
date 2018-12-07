@@ -8,10 +8,12 @@ import UserProfile from './components/UserProfile/UserProfile';
 import CheckOut from './components/CheckOut/CheckOut';
 import Trips from './components/Trips/Trips';
 import Admin from './components/Admin/Admin';
+import HostPage from './components/Host/HostPage';
 
 export default (
     <Switch>
         <Route path='/host/create' component={Wizard}/>
+        <Route path='/host' component={HostPage}/>
         {/* <Route path='/checkout' component ={} /> */}
         {/* <Route path='/host' component ={} /> */}
         {/* <Route path='/user' component ={} /> */}

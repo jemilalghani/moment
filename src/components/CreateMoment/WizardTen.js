@@ -1,5 +1,7 @@
 import React from 'react';
 import withContext from '../ContextApi/Context_HOC';
+import './WizardTen.scss';
+
 
 const WizardTen = (props) => {
     return (

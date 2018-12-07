@@ -45,12 +45,12 @@ class Moments extends Component {
           </div>
       <div className="moment-card-details">
         <div className="description-city-line">
-          <p>{moment.category}</p>
+          <p className="moment-category">{moment.category}</p>
           <i className="fas fa-circle"></i>
-          <p>{moment.locale}</p>
+          <p className="moment-category">{moment.locale}</p>
         </div>
           <div className="moment-card-title">
-            <p>{moment.title}</p>
+            <p className="moment-title">{moment.title}</p>
           </div>
         <div className="moment-card-price-time">
           <p>${moment.price} per person </p>
@@ -63,7 +63,9 @@ class Moments extends Component {
     })
     return (
       <div className="moment-container">
-        {mappedMoments}
+        <div className="moment-wrapper">
+          {mappedMoments}
+        </div>
       </div>
     )
   }

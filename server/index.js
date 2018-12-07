@@ -8,6 +8,7 @@ const bcryptController = require('./controllers/bcryptController');
 const momentController = require('./controllers/momentController');
 const bookingController = require('./controllers/bookingController');
 const orderController = require('./controllers/orderController');
+const hostController = require('./controllers/hostController');
 
 require('dotenv').config();
 
@@ -49,7 +50,7 @@ app.post('/api/orderCheckout', orderController.addToOrders);
 // app.post('/api/review/create')
 // app.get('/api/review/find')
 
-
+app.get('/api/host/:id', hostController.getCreatorMoments)
 
 ///////////////////stripe//////////////////
 app.post('/api/charge', bookingController.stripeCharge);

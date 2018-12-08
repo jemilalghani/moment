@@ -8600,6 +8600,11 @@ react-moment-proptypes@^1.6.0:
   dependencies:
     moment ">=1.6.0"
 
+react-moment@^0.8.4:
+  version "0.8.4"
+  resolved "https://registry.yarnpkg.com/react-moment/-/react-moment-0.8.4.tgz#18eb59e1541c8b216353e23c21e9db50e42e2edb"
+  integrity sha512-QhI19OcfhiAn60/O6bMR0w8ApXrPFCjv6+eV0I/P9/AswzjgEAx4L7VxMBCpS/jrythLa12Q9v88req+ys4YpA==
+
 react-outside-click-handler@^1.2.0:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/react-outside-click-handler/-/react-outside-click-handler-1.2.2.tgz#2c4609fbaacbfc192e269786d555419b115bf93f"

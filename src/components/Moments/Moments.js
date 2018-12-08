@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './Moments.scss';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import MomentContainer from './MomentContainer'
+import MomentCard from './MomentCard'
 
 
 class Moments extends Component {
@@ -30,43 +30,20 @@ class Moments extends Component {
   //     console.log('found host', response.data)
   //   })
   // }
+  giveTitle = (words) => {
+    return <h2>{words}</h2>
+  }
 
   render() {
     let mappedMoments = this.state.moments.map(moment => {
       // console.log(moment.photos)
       return (
-        <div className="moment-card" key={moment.id}>
-        <Link to={{pathname: `/moments/${moment.id}`, state:{moment}}}>
-          <div className="moment-image">
-          <figure className="swap-hover">
-              <img  className="swap-hover-front-image" src={moment.photos[1]} />
-              <img className="swap-hover-back-image" src={moment.photos[0]} />       
-          </figure>
-          </div>
-      <div className="moment-card-details">
-        <div className="description-city-line">
-          <p className="moment-category">{moment.category}</p>
-          <i className="fas fa-circle"></i>
-          <p className="moment-category">{moment.locale}</p>
-        </div>
-          <div className="moment-card-title">
-            <p className="moment-title">{moment.title}</p>
-          </div>
-        <div className="moment-card-price-time">
-          <p>${moment.price} per person </p>
-          <i className="fas fa-circle"></i>
-          <p>{moment.duration}</p>
-        </div>
-      </div>
-      </Link>
-    </div>)
+        <MomentCard moment={moment}/>
+      )
     })
+    let title = this.giveTitle('Highlighted Trips From Around the World')
     return (
-      <div className="moment-container">
-        <div className="moment-wrapper">
-          {mappedMoments}
-        </div>
-      </div>
+      <MomentContainer title={title} mapped={mappedMoments}/>
     )
   }
 }

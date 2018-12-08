@@ -1,8 +1,11 @@
+@import '../../variables';
+
 .trips-wrapper{
     width: 80%;
     margin: 0 auto;
 }
-
-.trips-upcoming{
-    
+.trip-title {
+  font-family: $robotoNormal;
+  font-size:$font-large;
+  color: $font-black;
 }

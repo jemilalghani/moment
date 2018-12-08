@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 import axios from 'axios';
 import './CheckOut.scss';
+import {withRouter} from 'react-router-dom';
 
 class CheckOut extends Component {
     constructor() {
@@ -44,17 +45,20 @@ setTotal(){
 }
 
 componentDidMount(){
+    this.props.history.push('/') 
     axios.get('/api/sessions').then(res => {
-        console.log('profile data here?',res.data)
+        console.log('profile data here?', res.data)
         this.setState({user: res.data.user.id})
+        
     })
 }
 
   render() {
-      console.log('checkouttuttt passed props', this.props.location)
-      console.log('this is the totatttal', this.state.total)
-      const {date} = this.props.location;
-      const {moment} = this.props.location.moment;
+      console.log(this.props)
+    //   console.log('checkouttuttt passed props', this.props.location)
+    //   console.log('this is the totatttal', this.state.total)
+      const {date} = this.props.location && this.props.location;
+      const {moment} = this.props.location.moment && this.props.location.moment;
       const total = moment.price * this.state.guests;
       let groupSizeLimit = this.props.location.moment.moment.group_size_limit
       let array = []
@@ -102,6 +106,8 @@ componentDidMount(){
                     }
                 </div>
             </div>
+            {
+                moment && 
             <div className="checkout-left">
                 <div className="checkout-title-host">
                     <h6>{moment.title}</h6>
@@ -120,13 +126,14 @@ componentDidMount(){
                     <p>Total (USD) ${total}</p>
                 </div>
             </div>
+        }
         </div>
       </div>
     )
   }
 }
 
-export default CheckOut;
+export default withRouter(CheckOut);
 
 
 

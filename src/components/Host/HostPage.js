@@ -13,6 +13,7 @@ export default class HostPage extends Component {
         const user = await axios.get('/api/sessions')
         if(user.data){
             const hostInfo = await axios.get(`/api/host/${user.data.user.id}`);
+            console.log(hostInfo.data)
             this.setState({hostInfo: hostInfo.data})
         }
     }

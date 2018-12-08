@@ -2,7 +2,9 @@
 * {
   text-decoration: none;
 }
-
+.moment-container{
+  margin-top:100px;
+}
 
 .moment-wrapper{
   display: flex;
@@ -92,7 +94,7 @@
 }
 
 .swap-hover .swap-hover-front-image {
-  z-index: 9999;
+  z-index: 2;
   transition: opacity .6s linear;
   cursor: pointer;
 }

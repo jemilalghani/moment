@@ -3,7 +3,8 @@ import './Navbar.scss';
 import withContext from '../ContextApi/Context_HOC';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Search from './Search'
+import Search from './Search';
+import logo from '../../Image/Moment-M-Logo-Purple.svg';
 
 class Navbar extends Component {
   constructor(){
@@ -30,12 +31,12 @@ class Navbar extends Component {
     });
   };
   render() {
-    console.log('from contextttttt',this.props.context.user.user)
+    // console.log('from contextttttt',this.props.context.user.user)
     return (
       <div className="navbar-container">
         <div className="navbar-wrapper">
           <div className="navbar-left">
-           <Link to="/"><div>Logo</div></Link>
+           <Link to="/"><img src={logo} width='40' alt=""/></Link>
             <Search/>
           </div>
           {
@@ -46,14 +47,14 @@ class Navbar extends Component {
                 <div className="navbar-loggedin">
                   <Link to='/host'><div>Host</div></Link>
                   <Link to="/trips"><div><p>Trips</p></div></Link>
-                  <img src={this.props.context.user.user.prof_photo_url} className="nav-profile-img" onClick={()=>this.toggle('dropdown')}/>
+                  <img src={this.props.context.user.user.prof_photo_url} className="nav-profile-img" onClick={()=>this.toggle('dropdown')} alt=""/>
                 </div> 
                 :
                 this.state.user.user && 
                 <div className="navbar-loggedin">
                   <Link to='/host'><div>Host</div></Link>
                   <Link to="/trips"><div><p>Trips</p></div></Link>
-                  <img src={this.state.user.user.prof_photo_url} className="nav-profile-img" onClick={()=>this.toggle('dropdown')}/>
+                  <img src={this.state.user.user.prof_photo_url} className="nav-profile-img" onClick={()=>this.toggle('dropdown')} alt=""/>
                 </div> 
               }
               <div className={this.state.dropdown ? 'navbar-dropdown-closed' : 'navbar-dropdown'}>
@@ -64,9 +65,20 @@ class Navbar extends Component {
               </div>
             </div>
             :
-            <div className="navbar-right"><Link to="/login">Log in</Link></div>
+            <div className="navbar-right">
+              <div ><Link to="/login">Sign up</Link></div>
+              <div ><Link to="/login">Log in</Link></div>
+            </div>
+
           }
         </div>
+        <span>
+          <div class="navbar-filterbuttons">
+            <button>Dates</button>
+            <button>Guest</button>
+            <button>Price</button>
+          </div>
+        </span>
       </div>
     )
   }

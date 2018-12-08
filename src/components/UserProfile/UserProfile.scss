@@ -4,6 +4,9 @@
     margin-top: 20px;
     width: 100%;
     height: 90vh;
+    .loading-gif{
+        filter: contrast(200%);
+    }
 }
 
 .user-profile-wrapper {

@@ -46,6 +46,7 @@ async componentDidMount () {
         </div>
     </div>
 })
+    console.log('Trips, this.state.trips',this.state.trips)
     return (
       <div className="trips-container">
         <div className="trips-wrapper">

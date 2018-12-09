@@ -8,4 +8,4 @@ JOIN profiles p
 ON o.prof_id = p.id
 JOIN reviews r
 ON r.order_id = o.id
-WHERE e.id = 1;
+WHERE e.id = $1;

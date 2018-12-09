@@ -15,7 +15,7 @@ export default class Reviews extends Component {
     this.getReviews();
   }
   getReviews = () => {
-    axios.get(`/api/reviews`, {params:{id:this.props.moment.id}}).then (
+    axios.get(`/api/reviews/${this.props.moment.id}`).then (
       res => this.setState({reviews: res.data})
     )
   }
@@ -28,6 +28,7 @@ export default class Reviews extends Component {
     const reviewArr = reviews.map( review => {
       return <ReviewCard review={review}/>
     })
+    console.log('this.props.moment.id', this.props.moment.id)
     return (
       <div>
         <span>REVIEWS</span>

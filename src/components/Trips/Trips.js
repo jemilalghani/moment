@@ -4,6 +4,7 @@ import axios from 'axios';
 import Moment from 'react-moment'
 import moment from 'moment'
 import MomentCard from '../Moments/MomentCard'
+import MomentCardWide from './MomentCardWide'
 import MomentContainer from '../Moments/MomentContainer'
 
 class Trips extends Component {
@@ -61,13 +62,13 @@ giveTitle = (words) => {
     const upcomingTrips = this.state.trips.map(trip => {
       console.log(trip)
       if (trip.date_complete === false){
-      return ( <MomentCard moment={trip}/> )
+      return ( <MomentCardWide moment={trip}/> )
       }
     })
     const completeTrips = this.state.trips.map(trip => {
       console.log(trip)
       if (trip.date_complete === true){
-      return ( <MomentCard moment={trip}/> )
+      return ( <MomentCardWide moment={trip}/> )
       }
     })
     let title = this.giveTitle('Completed Trips')

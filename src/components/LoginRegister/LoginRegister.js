@@ -1,25 +1,12 @@
 import React, { Component } from "react";
 import "./LoginRegister.scss";
 import withContext from "../ContextApi/Context_HOC";
-import { Link } from "react-router-dom";
-
 import axios from "axios";
 
 class LoginRegister extends Component {
   constructor() {
     super();
     this.state = {
-      username: "",
-      firstName: "",
-      lastName: "",
-      password: "",
-      email: "",
-      phone: 0,
-      gender: "",
-      about: "",
-      locale: "",
-      userPhoto: "",
-      message: "",
       user: false
     };
     this.handleChange = this.handleChange.bind(this);
@@ -37,48 +24,59 @@ class LoginRegister extends Component {
         : JSON.stringify(error.response.data, null, 2)
       : error.message;
 
-  login = () => {
+  login = e => {
     this.setState({ message: null });
+    e.preventDefault();
     const { username, password } = this.state;
+    console.log(username, password);
     axios
       .post("/api/login", {
         username,
         password
       })
       .then(response => {
-        if (response.data.length) {
-          this.setState({ user: true });
+        if (response.data) {
           this.props.context.updateInfo("login", true);
           this.props.context.updateInfo("user", response.data);
+          localStorage.setItem("login", true);
         }
       })
       .catch(error => {
         this.setState({ message: this.getMessage(error) });
       });
   };
-
+  // login = async e => {
+  //   e.preventDefault();
+  //   const { username, password } = this.state;
+  //   try {
+  //     let user = await axios.post("/api/login", {
+  //       username,
+  //       password
+  //     });
+  //     this.props.context.updateInfo("login", true);
+  //     this.props.context.updateInfo("user", user.data);
+  //   } catch {
+  //     console.log(e.user);
+  //   }
+  // };
   render() {
-    console.log(this.props);
     return (
-      <div className="Login">
+      <form className="Login" onSubmit={this.login}>
         <p>{this.state.message && this.state.message}</p>
         <input
           type="text"
           placeholder="Username"
           onChange={e => this.handleChange("username", e)}
+          required
         />
         <input
           type="password"
           placeholder="Password"
           onChange={e => this.handleChange("password", e)}
+          required
         />
-        <div>
-          <button onClick={this.login}>
-            {/* <Link to="/userprofile">Login</Link> */}
-            Login
-          </button>
-        </div>
-      </div>
+        <input type="submit" value="Login" />
+      </form>
     );
   }
 }

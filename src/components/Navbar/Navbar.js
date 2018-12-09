@@ -30,6 +30,7 @@ class Navbar extends Component {
         this.props.context.updateInfo("login", false);
         this.props.context.updateInfo("user", {});
         this.setState({ user: false });
+        localStorage.setItem("login", false);
       })
       .catch(error => {
         this.setState({ message: "Something went wrong: " });

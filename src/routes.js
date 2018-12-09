@@ -15,9 +15,6 @@ export default (
   <Switch>
     <Route path="/host/create" component={Wizard} />
     <Route path="/host" component={HostPage} />
-    {/* <Route path='/checkout' component ={} /> */}
-    {/* <Route path='/host' component ={} /> */}
-    {/* <Route path='/user' component ={} /> */}
     <Route path="/register" component={Register} />
     <Route path="/moments/:id" component={DetailedMoments} />
     <Route path="/login" component={LoginRegister} />

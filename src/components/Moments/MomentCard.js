@@ -5,6 +5,9 @@ export default function MomentCard(props) {
   const {moment} = props;
   return (
     <div className="moment-card" key={moment.id}>
+          {moment.when_starting && !moment.date_complete ? <h3>{moment.when_starting}</h3>:<></>}
+          {moment.when_starting && moment.date_complete ? <h3>Completed: {moment.when_starting}</h3>: <></>}
+          {moment.date_complete ? <button>Add Review</button>: <></>}
         <Link to={{pathname: `/moments/${moment.id}`, state:{moment}}}>
           <div className="moment-image">
           <figure className="swap-hover">
@@ -28,7 +31,8 @@ export default function MomentCard(props) {
         </div>
       </div>
       </Link>
-      {moment.date_complete ? <button>Add Review</button>: <></>}
+
+
     </div>
   )
 }

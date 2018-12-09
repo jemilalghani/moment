@@ -35,16 +35,20 @@ class Moments extends Component {
   }
 
   render() {
-    let mappedMoments = this.state.moments.map(moment => {
+    let mappedMoments1 = this.state.moments.slice(0,5)
+    console.log('mappedMoments1', mappedMoments1)
+    let mappedMoments = this.state.moments.slice(0,5).map(moment => {
       // console.log(moment.photos)
       return (
         <MomentCard moment={moment}/>
       )
     })
     let title = this.giveTitle('Highlighted Trips From Around the World')
-    return (
+    let title2 = this.giveTitle('Trips Found Nearby')
+    return ( <>
       <MomentContainer title={title} mapped={mappedMoments}/>
-    )
+      <MomentContainer title={title2} mapped={mappedMoments}/>
+    </> )
   }
 }
 

@@ -31,11 +31,12 @@ formatDates = (array) => {
     var newDate = date+'T'+trip.available_time_end;
     console.log('newDate', newDate)
     var fromNow = moment(newDate).fromNow()
-    console.log('"from now":', fromNow)
+    // console.log('"from now":', fromNow, 'for', array[key])
+    trip['when_starting'] = fromNow
     if (fromNow.slice(0,2) === 'in') {
-    trip['date_complete'] = true;
-    } else {
       trip['date_complete'] = false;
+    } else {
+      trip['date_complete'] = true;
       console.log('formatDates, trip with date_complete', trip)
     }
   }
@@ -73,8 +74,8 @@ giveTitle = (words) => {
     let title2 = this.giveTitle('Upcoming Trips')
     console.log('Trips, this.state.trips',this.state.trips)
     return ( <>
-      <MomentContainer title={title} mapped={completeTrips}/>
       <MomentContainer title={title2} mapped={upcomingTrips}/>
+      <MomentContainer title={title} mapped={completeTrips}/>
     </>)
   }
 }

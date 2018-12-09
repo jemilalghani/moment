@@ -50,7 +50,7 @@ app.get('/api/order/:id', orderController.getOrders)
 app.post('/api/orderCheckout', orderController.addToOrders);
 // REVIEWS TABLE
 // app.post('/api/review/create')
-app.get('/api/reviews', reviewController.getReviews)
+app.get('/api/reviews/:id', reviewController.getReviews)
 
 app.get('/api/host/:id', hostController.getCreatorMoments)
 

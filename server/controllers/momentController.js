@@ -74,7 +74,7 @@ module.exports = {
       let moment = {};
       const db = req.app.get('db');
           db.get_moment_highlight().then(exp => {
-              console.log('controller moment higlight',exp)
+              // console.log('controller moment higlight',exp)
               moment = Object.assign(exp, {})
               // res.json(moment)
           })

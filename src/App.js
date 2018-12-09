@@ -14,8 +14,9 @@ class App extends Component {
     return (
       <div className="App">
         <Navbar />
-
-        {routes}
+        <div className="app-routes">
+          {routes}
+        </div>
       </div>
     );
   }

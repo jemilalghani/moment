@@ -1,0 +1,66 @@
+@import "../../variables";
+
+.register {
+  width: 60%;
+  // height:100vh;
+  // background: grey;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .register-fields {
+    width: 75%;
+    font-size: $font-medium;
+    padding: 10px;
+    border-radius: 4px;
+    margin: 5px;
+    // margin-bottom: 10px;
+    border: rgb(239, 239, 239) solid 1px;
+    outline: none;
+  }
+  select {
+    width: 40%;
+    height: 40px;
+    font-size: $font-medium;
+    outline: none;
+    margin: 5px;
+  }
+  textarea {
+    border: solid rgb(210, 210, 210) 1px;
+    border-radius: 2px;
+    outline: none;
+    font-family: $robotoNormal;
+    font-size: $font-small;
+  }
+  .register-about-you {
+    margin-top: 5px;
+    width: 75%;
+    // height: 300px;
+    // margin: auto;
+    // background: grey;
+    p {
+      margin-bottom: 10px;
+      padding: 5px;
+    }
+  }
+  .register-button {
+    margin-top: 10px;
+    padding: 10px;
+    background: rgb(253, 92, 99);
+    color: white;
+    border-radius: 4px;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    margin-right: 40px;
+  }
+  .register-image-button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    div {
+      margin: auto;
+      //   width: 50%;
+    }
+  }
+}

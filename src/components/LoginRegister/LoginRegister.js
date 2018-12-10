@@ -11,7 +11,9 @@ class LoginRegister extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
   }
-
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
   handleChange(key, e) {
     this.setState({
       [key]: e.target.value

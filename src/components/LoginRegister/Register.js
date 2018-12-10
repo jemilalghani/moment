@@ -87,9 +87,10 @@ class Register extends Component {
           locale,
           userPhoto
         })
-        .then(response => {
-          console.log("response", response);
+        .then(() => {
+          // console.log("response", response);
           this.setState({ user: true });
+          this.props.context.updateInfo("register", true);
         })
         .catch(error => {
           this.setState({ message: this.getMessage(error) });
@@ -108,9 +109,10 @@ class Register extends Component {
           locale,
           userPhoto
         })
-        .then(response => {
-          console.log("response", response);
+        .then(() => {
+          // console.log("response", response);
           this.setState({ user: true });
+          this.props.context.updateInfo("register", true);
         })
         .catch(error => {
           this.setState({ message: this.getMessage(error) });

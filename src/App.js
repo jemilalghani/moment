@@ -22,9 +22,9 @@ class App extends Component {
   // }
   render() {
     // localStorage.clear();
-    console.log("CONTEXT", this.props.context);
-    const { login } = this.props.context;
     // let login = localStorage.getItem("login");
+    console.log("CONTEXT", this.props.context);
+    const { login, register } = this.props.context;
     console.log(login);
     return (
       <div className="App">
@@ -33,7 +33,12 @@ class App extends Component {
           <Switch>
             <Route path="/host/create" component={Wizard} />
             <Route path="/host" component={HostPage} />
-            <Route path="/register" component={Register} />
+            <Route
+              path="/register"
+              render={() =>
+                register ? <Redirect to="/login" /> : <Register />
+              }
+            />
             <Route path="/moments/:id" component={DetailedMoments} />
             <Route
               path="/login"

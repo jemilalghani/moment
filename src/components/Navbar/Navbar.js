@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./Navbar.scss";
 import withContext from "../ContextApi/Context_HOC";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 import Search from "./Search";
 import logo from "../../Image/Moment-M-Logo-Purple.svg";
@@ -26,17 +26,18 @@ class Navbar extends Component {
   logout = () => {
     axios
       .post("/api/logout")
-      .then(response => {
+      .then(() => {
         this.props.context.updateInfo("login", false);
         this.props.context.updateInfo("user", {});
         this.setState({ user: false });
-        localStorage.setItem("login", false);
+        // localStorage.setItem("login", false);
       })
-      .catch(error => {
+      .catch(() => {
         this.setState({ message: "Something went wrong: " });
       });
   };
   render() {
+    console.log(this.props);
     // console.log('from contextttttt',this.props.context.user.user)
     return (
       <div className="navbar-container">
@@ -110,16 +111,19 @@ class Navbar extends Component {
             </div>
           )}
         </div>
-        <span>
-          <div class="navbar-filterbuttons">
-            <button>Dates</button>
-            <button>Guest</button>
-            <button>Price</button>
-          </div>
-        </span>
+
+        {this.props.location.pathname === "/" && (
+          <span>
+            <div class="navbar-filterbuttons">
+              <button>Guest</button>
+              <button>Price</button>
+              <button>Categories</button>
+            </div>
+          </span>
+        )}
       </div>
     );
   }
 }
 
-export default withContext(Navbar);
+export default withContext(withRouter(Navbar));

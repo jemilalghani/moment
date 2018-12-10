@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import StripeCheckout from "react-stripe-checkout";
-import axios from "axios";
-import "./CheckOut.scss";
-import { withRouter } from "react-router-dom";
+import React, { Component } from 'react';
+import StripeCheckout from 'react-stripe-checkout';
+import axios from 'axios';
+import './CheckOut.scss';
+import withContext from '../ContextApi/Context_HOC';
 
 class CheckOut extends Component {
   constructor() {
@@ -51,30 +51,31 @@ class CheckOut extends Component {
   }
 
   componentDidMount() {
-    this.props.history.push("/");
     axios.get("/api/sessions").then(res => {
       console.log("profile data here?", res);
-      if (res.data.length) {
+      if (res.data) {
         this.setState({ user: res.data.user.id });
+      } else {
+        this.props.history.push("/");
       }
     });
   }
 
   render() {
-    console.log(this.props);
-    //   console.log('checkouttuttt passed props', this.props.location)
-    //   console.log('this is the totatttal', this.state.total)
-    const { date } = this.props.location && this.props.location;
-    const { moment } = this.props.location.moment && this.props.location.moment;
-    const total = moment.price * this.state.guests;
-    let groupSizeLimit = this.props.location.moment.moment.group_size_limit;
-    let array = [];
-    for (let i = 0; i < groupSizeLimit; i++) {
-      array.push(i);
-    }
-    let options = array.map(el => {
-      return <option value={el + 1}>{el + 1}</option>;
-    });
+      console.log('checkouttuttt passed props', this.props.location)
+      console.log('this is the totatttal', this.state.total)
+      console.log('context in checkout', this.props.context.login)
+      const {date} = this.props.location;
+      const {moment} = this.props.location.moment;
+      const total = moment.price * this.state.guests;
+      let groupSizeLimit = this.props.location.moment.moment.group_size_limit
+      let array = []
+      for(let i = 0; i < groupSizeLimit; i++){
+          array.push(i)
+      }
+      let options = array.map((el) => {
+        return <option value={el+1}>{el+1}</option>
+      })
     return (
       <div className="checkout-container">
         <div className="checkout-wrapper">
@@ -156,4 +157,7 @@ class CheckOut extends Component {
   }
 }
 
-export default withRouter(CheckOut);
+export default withContext(CheckOut);
+
+
+

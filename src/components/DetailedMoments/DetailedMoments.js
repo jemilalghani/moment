@@ -3,7 +3,9 @@ import './DetailedMoments.scss';
 import { SingleDatePicker } from 'react-dates';
 import Map from '../Map/Map';
 import {Link} from 'react-router-dom';
+import withContext from '../ContextApi/Context_HOC';
 import Reviews from './Reviews'
+
 
 class DetailedMoments extends Component {
   constructor(){
@@ -20,6 +22,7 @@ class DetailedMoments extends Component {
     const sendDate = this.state.availableDate
     const chooseDate = new Date(this.state.availableDate)
     //console.log('choosese', chooseDate)
+    //console.log('context in detail', this.props.context.login)
     return (
       <div className="detailed-container">
         <div className="detailed-wrapper">
@@ -60,11 +63,16 @@ class DetailedMoments extends Component {
                   <p>{`${chooseDate.toDateString()}`}</p>
                   <p>{moment.available_time_start}-{moment.available_time_end}</p>
                   <p>${moment.price} per person</p>
-                  <button>
-                    <Link to={{pathname:"/checkout", moment:{moment}, date:{sendDate}}}>
-                      Choose
-                    </Link>
-                  </button>
+                  {
+                    this.props.context.login ? 
+                    <button>
+                      <Link to={{pathname:"/checkout", moment:{moment}, date:{sendDate}}}>
+                        Choose
+                      </Link>
+                    </button>
+                  :
+                    <span style={{color: "red"}}>please log in to select experience</span>
+                  }
                 </div>
               }
             </div>
@@ -82,4 +90,4 @@ class DetailedMoments extends Component {
   }
 }
 
-export default DetailedMoments;
+export default withContext(DetailedMoments);

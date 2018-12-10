@@ -50,7 +50,9 @@ export default class HostPage extends Component {
                 </p>
                 <p>{el.group_size_limit + " guest"}</p>
                 <p>${el.price + " per person"}</p>
-                <button>See More</button>
+                <Link to={`/moments/${el.exp_id}`}>
+                  <button>See More</button>
+                </Link>
               </div>
             </div>
             <div className="HostCards-delete-container">

@@ -18,6 +18,12 @@
     border: rgb(239, 239, 239) solid 1px;
     outline: none;
   }
+  .error-message {
+    color: rgb(253, 92, 99);
+  }
+  .register-fields:focus {
+    border: rgb(74, 144, 147) solid 1px;
+  }
   select {
     width: 40%;
     height: 40px;
@@ -31,6 +37,9 @@
     outline: none;
     font-family: $robotoNormal;
     font-size: $font-small;
+  }
+  textarea:focus {
+    border: rgb(74, 144, 147) solid 1px;
   }
   .register-about-you {
     margin-top: 5px;

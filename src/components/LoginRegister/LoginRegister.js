@@ -64,18 +64,20 @@ class LoginRegister extends Component {
       <form className="Login" onSubmit={this.login}>
         <p>{this.state.message && this.state.message}</p>
         <input
+          className="login-input"
           type="text"
           placeholder="Username"
           onChange={e => this.handleChange("username", e)}
           required
         />
         <input
+          className="login-input"
           type="password"
           placeholder="Password"
           onChange={e => this.handleChange("password", e)}
           required
         />
-        <input type="submit" value="Login" />
+        <input className="login-button" type="submit" value="Login" />
       </form>
     );
   }

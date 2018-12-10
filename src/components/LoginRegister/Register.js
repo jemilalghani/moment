@@ -57,7 +57,8 @@ class Register extends Component {
       [key]: e.target.value
     });
   }
-  register = () => {
+  register = e => {
+    e.preventDefault();
     this.setState({ message: null });
     const {
       username,
@@ -128,7 +129,9 @@ class Register extends Component {
       !this.state.user && (
         <form className="register" onSubmit={this.register}>
           <h2>Register</h2>
-          <p>{this.state.message && this.state.message}</p>
+          <p className="error-message">
+            {this.state.message && this.state.message}
+          </p>
           <input
             className="register-fields"
             type="text"
@@ -179,6 +182,7 @@ class Register extends Component {
             required
           />
           <select onChange={e => this.handleChange("gender", e)} required>
+            <option value="">Select a gender</option>
             <option value="Female">Female</option>
             <option value="Male">Male</option>
             <option value="Not Provided">Prefer to not answer</option>

@@ -1,0 +1,78 @@
+@import "../../variables";
+
+.hostpage {
+  width: 80%;
+  margin: auto;
+  text-align: start;
+  h2 {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+  p {
+    margin-bottom: 40px;
+  }
+  .hostpage-header {
+    display: flex;
+    justify-content: space-between;
+    button {
+      color: $font-blue-green;
+      border: solid 2px $font-blue-green;
+      padding-top: 12px;
+      padding-bottom: 14px;
+      padding-right: 20px;
+      padding-left: 20px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: $font-medium;
+      cursor: pointer;
+      outline: none;
+    }
+  }
+}
+.HostCards {
+  width: 100%;
+  height: 210px;
+  //   background: blue;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  .HostCards-img {
+    width: 300px;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 4px;
+  }
+  button {
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 4px;
+    color: white;
+    font-weight: 700;
+    font-size: 12px;
+    background: rgb(0, 121, 126);
+    border: none;
+  }
+  .HostCards-info {
+    width: 200px;
+  }
+  .HostCards-delete {
+    margin-left: 150px;
+    width: 50px;
+    height: 30px;
+    border: rgb(215, 215, 215) solid 1px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    .delete-gear {
+      width: 20px;
+    }
+    .delete-arrow {
+      width: 15px;
+    }
+  }
+  .HostCards-created {
+    color: $font-black;
+  }
+}

@@ -51,11 +51,12 @@ class CheckOut extends Component {
   }
 
   componentDidMount() {
-    this.props.history.push("/");
     axios.get("/api/sessions").then(res => {
       console.log("profile data here?", res);
-      if (res.data.length) {
+      if (res.data) {
         this.setState({ user: res.data.user.id });
+      } else {
+        this.props.history.push("/");
       }
     });
   }

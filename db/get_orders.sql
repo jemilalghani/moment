@@ -1,3 +1,7 @@
-SELECT * FROM orders o JOIN experiences e on o.exp_id = e.id
+SELECT * FROM orders o 
+JOIN available_dates a 
+ON a.id = o.date_id
+JOIN experiences e 
+ON a.exp_id = e.id
 WHERE 
-prof_id = $1;
+o.prof_id = $1;

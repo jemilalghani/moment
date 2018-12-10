@@ -9,6 +9,8 @@ const momentController = require('./controllers/momentController');
 const bookingController = require('./controllers/bookingController');
 const orderController = require('./controllers/orderController');
 const hostController = require('./controllers/hostController');
+const reviewController = require('./controllers/reviewController');
+
 
 require('dotenv').config();
 
@@ -48,7 +50,7 @@ app.get('/api/order/:id', orderController.getOrders)
 app.post('/api/orderCheckout', orderController.addToOrders);
 // REVIEWS TABLE
 // app.post('/api/review/create')
-// app.get('/api/review/find')
+app.get('/api/reviews/:id', reviewController.getReviews)
 
 app.get('/api/host/:id', hostController.getCreatorMoments)
 

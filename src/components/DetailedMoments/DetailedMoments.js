@@ -4,6 +4,8 @@ import { SingleDatePicker } from 'react-dates';
 import Map from '../Map/Map';
 import {Link} from 'react-router-dom';
 import withContext from '../ContextApi/Context_HOC';
+import Reviews from './Reviews'
+
 
 class DetailedMoments extends Component {
   constructor(){
@@ -15,7 +17,7 @@ class DetailedMoments extends Component {
 
 
   render() {
-    //console.log('props in detail',this.props.location.state.moment)
+    console.log('props in detail',this.props.location.state.moment)
     const {moment} = this.props.location.state
     const sendDate = this.state.availableDate
     const chooseDate = new Date(this.state.availableDate)
@@ -41,6 +43,7 @@ class DetailedMoments extends Component {
               </div>
             </div>
           </div>
+
           <div>
             <div className="date-price">
               <SingleDatePicker
@@ -78,6 +81,9 @@ class DetailedMoments extends Component {
         <div className="box-over-map">
           <div className="map-box"></div>
           <Map city={moment.locale}/>
+        </div>
+        <div className="detailed-wrapper">
+            <Reviews moment={this.props.location.state.moment}/>
         </div>
       </div>
     )

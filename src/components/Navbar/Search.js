@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import axios from 'axios';
-import sort from 'fast-sort'
+import sort from 'fast-sort';
+import './Search.scss';
+import magGlass from '../../Image/search.png';
 
 export default class Search extends Component {
   constructor(){
@@ -25,7 +27,7 @@ export default class Search extends Component {
     console.log('this.state', this.state)
     console.log('this.state.momentArr', this.state.momentArr)
   }
-  submitSearch = async () => {
+  async submitSearch() {
     console.log('submitSearch button starting search')
     let Arr = this.state.searchField.split(' ');
     console.log('arrrrrrrrrrrrrrrrrrrr', Arr)
@@ -92,7 +94,7 @@ export default class Search extends Component {
     }
   }
 
-  handleChange = (e) => {
+  handleChange (e){
     const name = e.target.name
     const value = e.target.value
     this.setState({[name]: value})
@@ -103,9 +105,13 @@ export default class Search extends Component {
     console.log('Search state', this.state)
 
     return (
-      <div>
-          <div><input name='searchField' value={searchField}onChange={this.handleChange} type="text" placeholder="Experiences"/></div>
-          <button  onClick={this.submitSearch}>Search</button>
+      <div className="navbar-search">
+        <div>
+          <input name='searchField' value={searchField}onChange={(e)=>{this.handleChange(e)
+                                                                        this.submitSearch()}} type="text" placeholder="Experiences"/>
+          <img src={magGlass} alt=''/>
+        </div>
+          {/* <button  onClick={this.submitSearch}>Search</button> */}
          
       </div>
     )

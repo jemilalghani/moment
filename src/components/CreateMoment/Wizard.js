@@ -95,7 +95,10 @@ class Wizard extends Component {
                     <div className="wizard-button-container">
                         {this.state.pageNumber === 0 ? <Link to='/'><button>Escape</button></Link> 
                         : <button onClick={(e)=>this.decrement(e)}>Previous</button>}
-                        {this.state.pageNumber === 11? <button onClick={()=>this.duration()}>Review</button> : <input className="wizard-nextbutton" type="submit" value={this.state.review ? "Finialize" : "Next"}/>}
+                        {this.state.pageNumber === 11? 
+                            <button onClick={()=>this.duration()}>Review</button> : 
+                            this.state.pageNumber >=12 ?
+                                null : <input className="wizard-nextbutton" type="submit" value={this.state.review ? "Finialize" : "Next"}/>}
                     </div>
                 </form>
             </div>

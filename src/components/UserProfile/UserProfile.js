@@ -47,7 +47,7 @@ class UserProfile extends Component {
             </div>  
         </div>
         :
-        <img src="https://cdn-images-1.medium.com/max/1600/0*smsSMhaW2J5RgY8G.gif" width="300" alt=""/>
+        <img src="https://cdn-images-1.medium.com/max/1600/0*smsSMhaW2J5RgY8G.gif" className="loading-gif" width="300" alt=""/>
       }
         <Footer />
       </div>

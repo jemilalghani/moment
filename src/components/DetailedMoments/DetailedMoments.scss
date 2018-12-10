@@ -24,7 +24,6 @@
 }
 
 .detailed-category-title{
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -69,7 +68,7 @@
 .map-box{
     left: 50px;
     top: 300px;
-     z-index: 300;
+     z-index: 2;
     position: relative;
     background: red;
     width: 150px;

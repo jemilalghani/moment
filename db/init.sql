@@ -61,9 +61,10 @@ CREATE TABLE available_dates (
 );
 CREATE TABLE reviews (
   id SERIAL PRIMARY KEY,
-  order_id INT NOT NULL 
+  order_id INT NOT NULL, 
   title VARCHAR(50) NOT NULL,
   stars INT NOT NULL,
+  review VARCHAR(500) NOT NULL,
   date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 INSERT INTO orders 

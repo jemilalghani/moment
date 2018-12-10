@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
-import StripeCheckout from 'react-stripe-checkout';
-import axios from 'axios';
-import './CheckOut.scss';
-import withContext from '../ContextApi/Context_HOC';
+import React, { Component } from "react";
+import StripeCheckout from "react-stripe-checkout";
+import axios from "axios";
+import "./CheckOut.scss";
+import withContext from "../ContextApi/Context_HOC";
+import get from "lodash/get";
 
 class CheckOut extends Component {
   constructor() {
@@ -10,7 +11,9 @@ class CheckOut extends Component {
     this.state = {
       guests: 1,
       total: 95,
-      user: null
+      user: null,
+      moment: [],
+      date: ""
     };
   }
 
@@ -59,23 +62,48 @@ class CheckOut extends Component {
         this.props.history.push("/");
       }
     });
+    const moment =
+      get(this.props.location, "moment.moment") ||
+      JSON.parse(localStorage.getItem("moment"));
+    localStorage.setItem("moment", JSON.stringify(moment));
+
+    const date =
+      get(this.props.location, "date") ||
+      JSON.parse(localStorage.getItem("date"));
+
+    localStorage.setItem("date", JSON.stringify(date));
+
+    this.setState({
+      moment: moment,
+      date: date
+    });
   }
 
   render() {
-      console.log('checkouttuttt passed props', this.props.location)
-      console.log('this is the totatttal', this.state.total)
-      console.log('context in checkout', this.props.context.login)
-      const {date} = this.props.location;
-      const {moment} = this.props.location.moment;
-      const total = moment.price * this.state.guests;
-      let groupSizeLimit = this.props.location.moment.moment.group_size_limit
-      let array = []
-      for(let i = 0; i < groupSizeLimit; i++){
-          array.push(i)
-      }
-      let options = array.map((el) => {
-        return <option value={el+1}>{el+1}</option>
-      })
+    //   console.log('checkouttuttt passed props', this.props.location)
+    //   console.log('this is the totatttal', this.state.total)
+    //   console.log('context in checkout', this.props.context.login)
+    // console.log("moment in moment", this.state.moment);
+    // console.log("user id in checkout", this.state.user);
+    // console.log("this props location", this.props.location);
+    const date =
+      get(this.props.location, "date") ||
+      JSON.parse(localStorage.getItem("date"));
+    const moment =
+      get(this.props.location, "moment.moment") ||
+      JSON.parse(localStorage.getItem("moment"));
+    console.log("date in render", this.state.date);
+    console.log("moment in render", this.state.moment);
+    // console.log("moment", moment);
+    const total = this.state.moment.price * this.state.guests;
+    // let groupSizeLimit = this.props.location.moment.moment.group_size_limit;
+    let array = [];
+    for (let i = 0; i < this.state.moment.group_size_limit; i++) {
+      array.push(i);
+    }
+    let options = array.map(el => {
+      return <option value={el + 1}>{el + 1}</option>;
+    });
     return (
       <div className="checkout-container">
         <div className="checkout-wrapper">
@@ -129,25 +157,37 @@ class CheckOut extends Component {
           </div>
           {moment && (
             <div className="checkout-left">
-              <div className="checkout-title-host">
-                <h6>{moment.title}</h6>
-                <p>{moment.duration} experience</p>
-                <p>Hosted by Grace</p>
-                <img className="checkout-img" src={moment.photos[0]} alt="" />
-              </div>
-              <div className="checkout-selected-datetime">
-                <h6>{`${date.sendDate.toDateString()}`}</h6>
-                <p>
-                  {moment.available_time_start}-{moment.available_time_end}
-                </p>
-              </div>
-              <div className="checkout-price-calculation">
-                <p>
-                  ${moment.price} X {this.state.guests} guests
-                </p>
-              </div>
-              <div className="checkout-total">
-                <p>Total (USD) ${total}</p>
+              <div className="checkout-left-wrapper">
+                <div className="checkout-title-host">
+                  <div className="checkout-blockone">
+                    <h6 className="checkout-moment-title">{moment.title}</h6>
+                    <p>{moment.duration} experience</p>
+                    <p>Hosted by Grace</p>
+                  </div>
+                  <div className="checkout-title-img">
+                    <img
+                      className="checkout-img"
+                      src={moment.photos[0]}
+                      alt=""
+                    />
+                  </div>
+                </div>
+                <div className="checkout-selected-datetime">
+                  <h6>{`${date.sendDate}`}</h6>
+                  <p>
+                    {moment.available_time_start}-{moment.available_time_end}
+                  </p>
+                </div>
+                <div className="checkout-price-calculation">
+                  <p>
+                    ${moment.price} X {this.state.guests} guests
+                  </p>
+                  <p className="total">${total}</p>
+                </div>
+                <div className="checkout-total">
+                  <p>Total (USD) </p>
+                  <p className="total">${total}</p>
+                </div>
               </div>
             </div>
           )}
@@ -158,6 +198,3 @@ class CheckOut extends Component {
 }
 
 export default withContext(CheckOut);
-
-
-

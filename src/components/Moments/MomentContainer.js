@@ -1,14 +1,15 @@
-import React from 'react'
-import './Moments.scss';
+import React from "react";
+import "./Moments.scss";
 
 export default function MomentContainer(props) {
-  const {mapped, title} = props;
+  const { mapped, title, text } = props;
   return (
     <div className="moment-container">
-        {title}
+      {title}
       <div className="moment-wrapper">
+        {text ? text : <></>}
         {mapped}
       </div>
     </div>
-  )
+  );
 }

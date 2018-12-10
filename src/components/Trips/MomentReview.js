@@ -11,22 +11,32 @@ export default class MomentReview extends Component {
     };
   }
   changeStars = e => {
-    console.log("e", e.target);
-    this.setState({ stars: e.target.value });
+    console.log("e", e.target.alt);
+    this.setState({ stars: e.target.alt });
   };
 
   render() {
     const { stars, starsMax } = this.state;
-    const starMap = starsMax.map(star => {
+    const starMap = starsMax.map((star, index) => {
       if (stars >= star) {
         return (
-          <div value={star}>
-            <img className="star" onClick={this.changeStars} src={starFull} />{" "}
-          </div>
+          <img
+            value={index}
+            className="star"
+            onClick={this.changeStars}
+            src={starFull}
+            alt={`${index + 1}`}
+          />
         );
       } else {
         return (
-          <img className="star" onClick={this.changeStars} src={starEmpty} />
+          <img
+            value={index}
+            className="star"
+            onClick={this.changeStars}
+            src={starEmpty}
+            alt={`${index + 1}`}
+          />
         );
       }
     });

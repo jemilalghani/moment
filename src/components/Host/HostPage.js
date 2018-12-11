@@ -4,7 +4,7 @@ import axios from "axios";
 import "./HostPage.scss";
 
 import MomentContainer from "./MomentContainer";
-import MomentCard from "./MomentCard";
+import MomentCardWide from "./MomentCardWide";
 
 export default class HostPage extends Component {
   constructor() {
@@ -29,7 +29,7 @@ export default class HostPage extends Component {
       this.state.hostInfo &&
       this.state.hostInfo.map(moment => {
         return (
-          <MomentCard
+          <MomentCardWide
             delete={this.state.delete}
             moment={moment}
             pathname={pathname}

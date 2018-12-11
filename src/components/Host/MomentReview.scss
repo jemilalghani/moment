@@ -1,0 +1,49 @@
+@import "../../variables";
+
+.moment-card-wide-grey {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  padding: 15px;
+  // margin: 0px 20px 0px;
+  background: rgb(232, 232, 232);
+  border-radius: 0px 0px 8px 8px;
+}
+.moment-review {
+  display: flex;
+  flex-direction: column;
+  margin-left: 340px;
+  width: 300px;
+  // margin-right:  280px;
+  align-items: flex-start;
+}
+.review-desc {
+  margin-bottom: 10px;
+  text-align: left;
+}
+.star {
+  align: center;
+  margin: 10px 0px;
+  height: 40px;
+  width: 40px;
+}
+.stars {
+  display: flex;
+  flex-direction: row;
+}
+.text-area-1 {
+  height: 50px;
+  width: 100%;
+  resize: none;
+  border: $font-blue-green 2px solid;
+  border-radius: 3px;
+  font-size: 14px;
+}
+.text-area-2 {
+  height: 100px;
+  width: 100%;
+  resize: none;
+  border: $font-blue-green 2px solid;
+  border-radius: 3px;
+  font-size: 14px;
+}

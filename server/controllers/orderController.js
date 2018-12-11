@@ -46,7 +46,7 @@ function addPhotosToMoment(resMoment, resPhoto) {
     for (let i = 0; i < resMoment.length; i++) {
       // console.log('forloppppp res', resMoment)
       let photoArr = [];
-      let m_id = resMoment[i]["id"];
+      let m_id = resMoment[i]["exp_id"];
       // console.log(moment[i]['id'])
       //looping through moment arr, one array item at a time
       for (let j = 0; j < newPhoto.length; j++) {

@@ -1,3 +1,4 @@
-INSERT INTO orders 
-(exp_id, prof_id, group_size)
-VALUES ($1, $2, $3);
+-- INSERT INTO orders
+--   (date_id, prof_id, group_size)
+-- VALUES
+--   ($1, $2, $3);

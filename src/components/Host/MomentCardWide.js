@@ -2,25 +2,27 @@ import React, { Component } from "react";
 import gear from "../../Image/settings.svg";
 import arrow from "../../Image/down-arrow (2).png";
 import { Link } from "react-router-dom";
-import MomentReview from "../Trips/MomentReview";
+import MomentReview from "./MomentReview";
+import "./MomentCard.scss";
 
 export default class MomentCard extends Component {
   constructor() {
     super();
     this.state = {
-      review: false
+      review: false,
+      deleted: false
     };
   }
   toggle(key) {
+    console.log("toggle clicked");
     this.setState(prevState => {
       return { [key]: !prevState[key] };
     });
   }
 
   render() {
-    const { moment, pathname, deleted } = this.props;
-    const { review } = this.state;
-    console.log("pathname", this.props);
+    const { moment, pathname } = this.props;
+    const { review, deleted } = this.state;
     return (
       <>
         <div className={!review ? "HostCards-flex" : "HostCards-flex-grey"}>
@@ -45,7 +47,7 @@ export default class MomentCard extends Component {
                 <p>{moment.group_size_limit + " guest"}</p>
                 <p>${moment.price + " per person"}</p>
               </section>
-              <Link to={`/moments/${moment.exp_id}`}>
+              <Link to={`/moments/${moment.id}`}>
                 <button>See More</button>
               </Link>
             </div>
@@ -81,7 +83,7 @@ export default class MomentCard extends Component {
               <div className="HostCards-delete-container">
                 <div
                   className="HostCards-delete"
-                  onClick={() => this.toggle("delete")}
+                  onClick={() => this.toggle("deleted")}
                 >
                   <img
                     src={gear}
@@ -103,7 +105,7 @@ export default class MomentCard extends Component {
             )}
           </div>
         </div>
-        <MomentReview review={this.state.review} />
+        <MomentReview review={this.state.review} moment={moment} />
       </>
     );
   }

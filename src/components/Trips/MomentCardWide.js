@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./MomentCardWide.scss";
-import MomentReview from "./MomentReview";
+import MomentReview from "../Host/MomentReview";
 
 export default class MomentCardWide extends Component {
   constructor() {

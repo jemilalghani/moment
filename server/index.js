@@ -53,7 +53,7 @@ app.get("/api/moments/:id", momentController.getByID);
 app.get("/api/order/:id", orderController.getOrders);
 app.post("/api/orderCheckout", orderController.addToOrders);
 // REVIEWS TABLE
-// app.post('/api/review/create')
+app.post("/api/review/add", reviewController.addReview);
 app.get("/api/reviews/:id", reviewController.getReviews);
 
 app.get("/api/host/:id", hostController.getCreatorMoments);

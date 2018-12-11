@@ -4,7 +4,7 @@ import axios from "axios";
 import Moment from "react-moment";
 import moment from "moment";
 import MomentCard from "../Moments/MomentCard";
-import MomentCardWide from "../Host/MomentCard";
+import MomentCardWide from "../Host/MomentCardWide";
 import MomentContainer from "../Host/MomentContainer";
 
 class Trips extends Component {

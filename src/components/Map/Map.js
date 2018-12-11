@@ -46,6 +46,7 @@ class Map extends Component {
 
     Geocode.fromAddress(this.props.city).then(
       response => {
+        console.log("response", response);
         const { lat, lng } = response.results[0].geometry.location;
         const center = { lng: lng, lat: lat };
         console.log(lat, lng);
@@ -60,6 +61,7 @@ class Map extends Component {
   };
 
   render() {
+    console.log("map state", this.state);
     console.log("map state", this.state);
     console.log("propppspss to map", this.props.city);
     let mapOptions = {
@@ -88,11 +90,6 @@ class Map extends Component {
             <AnyReactComponent
               lat={this.state.center.lat}
               lng={this.state.center.lng}
-            />
-            {/* <AnyReactComponent2
-            lat={42} // rough coordinate for Chicago
-            lng={-88} // rough coordinate for Chicago
-            text={'Chicagoland'} */}
             />
           </GoogleMapReact>
         ) : (

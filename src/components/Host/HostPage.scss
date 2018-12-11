@@ -1,12 +1,13 @@
 @import "../../variables";
-
+.title-padding {
+  padding: 15px 0px 15px;
+}
 .hostpage {
   width: 75%;
   margin: auto;
   text-align: start;
   h2 {
     margin: 0;
-    margin-bottom: 10px;
   }
   p {
     margin-bottom: 10px;
@@ -26,116 +27,123 @@
       font-size: $font-medium;
       cursor: pointer;
       outline: none;
+      // color: white;
     }
   }
 }
 .HostCards {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 15px 15px 0px 15px;
+  //align-items: center;
+  // width: 85%;
+  margin: 0 auto;
+  // border-bottom: rgb(232, 232, 232) solid 1px;
+}
+// .HostCards {
+//   width: 100%;
+//   height: 230px;
+//   //   background: blue;
+//   margin: auto;
+//   margin-top: 10px;
+//   margin-bottom: 20px;
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   border-bottom: rgb(232, 232, 232) solid 1px;
+// }
+.review-page {
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // padding: 25px 0px;
+
+  h3 {
+    margin: 0px 0px 15px 0px;
+  }
+  button {
+    height: 50px;
+  }
+}
+.split {
   width: 100%;
-  height: 230px;
-  //   background: blue;
-  margin: auto;
-  margin-top: 10px;
-  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.HostCards-flex {
+  // height: 230px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
+  padding: 15px;
+  flex-direction: row;
+  // margin: 20px 20px 0px;
   border-bottom: rgb(232, 232, 232) solid 1px;
-  .HostCards-img {
-    width: 300px;
-    height: 200px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 4px;
-    margin-right: 40px;
+}
+.HostCards-flex-grey {
+  // height: 230px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  padding: 15px;
+  flex-direction: row;
+  // margin: 20px 20px 0px;
+  background: rgb(232, 232, 232);
+  border-bottom: rgb(232, 232, 232) solid 1px;
+  border-radius: 8px 8px 0px 0px;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+}
+.HostCards-img {
+  width: 300px;
+  height: 240px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 4px;
+  margin-right: 40px;
+}
+.mcw-nextbutton-on,
+.mcw-nextbutton {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 4px;
+  color: white;
+  font-weight: 700;
+  font-size: 12px;
+  background: rgb(0, 121, 126);
+  border: none;
+}
+.HostCards-info {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  p {
+    margin: 10px 0px;
   }
   button {
-    width: 100%;
+    width: 50%;
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 4px;
-    color: white;
+    color: rgb(0, 121, 126);
     font-weight: 700;
     font-size: 12px;
-    background: rgb(0, 121, 126);
-    border: none;
-  }
-  .HostCards-info {
-    width: 300px;
-  }
-  .HostCards-delete-container {
-    width: 60px;
-    height: 40px;
-    // margin: 0 0 0px 10px;
-    .HostCards-delete {
-      margin: 0 0 0 10px;
-      width: 80%;
-      height: 80%;
-      border: rgb(215, 215, 215) solid 1px;
-      border-radius: 3px;
-      display: flex;
-      align-items: center;
-      justify-content: space-evenly;
-      cursor: pointer;
-      .delete-gear {
-        width: 20px;
-        transform: rotate(0deg);
-        transition: transform 0.3s linear;
-      }
-      .delete-gear-rotate {
-        width: 20px;
-        transform: rotate(180deg);
-        transition: transform 0.3s linear;
-      }
-      .delete-arrow {
-        width: 10px;
-        transform: rotate(0deg);
-        transition: transform 0.3s linear;
-      }
-      .delete-arrow-rotate {
-        width: 10px;
-        transform: rotate(180deg);
-        transition: transform 0.3s linear;
-      }
-    }
-    .delete-visible {
-      position: relative;
-      width: 70px;
-      height: 30px;
-      padding: 5px;
-      margin-top: 8px;
-      color: $font-blue-green;
-      border: rgb(232, 232, 232) solid 1px;
-      border-radius: 3px;
-      text-align: center;
-      cursor: pointer;
-    }
-    .delete-visible::after,
-    .delete-visible::before {
-      content: "";
-      position: absolute;
-      bottom: 100%;
-      left: 50%;
-      border-style: solid;
-      width: 0;
-      height: 0;
-    }
-    .delete-visible::after {
-      border-color: transparent transparent white transparent;
-      border-width: 7px;
-    }
-    .delete-visible::before {
-      border-color: transparent transparent $font-black transparent;
-      // left: 49%;
-      border-width: 7.2px;
-    }
-    .delete-hidden {
-      display: none;
-    }
-  }
-  .HostCards-created {
-    color: $font-black;
+    background: white;
+    border: solid 2px $font-blue-green;
   }
 }
-.HostCards-flex {
-  display: flex;
+
+.HostCards-created {
+  color: $font-black;
 }

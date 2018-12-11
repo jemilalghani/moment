@@ -1,0 +1,70 @@
+@import "../../variables";
+
+.HostCards-delete-container {
+  width: 60px;
+  height: 40px;
+  // margin: 0 0 0px 10px;
+  .HostCards-delete {
+    margin: 0 0 0 10px;
+    width: 80%;
+    height: 80%;
+    border: rgb(215, 215, 215) solid 1px;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    .delete-gear {
+      width: 20px;
+      transform: rotate(0deg);
+      transition: transform 0.3s linear;
+    }
+    .delete-gear-rotate {
+      width: 20px;
+      transform: rotate(180deg);
+      transition: transform 0.3s linear;
+    }
+    .delete-arrow {
+      width: 10px;
+      transform: rotate(0deg);
+      transition: transform 0.3s linear;
+    }
+    .delete-arrow-rotate {
+      width: 10px;
+      transform: rotate(180deg);
+      transition: transform 0.3s linear;
+    }
+  }
+  .delete-visible {
+    position: relative;
+    width: 70px;
+    height: 30px;
+    padding: 5px;
+    margin-top: 8px;
+    color: $font-blue-green;
+    border: rgb(232, 232, 232) solid 1px;
+    border-radius: 3px;
+    text-align: center;
+  }
+  .delete-visible::after,
+  .delete-visible::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    border-style: solid;
+    width: 0;
+    height: 0;
+  }
+  .delete-visible::after {
+    border-color: transparent transparent white transparent;
+    border-width: 7px;
+  }
+  .delete-visible::before {
+    border-color: transparent transparent $font-black transparent;
+    // left: 49%;
+    border-width: 7.2px;
+  }
+  .delete-hidden {
+    display: none;
+  }
+}

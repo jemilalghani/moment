@@ -76,7 +76,8 @@ class Navbar extends Component {
     this.setState({ guest: false, price: false, categories: false });
   };
   render() {
-    console.log(this.state);
+    console.log(this.props);
+    console.log("navbar sessions data", this.state);
     // console.log('from contextttttt',this.props.context.user.user)
     return (
       <div className="navbar-container">
@@ -153,7 +154,7 @@ class Navbar extends Component {
 
         {this.props.location.pathname === "/" && (
           <span>
-            <div class="navbar-filterbuttons">
+            <div className="navbar-filterbuttons">
               <button
                 onClick={() => {
                   this.clearModal(1);

@@ -1,73 +1,202 @@
-.checkout-container{
+@import "../../variables";
+
+.checkout-container {
+  height: 100vh;
+
+  .checkout-wrapper {
+    display: flex;
+    margin: 0 auto;
+    width: 80%;
     height: 100vh;
 
-    .checkout-wrapper{
-        display: flex;
-        margin: 0 auto;
+    .checkout-right {
+      width: 60%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      .select-guest {
+        width: 150px;
+        height: 40px;
+        font-size: $font-medium;
+        outline: none;
+      }
+
+      .checkout-review {
         width: 80%;
-        height: 100vh;
+        height: 15%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        color: $font-black;
+        font-size: 17px;
 
-        .checkout-right{
-            background-color: red;
-            width: 60%;
-            height: 100%;
-
-            .checkout-review{
-                background: green;
-                width: 80%;
-                height: 20%;
-            }
-
-            .checkout-whoscoming{
-                background: pink;
-                width: 80%;
-                height: 35%;
-            }
-
-            .checkout-phone{
-                background: fuchsia;
-                width: 80%;
-                height: 20%;
-            }
-
-            .checkout-stripe{
-                background: whitesmoke;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                width: 80%;
-            }
+        .checkout-review-title {
+          font-size: 35px;
         }
-        .checkout-left{
-            background-color: blue;
-            width: 40%;
-            height: 100%;
+      }
 
-            .checkout-title-host{
-                background: palegreen;
-                height: 20%;
+      .checkout-whoscoming {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 80%;
+        height: 20%;
+        color: $font-black;
+      }
 
-                .checkout-img{
-                    width: 60px;
-                    height: 90px;
-                }
-            }
+      .checkout-phone {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 80%;
+        height: 22%;
+        color: $font-black;
 
-            .checkout-selected-datetime{
-                background: seagreen;
-                height: 20%;
-            }
-
-            .checkout-price-calculation{
-                background: darkkhaki;
-                height: 15%;
-            }
-
-            .checkout-total{
-                background: lightblue;
-                height: 15%;
-            }
+        .verify-phone {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
         }
-    }   
+
+        .input-phone {
+          padding: 14px;
+          // background: rgb(242,242,242);
+          outline: none;
+          border: none;
+          border-radius: 4px;
+          width: 200px;
+          font-size: 15px;
+          color: $font-black;
+          box-shadow: inset rgb(61, 61, 61) 0px 0px 1px;
+        }
+
+        .fa-paper-plane {
+          position: absolute;
+          padding: 15px;
+          border-radius: 4px;
+          color: rgb(204, 204, 204);
+          border: none;
+          outline: none;
+          margin-left: -40px;
+        }
+
+        .fa-paper-plane:hover {
+          color: rgb(122, 122, 122);
+          cursor: pointer;
+        }
+      }
+
+      .checkout-stripe {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        width: 80%;
+      }
+    }
+    .checkout-left {
+      width: 40%;
+      height: 80%;
+      border: 1.5px solid rgb(180, 180, 180);
+      border-radius: 3px;
+
+      .checkout-left-wrapper {
+        width: 90%;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        .checkout-title-host {
+          height: 20%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid rgb(204, 204, 204);
+
+          .checkout-blockone {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+
+            .checkout-moment-title {
+              color: $font-black;
+              font-size: 17px;
+              padding: 0;
+              margin: 0;
+            }
+          }
+
+          .checkout-img {
+            width: 60px;
+            height: 90px;
+          }
+        }
+
+        .checkout-selected-datetime {
+          height: 15%;
+          color: $font-black;
+          font-weight: 300;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+          border-bottom: 1px solid rgb(204, 204, 204);
+        }
+
+        .checkout-price-calculation {
+          height: 15%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          border-bottom: 1px solid rgb(204, 204, 204);
+        }
+
+        .checkout-total {
+          height: 15%;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid rgb(204, 204, 204);
+
+          .total {
+            font-weight: bold;
+          }
+        }
+      }
+
+      .cancellation-policy {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 10%;
+      }
+    }
+  }
+
+  .checkout-footer-container {
+    height: 8%;
+    width: 100%;
+  }
+
+  .checkout-footer-wrapper {
+    border-top: 1px solid rgba(175, 175, 175, 0.329);
+    height: 10%;
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  .checkout-footer-logo {
+    width: 35px;
+    height: 35px;
+    margin-top: 10px;
+  }
 }

@@ -21,7 +21,7 @@ class CheckOut extends Component {
 
   onToken = stripeToken => {
     console.log("onToken", stripeToken);
-    let expId = this.props.location.moment.moment.id;
+    let expId = this.state.moment.id;
     //let selectedDate = this.props.location.date.sendDate
     axios
       .post("/api/charge", {
@@ -187,7 +187,7 @@ class CheckOut extends Component {
                   stripeKey="pk_test_LjNm06RplXdJCIdfZJ7f9gTV"
                   amount={total * 100}
                   label={`Pay $${total}.00`}
-                  email={this.state.user.email}
+                  //email={this.state.user.email && this.state.user.email}
                 />
               ) : (
                 <div />
@@ -236,6 +236,7 @@ class CheckOut extends Component {
               </div>
             </div>
           )}
+          <div className="checkout-footer" />
         </div>
       </div>
     );

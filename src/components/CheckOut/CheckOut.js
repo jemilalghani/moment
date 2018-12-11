@@ -44,6 +44,9 @@ class CheckOut extends Component {
           .then(() => {
             alert("sent");
           });
+        this.props.history.push({
+          pathname: "/thankyou"
+        });
       });
   };
 
@@ -117,6 +120,7 @@ class CheckOut extends Component {
     console.log("date in render", this.state.date);
     console.log("formate date", this.state.date);
     console.log("moment in render", this.state.moment);
+    console.log("props in checkout", this.props);
 
     // console.log("moment", moment);
     const total = this.state.moment.price * this.state.guests;
@@ -162,8 +166,9 @@ class CheckOut extends Component {
                   Moment knows how to reach you.
                 </p>
               </div>
+
               <h4>E-mail</h4>
-              <div>
+              <div className="email-box">
                 <input
                   type="text"
                   placeholder="Your Email"

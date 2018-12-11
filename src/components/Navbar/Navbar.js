@@ -38,6 +38,7 @@ class Navbar extends Component {
   };
   render() {
     console.log(this.props);
+    console.log("navbar sessions data", this.state);
     // console.log('from contextttttt',this.props.context.user.user)
     return (
       <div className="navbar-container">

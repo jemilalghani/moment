@@ -16,6 +16,7 @@ class DetailedMoments extends Component {
   }
   componentDidMount() {
     const id = this.props.match.params.id;
+    window.scrollTo(0, 0);
     axios.get(`/api/moments/${id}`).then(moment => {
       console.log("axiosget by id", moment.data);
       this.setState({ moment: moment.data[0] });
@@ -66,20 +67,21 @@ class DetailedMoments extends Component {
               {chooseDate.toDateString() === "Invalid Date" ? (
                 <div />
               ) : (
-                <div>
+                <div className="popup-box">
                   <p>{`${chooseDate.toDateString()}`}</p>
                   <p>
                     {moment.available_time_start}-{moment.available_time_end}
                   </p>
                   <p>${moment.price} per person</p>
                   {this.props.context.login ? (
-                    <button>
+                    <button className="choose-button">
                       <Link
                         to={{
                           pathname: "/checkout",
                           moment: { moment },
                           date: { sendDate }
                         }}
+                        className="choose-button"
                       >
                         Choose
                       </Link>
@@ -95,7 +97,12 @@ class DetailedMoments extends Component {
           </div>
         </div>
         <div className="box-over-map">
-          <div className="map-box" />
+          <div className="map-box">
+            <div className="map-box-wrapper">
+              <h1>Where we'll be</h1>
+              {moment.where_we_will_be}
+            </div>
+          </div>
           <Map city={moment.locale} />
         </div>
         <div className="detailed-wrapper">

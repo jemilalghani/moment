@@ -15,6 +15,7 @@ import HostPage from "./components/Host/HostPage";
 import Register from "./components/LoginRegister/Register";
 import "./App.scss";
 import "./reset.css";
+import ThankYou from "./components/ThankYou/ThankYou";
 
 class App extends Component {
   // componentDidMount() {
@@ -50,6 +51,7 @@ class App extends Component {
             <Route path="/checkout" component={CheckOut} />
             <Route path="/trips" component={Trips} />
             <Route path="/admin" component={Admin} />
+            <Route path="/thankyou" component={ThankYou} />
             <Route exact path="/" component={Moments} />
           </Switch>
         </div>

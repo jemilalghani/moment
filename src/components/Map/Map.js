@@ -46,7 +46,6 @@ class Map extends Component {
 
     Geocode.fromAddress(this.props.city).then(
       response => {
-        console.log("response", response);
         const { lat, lng } = response.results[0].geometry.location;
         const center = { lng: lng, lat: lat };
         console.log(lat, lng);
@@ -61,7 +60,6 @@ class Map extends Component {
   };
 
   render() {
-    console.log("map state", this.state);
     console.log("map state", this.state);
     console.log("propppspss to map", this.props.city);
     let mapOptions = {
@@ -78,7 +76,7 @@ class Map extends Component {
     };
     return (
       // GEN Important! Always set the container height explicitly
-      <div style={{ height: "40vh", width: "100%" }}>
+      <div style={{ height: "60vh", width: "100%" }}>
         {this.state.coordsLoaded ? (
           <GoogleMapReact
             bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}

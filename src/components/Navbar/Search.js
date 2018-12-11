@@ -3,6 +3,8 @@ import axios from "axios";
 import sort from "fast-sort";
 import "./Search.scss";
 import magGlass from "../../Image/search.png";
+import { dim } from "ansi-colors";
+import { Link } from "react-router-dom";
 
 export default class Search extends Component {
   constructor() {
@@ -11,7 +13,8 @@ export default class Search extends Component {
       momentArr: [],
       displayArr: [],
       searchField: "",
-      searchArr: []
+      searchArr: [],
+      finalResults: []
     };
   }
   componentDidMount = () => {
@@ -46,6 +49,7 @@ export default class Search extends Component {
     mapped = mapped.filter(elem => elem.searchResult.result);
     let resultSort = sort(mapped).desc(a => a.searchResult.counter);
     console.log(resultSort);
+    this.setState({ finalResults: resultSort });
     return resultSort;
   };
   searchMoment = moment => {
@@ -102,6 +106,15 @@ export default class Search extends Component {
 
   render() {
     const { searchArr, searchField } = this.state;
+    let searchedMoments = this.state.finalResults.map(moment => {
+      return (
+        <div className="searched-moments">
+          <Link to={`/moments/${moment.id}`}>
+            <p>{moment.title}</p>
+          </Link>
+        </div>
+      );
+    });
     //console.log("Search state", this.state);
     console.log("results of search", this.state.finalResults);
     return (
@@ -118,9 +131,9 @@ export default class Search extends Component {
             placeholder="Experiences"
           />
           <img src={magGlass} alt="" />
+          <div className="searched-moments-container">{searchedMoments}</div>
         </div>
         {/* <button  onClick={this.submitSearch}>Search</button> */}
-        {}
       </div>
     );
   }

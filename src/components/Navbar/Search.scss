@@ -1,44 +1,59 @@
-@import '../../variables';
+@import "../../variables";
 
-.navbar-search{
-    margin-left:30px;
-    div{
-        img{
-            position: absolute;
-            width:16px;
-            // bottom:704.5px;
-            top: 33px;
-            left: 80px;
-        }
+.navbar-search {
+  margin-left: 30px;
+  div {
+    img {
+      position: absolute;
+      width: 16px;
+      // bottom:704.5px;
+      top: 33px;
+      left: 80px;
     }
-    input{
-        width: 420px;
-        padding: 10px;
-        padding-top: 13px;
-        padding-bottom: 13px;
-        padding-left: 35px;
-        font-weight: $font-bold;
-        border-radius: 4px;
-        box-shadow: 0px 4px 10px rgb(234,234,234);
-        outline: none;
-        border: none;
-        border-top: solid 1px rgb(232,232,232);
-        border-right: solid 1px rgb(232,232,232);
-        border-left: solid 1px rgb(232,232,232);
-        color: $font-darker-grey-p-titles;
-        font-size: $font-medium;
-        transition: width .3s;
-    }
-    input:hover{
-        box-shadow: 0px 5px 10px rgb(224,225,224);
-        // border-bottom: none;
-    }
-    input:focus{
-        width: 500px;
-    }
-    input::placeholder{
-        font-weight: $font-bold;
-        color: $font-darker-grey-p-titles;
-        font-size: $font-medium;
-    }
+  }
+  input {
+    width: 420px;
+    padding: 10px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 35px;
+    font-weight: $font-bold;
+    border-radius: 4px;
+    box-shadow: 0px 4px 10px rgb(234, 234, 234);
+    outline: none;
+    border: none;
+    border-top: solid 1px rgb(232, 232, 232);
+    border-right: solid 1px rgb(232, 232, 232);
+    border-left: solid 1px rgb(232, 232, 232);
+    color: $font-darker-grey-p-titles;
+    font-size: $font-medium;
+    transition: width 0.3s;
+  }
+  input:hover {
+    box-shadow: 0px 5px 10px rgb(224, 225, 224);
+    // border-bottom: none;
+  }
+  input:focus {
+    width: 500px;
+  }
+  input::placeholder {
+    font-weight: $font-bold;
+    color: $font-darker-grey-p-titles;
+    font-size: $font-medium;
+  }
+
+  .searched-moments-container {
+    position: relative;
+    height: 1px;
+  }
+
+  .searched-moments {
+    z-index: 10;
+    width: 97%;
+    border: 1px solid rgba(175, 175, 175, 0.329);
+    padding: 10px 5px;
+    text-align: left;
+    border-radius: 5px;
+    background: white;
+  }
 }

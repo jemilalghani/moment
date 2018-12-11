@@ -16,6 +16,7 @@ class DetailedMoments extends Component {
   }
   componentDidMount() {
     const id = this.props.match.params.id;
+    window.scrollTo(0, 0);
     axios.get(`/api/moments/${id}`).then(moment => {
       console.log("axiosget by id", moment.data);
       this.setState({ moment: moment.data[0] });

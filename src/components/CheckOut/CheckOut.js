@@ -4,6 +4,7 @@ import axios from "axios";
 import "./CheckOut.scss";
 import withContext from "../ContextApi/Context_HOC";
 import get from "lodash/get";
+import logo from "../../Image/Moment-M-Logo-Purple.svg";
 
 class CheckOut extends Component {
   constructor() {
@@ -241,7 +242,11 @@ class CheckOut extends Component {
               </div>
             </div>
           )}
-          <div className="checkout-footer" />
+        </div>
+        <div className="checkout-footer-container">
+          <div className="checkout-footer-wrapper">
+            <img className="checkout-footer-logo" src={logo} alt="" />
+          </div>
         </div>
       </div>
     );

@@ -11,9 +11,11 @@ class CheckOut extends Component {
     this.state = {
       guests: 1,
       total: 95,
-      user: null,
+      userId: null,
+      user: [],
       moment: [],
-      date: ""
+      date: "",
+      email: ""
     };
   }
 
@@ -29,11 +31,15 @@ class CheckOut extends Component {
       })
       .then(response => {
         console.log("succcccccessss", response.data);
+        axios.post("/api/orderCheckout", {
+          exp_id: expId,
+          prof_id: this.state.userId,
+          group_size: this.state.guests
+        });
         axios
-          .post("/api/orderCheckout", {
-            exp_id: expId,
-            prof_id: this.state.user,
-            group_size: this.state.guests
+          .post("/api/confirmation", {
+            body: stripeToken,
+            moment: this.state.moment
           })
           .then(() => {
             alert("sent");
@@ -48,16 +54,32 @@ class CheckOut extends Component {
   setTotal() {
     setTimeout(() => {
       this.setState({
-        total: this.props.location.moment.moment.price * this.state.guests
+        total: this.state.moment.price * this.state.guests
       });
     }, 500);
   }
 
+  ////////verify email/////////
+
+  handleChange = val => {
+    this.setState({ email: val });
+  };
+
+  handleClick = () => {
+    const { email } = this.state;
+    axios.post("/api/email", { email }).then(res => {
+      alert("sent email");
+    });
+  };
+
+  /////////////////////
+
   componentDidMount() {
     axios.get("/api/sessions").then(res => {
+      this.setState({ user: res.data.user });
       console.log("profile data here?", res);
       if (res.data) {
-        this.setState({ user: res.data.user.id });
+        this.setState({ userId: res.data.user.id });
       } else {
         this.props.history.push("/");
       }
@@ -93,7 +115,9 @@ class CheckOut extends Component {
       get(this.props.location, "moment.moment") ||
       JSON.parse(localStorage.getItem("moment"));
     console.log("date in render", this.state.date);
+    console.log("formate date", this.state.date);
     console.log("moment in render", this.state.moment);
+
     // console.log("moment", moment);
     const total = this.state.moment.price * this.state.guests;
     // let groupSizeLimit = this.props.location.moment.moment.group_size_limit;
@@ -109,7 +133,7 @@ class CheckOut extends Component {
         <div className="checkout-wrapper">
           <div className="checkout-right">
             <div className="checkout-review">
-              <h2>Review and pay</h2>
+              <h2 className="checkout-review-title">Review and pay</h2>
               <p>
                 You can add more friends to this experience and confirm your
                 reservation.
@@ -120,6 +144,7 @@ class CheckOut extends Component {
               <h3>Who's coming?</h3>
               <h5>Number of guests</h5>
               <select
+                className="select-guest"
                 name="guests"
                 onChange={e => {
                   this.handleGuestNumber(e);
@@ -130,13 +155,26 @@ class CheckOut extends Component {
               </select>
             </div>
             <div className="checkout-phone">
-              <h5>Verify your phone number</h5>
-              <p>
-                This is so your host can contact you during your trip, and so
-                Airbnb knows how to reach you.
-              </p>
-              <input type="text" placeholder="enter phone number" />
-              <button>verify</button>
+              <div className="verify-phone">
+                <h3>Verify your email address</h3>
+                <p>
+                  This is so your host can contact you during your trip, and so
+                  Moment knows how to reach you.
+                </p>
+              </div>
+              <h4>E-mail</h4>
+              <div>
+                <input
+                  type="text"
+                  placeholder="Your Email"
+                  className="input-phone"
+                  onChange={e => this.handleChange(e.target.value)}
+                />
+                <i
+                  class="fas fa-paper-plane"
+                  onClick={() => this.handleClick()}
+                />
+              </div>
             </div>
             <div className="checkout-stripe">
               <p>
@@ -149,6 +187,7 @@ class CheckOut extends Component {
                   stripeKey="pk_test_LjNm06RplXdJCIdfZJ7f9gTV"
                   amount={total * 100}
                   label={`Pay $${total}.00`}
+                  email={this.state.user.email}
                 />
               ) : (
                 <div />
@@ -162,7 +201,6 @@ class CheckOut extends Component {
                   <div className="checkout-blockone">
                     <h6 className="checkout-moment-title">{moment.title}</h6>
                     <p>{moment.duration} experience</p>
-                    <p>Hosted by Grace</p>
                   </div>
                   <div className="checkout-title-img">
                     <img
@@ -173,20 +211,27 @@ class CheckOut extends Component {
                   </div>
                 </div>
                 <div className="checkout-selected-datetime">
-                  <h6>{`${date.sendDate}`}</h6>
+                  <h4>{`${date.sendDate}`}</h4>
                   <p>
                     {moment.available_time_start}-{moment.available_time_end}
                   </p>
                 </div>
                 <div className="checkout-price-calculation">
                   <p>
-                    ${moment.price} X {this.state.guests} guests
+                    ${moment.price} X {this.state.guests}
+                    {this.state.guests > 1 ? <p>guests</p> : <p>guest</p>}
                   </p>
-                  <p className="total">${total}</p>
+                  <p className="total">${total}.00</p>
                 </div>
                 <div className="checkout-total">
                   <p>Total (USD) </p>
-                  <p className="total">${total}</p>
+                  <p className="total">${total}.00</p>
+                </div>
+                <div className="cancellation-policy">
+                  <p>Cancellation Policy</p>
+                  <p>
+                    Get a full refund if you cancel within 24 hours of purchase.
+                  </p>
                 </div>
               </div>
             </div>

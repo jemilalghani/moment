@@ -12,14 +12,30 @@
     .checkout-right {
       width: 60%;
       height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      .select-guest {
+        width: 150px;
+        height: 40px;
+        font-size: $font-medium;
+        outline: none;
+      }
 
       .checkout-review {
         width: 80%;
-        height: 20%;
+        height: 15%;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
+        color: $font-black;
+        font-size: 17px;
+
+        .checkout-review-title {
+          font-size: 35px;
+        }
       }
 
       .checkout-whoscoming {
@@ -29,15 +45,50 @@
         align-items: flex-start;
         width: 80%;
         height: 20%;
+        color: $font-black;
       }
 
       .checkout-phone {
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: space-between;
         align-items: flex-start;
         width: 80%;
-        height: 20%;
+        height: 22%;
+        color: $font-black;
+
+        .verify-phone {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .input-phone {
+          padding: 14px;
+          // background: rgb(242,242,242);
+          outline: none;
+          border: none;
+          border-radius: 4px;
+          width: 200px;
+          font-size: 15px;
+          color: $font-black;
+          box-shadow: inset rgb(61, 61, 61) 0px 0px 1px;
+        }
+
+        .fa-paper-plane {
+          position: absolute;
+          padding: 15px;
+          border-radius: 4px;
+          color: rgb(204, 204, 204);
+          border: none;
+          outline: none;
+          margin-left: -40px;
+        }
+
+        .fa-paper-plane:hover {
+          color: rgb(122, 122, 122);
+          cursor: pointer;
+        }
       }
 
       .checkout-stripe {
@@ -72,9 +123,11 @@
           .checkout-blockone {
             display: flex;
             flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
 
             .checkout-moment-title {
-              color: black;
+              color: $font-black;
               font-size: 17px;
               padding: 0;
               margin: 0;
@@ -89,6 +142,8 @@
 
         .checkout-selected-datetime {
           height: 15%;
+          color: $font-black;
+          font-weight: 300;
           display: flex;
           flex-direction: column;
           justify-content: flex-start;
@@ -116,6 +171,13 @@
             font-weight: bold;
           }
         }
+      }
+
+      .cancellation-policy {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        height: 10%;
       }
     }
   }

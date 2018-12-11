@@ -10,6 +10,7 @@ const bookingController = require("./controllers/bookingController");
 const orderController = require("./controllers/orderController");
 const hostController = require("./controllers/hostController");
 const reviewController = require("./controllers/reviewController");
+const emailController = require("./controllers/emailController");
 
 require("dotenv").config();
 
@@ -60,6 +61,10 @@ app.get("/api/host/:id", hostController.getCreatorMoments);
 
 ///////////////////stripe//////////////////
 app.post("/api/charge", bookingController.stripeCharge);
+
+/////////////////email//////////////
+app.post("/api/email", emailController.sendEmail);
+app.post("/api/confirmation", emailController.sendConfirmation);
 
 const SERVER_PORT = 4000;
 app.listen(SERVER_PORT, () => {

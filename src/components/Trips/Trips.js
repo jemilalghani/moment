@@ -4,8 +4,8 @@ import axios from "axios";
 import Moment from "react-moment";
 import moment from "moment";
 import MomentCard from "../Moments/MomentCard";
-import MomentCardWide from "./MomentCardWide";
-import MomentContainer from "../Moments/MomentContainer";
+import MomentCardWide from "../Host/MomentCard";
+import MomentContainer from "../Host/MomentContainer";
 
 class Trips extends Component {
   constructor() {
@@ -43,7 +43,7 @@ class Trips extends Component {
     }
   };
   giveTitle = words => {
-    return <h2>{words}</h2>;
+    return <h2 className="title-padding">{words}</h2>;
   };
 
   render() {

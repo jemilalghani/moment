@@ -32,18 +32,18 @@ class Moments extends Component {
       return <MomentCard moment={moment} />;
     });
     let blankMap = <></>;
-    let title = <h2>"Highlighted Trips From Around the World"</h2>;
-    let title2 = <h2>"Trips Found Nearby"</h2>;
-    let title3 = <h2>"Welcome to Moment"</h2>;
+    let title = <h2>Highlighted Trips From Around the World</h2>;
+    let title2 = <h2>Trips Found Nearby</h2>;
+    let title3 = <h2>Welcome to Moment</h2>;
     let text3 = (
-      <p>
-        "Moment is a platform for people to share their unique knowledge,
+      <h4>
+        Moment is a platform for people to share their unique knowledge,
         passions, and abilities to anyone. Hosts create an experience - an event
         limited to a single day, but which is not limited in creativity. Hosts
         will provide the opportunity to learn, taste, think, hike, ride see or
         discover something new. There are unique experiences across the globe
-        waiting for you. Sign up now to find your next adventure!"{" "}
-      </p>
+        waiting for you. Sign up now to find your next adventure!
+      </h4>
     );
     return (
       <>

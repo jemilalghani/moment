@@ -40,7 +40,7 @@ module.exports = {
       .then(data => {
         db.add_photo([data[0].id, photoOne, photoTwo])
           .then(photos => {
-            console.log(photos);
+            // console.log(photos);
           })
           .catch(error => {
             console.log("error in photo", error);
@@ -48,7 +48,7 @@ module.exports = {
 
         db.add_available_date([data[0].id, availableDate])
           .then(date => {
-            console.log(date);
+            // console.log(date);
           })
           .catch(error => {
             console.log("error in date", error);
@@ -56,7 +56,7 @@ module.exports = {
 
         db.add_moment_creator([userId, data[0].id])
           .then(creator => {
-            console.log(creator);
+            // console.log(creator);
           })
           .catch(error => {
             console.log("error in creator", error);

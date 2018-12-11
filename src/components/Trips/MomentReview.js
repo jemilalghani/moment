@@ -48,21 +48,29 @@ export default class MomentReview extends Component {
             <div className="moment-review">
               <h3>Review Title</h3>
               <div className="review-desc">Give your review a title.</div>
-              <textarea type="text" placeholder="Title" />
+              <textarea
+                className="text-area-1"
+                type="text"
+                placeholder="Title"
+              />
               <h3>Review Description</h3>
               <div className="review-desc">
                 Decribe your experience, keeping in mind the expectations the
                 host set with their experience description. Include any high or
                 low points that affected your rating.
               </div>
-              <textarea type="text" placeholder="Description" />
+              <textarea
+                className="text-area-2"
+                type="text"
+                placeholder="Description"
+              />
               <h3>Star Rating</h3>
               <div className="review-desc">
                 Give a rating in stars. 1 being a low score and 5 being high
                 score.
               </div>
               {/* <textarea type="text" placeholder="Stars given out of five" /> */}
-              {starMap}
+              <div className="stars">{starMap}</div>
               <button className="mcw-nextbutton-on">Submit</button>
             </div>
           </div>

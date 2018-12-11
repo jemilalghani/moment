@@ -19,7 +19,8 @@ app.use(
   session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    maxAge: 1000 * 60 * 60 * 24 * 14
   })
 );
 
@@ -46,6 +47,7 @@ app.get("/api/moment/:highlight", momentController.findHighlight);
 app.get("/api/moment/locale", momentController.findLocale);
 app.get("/api/moment", momentController.findAll);
 app.get("/api/moments/:id", momentController.getByID);
+app.get("/api/delete/:id/:hostid", momentController.delete);
 // ORDERS TABLE
 // app.get('/api/order/hostFind')
 // app.post('/api/order/userCreate')

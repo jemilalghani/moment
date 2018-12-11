@@ -75,6 +75,7 @@
       display: flex;
       align-items: center;
       justify-content: space-evenly;
+      cursor: pointer;
       .delete-gear {
         width: 20px;
         transform: rotate(0deg);
@@ -106,6 +107,7 @@
       border: rgb(232, 232, 232) solid 1px;
       border-radius: 3px;
       text-align: center;
+      cursor: pointer;
     }
     .delete-visible::after,
     .delete-visible::before {

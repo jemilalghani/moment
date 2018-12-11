@@ -15,9 +15,9 @@
     border-bottom: rgb(235, 235, 235) solid 1px;
     background: rgb(255, 255, 255);
     top: 81px;
-    div {
+    .navbar-filterbuttons {
       margin-left: 100px;
-      width: 30%;
+      // width: 30%;
       height: 100%;
       display: flex;
       justify-content: flex-start;
@@ -159,4 +159,101 @@
 }
 .navbar-dropdown {
   display: none;
+}
+.grey-background {
+  // display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 100;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(255, 255, 255, 0.527); /* Black w/ opacity */
+}
+.no-background {
+  display: none;
+}
+.guestmodal {
+  z-index: 3;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 20%;
+  left: 10%;
+  width: 200px;
+  height: 80px;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid rgb(204, 204, 204);
+  color: $font-black;
+  .guest-button {
+    border-radius: 100%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    justify-content: center;
+    color: $font-blue-green;
+    font-weight: 700;
+    font-size: 20px;
+    border: $font-blue-green solid 2px;
+    margin: 10px;
+    outline: none;
+  }
+}
+.pricemodal {
+  z-index: 3;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 20%;
+  left: 15%;
+  width: 200px;
+  height: 80px;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid rgb(204, 204, 204);
+}
+.categorymodal {
+  z-index: 3;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  top: 20%;
+  left: 20%;
+  width: 200px;
+  height: 350px;
+  background: white;
+  border-radius: 4px;
+  border: 1px solid rgb(204, 204, 204);
+  .cat-buttons {
+    margin: 2px;
+    padding: 3px 5px 3px 5px;
+    border-radius: 4px;
+    background: rgb(255, 255, 255);
+    border: rgb(220, 224, 224) solid 1px;
+    font-size: 12px;
+    color: $font-black;
+    outline: none;
+  }
+  .cat-buttons:focus {
+    background: rgb(12, 108, 111);
+    color: white;
+    border: white solid 1px;
+  }
+  .apply-button {
+    text-decoration: underline $font-blue-green;
+    color: $font-blue-green;
+    border: none;
+    // outline: none;
+    font-weight: 700;
+    position: relative;
+    left: 70px;
+  }
 }

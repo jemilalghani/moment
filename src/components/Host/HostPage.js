@@ -8,9 +8,7 @@ import arrow from "../../Image/down-arrow (2).png";
 export default class HostPage extends Component {
   constructor() {
     super();
-    this.state = {
-      delete: false
-    };
+    this.state = {};
   }
   async componentDidMount() {
     const user = await axios.get("/api/sessions");
@@ -25,11 +23,17 @@ export default class HostPage extends Component {
       return { [key]: !prevState[key] };
     });
   }
+  alterDeleteColumn = (e, p) => {
+    axios.get(`/api/delete/${e}/${p}`).then(done => {
+      console.log(done);
+      this.setState({ hostInfo: done.data });
+    });
+  };
   render() {
     let hostMoments =
       this.state.hostInfo &&
-      this.state.hostInfo.map(el => {
-        return (
+      this.state.hostInfo.map((el, index) => {
+        return el.deleted === false ? (
           <div className="HostCards">
             <div className="HostCards-flex">
               <div
@@ -58,18 +62,22 @@ export default class HostPage extends Component {
             <div className="HostCards-delete-container">
               <div
                 className="HostCards-delete"
-                onClick={() => this.toggle("delete")}
+                onClick={() => this.toggle(`delete${index}`)}
               >
                 <img
                   src={gear}
                   className={
-                    this.state.delete ? "delete-gear" : "delete-gear-rotate"
+                    this.state[`delete${index}`]
+                      ? "delete-gear"
+                      : "delete-gear-rotate"
                   }
                   alt=""
                 />
                 <img
                   className={
-                    this.state.delete ? "delete-arrow" : "delete-arrow-rotate"
+                    this.state[`delete${index}`]
+                      ? "delete-arrow"
+                      : "delete-arrow-rotate"
                   }
                   src={arrow}
                   alt=""
@@ -77,14 +85,21 @@ export default class HostPage extends Component {
               </div>
               <div
                 className={
-                  this.state.delete ? "delete-visible" : "delete-hidden"
+                  this.state[`delete${index}`]
+                    ? "delete-visible"
+                    : "delete-hidden"
                 }
+                value={el.id}
+                onClick={() => {
+                  this.alterDeleteColumn(el.id, el.prof_id);
+                  this.toggle(`delete${index}`);
+                }}
               >
-                <span>Delete</span>
+                Delete
               </div>
             </div>
           </div>
-        );
+        ) : null;
       });
     return (
       <div className="hostpage">

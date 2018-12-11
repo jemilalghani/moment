@@ -40,7 +40,7 @@ module.exports = {
       .then(data => {
         db.add_photo([data[0].id, photoOne, photoTwo])
           .then(photos => {
-            console.log(photos);
+            // console.log(photos);
           })
           .catch(error => {
             console.log("error in photo", error);
@@ -48,7 +48,7 @@ module.exports = {
 
         db.add_available_date([data[0].id, availableDate])
           .then(date => {
-            console.log(date);
+            // console.log(date);
           })
           .catch(error => {
             console.log("error in date", error);
@@ -56,7 +56,7 @@ module.exports = {
 
         db.add_moment_creator([userId, data[0].id])
           .then(creator => {
-            console.log(creator);
+            // console.log(creator);
           })
           .catch(error => {
             console.log("error in creator", error);
@@ -153,6 +153,16 @@ module.exports = {
     db.get_moment_by_id(req.params.id).then(all => {
       moment = Object.assign(all, {});
       db.get_photo_host(all[0].id).then(photo => {
+        res.json(addPhotosToMoment(moment, photo));
+      });
+    });
+  },
+  delete: (req, res) => {
+    let moment = {};
+    const db = req.app.get("db");
+    db.update_delete([req.params.id, req.params.hostid]).then(deleted => {
+      moment = Object.assign(deleted, {});
+      db.get_photo_host(deleted[0].id).then(photo => {
         res.json(addPhotosToMoment(moment, photo));
       });
     });

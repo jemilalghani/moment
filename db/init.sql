@@ -106,6 +106,7 @@ VALUES
 (9, 'Mon Jan 07 2018', 9),
 (9, 'Wed Jan 09 2018', 9);
 
+
 SELECT * FROM profiles;
 SELECT * FROM experiences;
 SELECT * FROM orders;

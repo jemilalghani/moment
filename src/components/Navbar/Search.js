@@ -14,7 +14,8 @@ export default class Search extends Component {
       displayArr: [],
       searchField: "",
       searchArr: [],
-      finalResults: []
+      finalResults: [],
+      toggle: ""
     };
   }
   componentDidMount = () => {
@@ -110,7 +111,9 @@ export default class Search extends Component {
       return (
         <div className="searched-moments">
           <Link to={`/moments/${moment.id}`}>
-            <p>{moment.title}</p>
+            <p onClick={() => this.setState({ finalResults: [] })}>
+              {moment.title}
+            </p>
           </Link>
         </div>
       );

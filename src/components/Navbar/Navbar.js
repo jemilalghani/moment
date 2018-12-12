@@ -91,6 +91,7 @@ class Navbar extends Component {
     this.setState({ guest: false, price: false, categories: false });
   };
   render() {
+    console.log("sessions in navbar", this.state.user);
     return (
       <div className="navbar-container">
         <div className="navbar-wrapper">
@@ -110,12 +111,21 @@ class Navbar extends Component {
                   <div>
                     <Link to="/trips">Trips</Link>
                   </div>
-                  <img
-                    src={this.props.context.user.user.prof_photo_url}
-                    className="nav-profile-img"
-                    onClick={() => this.toggle("dropdown")}
-                    alt=""
-                  />
+                  {this.props.context.user.user ? (
+                    <img
+                      src={this.props.context.user.user.prof_photo_url}
+                      className="nav-profile-img"
+                      onClick={() => this.toggle("dropdown")}
+                      alt=""
+                    />
+                  ) : (
+                    <img
+                      src="https://i.stack.imgur.com/l60Hf.png"
+                      className="nav-profile-img"
+                      onClick={() => this.toggle("dropdown")}
+                      alt=""
+                    />
+                  )}
                 </div>
               ) : (
                 this.state.user.user && (

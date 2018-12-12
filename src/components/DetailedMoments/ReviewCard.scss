@@ -22,15 +22,28 @@
   // margin: 15px 0px;
 }
 .review-title {
-  font-size: 30px;
-}
-.review-description {
-  font-size: 17px;
+  font-size: 25px;
 }
 
-.display-inline {
-  display: inline;
+.name-date {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.review-date {
+  font-size: 14px;
+}
+
+.review-description {
+  margin-top: 5px;
+  font-size: 20px;
+}
+
+// .display-inline {
+//   display: inline;
+// }
 .host-photo {
   margin-right: 20px;
   width: 60px;
@@ -42,6 +55,14 @@
 .flex-row {
   display: flex;
   flex-direction: row;
+}
+
+.review-section {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .flex-col {

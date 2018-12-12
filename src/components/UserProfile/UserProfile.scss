@@ -1,95 +1,87 @@
-@import '../../variables';
+@import "../../variables";
 
-.user-profile-container{
-    margin-top: 20px;
-    width: 100%;
-    height: 90vh;
-    .loading-gif{
-        filter: contrast(200%);
-    }
+.user-profile-container {
+  margin-top: 20px;
+  width: 100%;
+  height: 90vh;
+  .loading-gif {
+    filter: contrast(200%);
+  }
 }
 
 .user-profile-wrapper {
-
-    margin: 0 auto;
-    width: 70%;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
+  margin: 0 auto;
+  width: 70%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
 }
 
-.user-profile-img{
-    width: 30%;
-    height: 30%;
+.user-profile-img {
+  width: 260px;
+  height: 260px;
 }
 
-.user-img{
-    width: 100%;
-    height: 100%;
+.user-img {
+  width: 100%;
+  height: 100%;
 }
 
-.user-profile-right{
-    display: flex;
-    flex-direction: column;
-    width: 70%;
+.user-profile-right {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
 }
 
-.user-profile-right-wrapper{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+.user-profile-right-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 
-    height: 35%;
-    justify-content: space-around;
-    margin-left: 10px;
+  height: 35%;
+  justify-content: space-around;
+  margin-left: 10px;
 }
 
-
-
-
-.user-name-location{
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    flex-direction: column;
-    height: 25%;
+.user-name-location {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  height: 25%;
 }
 
-.user-greeting{
-    margin-bottom: 20px;
-    font-size: 45px;
-    font-weight: 500;
-    color: $font-black;
+.user-greeting {
+  margin-bottom: 20px;
+  font-size: 45px;
+  font-weight: 500;
+  color: $font-black;
 }
 
 .user-profile-right-bottom {
-    display: flex;
-    width: 100%;
-    height: 40%;
+  display: flex;
+  width: 100%;
+  height: 40%;
 }
 
-.user-location{
-    font-weight: bold;
-    letter-spacing: .5px;
+.user-location {
+  font-weight: bold;
+  letter-spacing: 0.5px;
 }
 
-        
+.user-about-me {
+  display: flex;
+  width: 75%;
+  height: 50%;
+}
 
-.user-about-me{
-    display: flex;
-    width: 75%;
-    height: 50%;
-}  
-
-.location-date{
-    font-weight: bold;
+.location-date {
+  font-weight: bold;
 }
 
 p {
-    color: $font-light-grey;
-    text-align: left; 
-    font-weight: 400;
-    font-size: 14px;
+  color: $font-light-grey;
+  text-align: left;
+  font-weight: 400;
+  font-size: 14px;
 }
-
-

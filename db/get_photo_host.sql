@@ -1,5 +1,3 @@
-SELECT (ex.id, p.id, exp_photo_url)
-FROM experiences ex
-JOIN exp_photos p
-ON ex.id = p.exp_id
-WHERE p.exp_id = $1;
+select (p.exp_id, ex.id, ex.exp_photo_url) from exp_photos ex
+join prof_exp_creators p on p.exp_id = ex.exp_id 
+where p.prof_id =$1;

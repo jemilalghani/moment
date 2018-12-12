@@ -28,7 +28,7 @@ class DetailedMoments extends Component {
     const { moment } = this.state;
     const sendDate = this.state.availableDate;
     const chooseDate = new Date(this.state.availableDate);
-    moment && console.log("moment.locale", moment.locale);
+    moment && console.log("moment.locale", moment);
     //console.log('context in detail', this.props.context.login)
     return moment ? (
       <div className="detailed-container">

@@ -26,7 +26,7 @@ export default function MomentCard(props) {
         <div className="moment-card-details">
           <div className="description-city-line">
             <p className="moment-category">{moment.category}</p>
-            <i className="fas fa-circle" />
+            <i className="fas fa-circle" style={{ fontSize: "3px" }} />
             <p className="moment-category">{moment.locale}</p>
           </div>
           <div className="moment-card-title">
@@ -34,8 +34,8 @@ export default function MomentCard(props) {
           </div>
           <div className="moment-card-price-time">
             <p>${moment.price} per person </p>
-            <i className="fas fa-circle" />
-            <p>{moment.duration}</p>
+            <i className="fas fa-circle" style={{ fontSize: "3px" }} />
+            <p>{moment.duration} hours</p>
           </div>
         </div>
       </Link>

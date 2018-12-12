@@ -130,3 +130,19 @@ i {
   color: $font-light-grey;
   width: 8px;
 }
+.front-page {
+  margin: 0px auto;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+.logo {
+  width: 30%;
+}
+.slogan {
+  font-size: 36px;
+  color: $font-light-grey;
+  margin: 5px;
+}

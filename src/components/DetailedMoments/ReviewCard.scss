@@ -1,4 +1,6 @@
 .review-wrapper {
+  width: 50%;
+  margin: auto;
   display: flex;
   flex-direction: column;
   // justify-content: left;
@@ -7,25 +9,41 @@
 .review-wrapper-inside {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; 
+  align-items: flex-start;
 }
-.review-title{
+.name {
+  font-size: 24px;
+  margin: 5px;
+}
+.review-title {
   font-size: 30px;
 }
 .review-description {
   font-size: 17px;
 }
-.star {
-  width:25px;
-}
 
 .display-inline {
-  display: inline
+  display: inline;
 }
 .host-photo-box {
-  width: 100px;
-  height: 100px;
+  margin-right: 10px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   object-fit: cover;
 }
 // .host-photo
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.flex-col-space-btw {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

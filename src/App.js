@@ -20,6 +20,7 @@ import ThankYou from "./components/ThankYou/ThankYou";
 class App extends Component {
   componentDidMount() {
     // localStorage.setItem("login", false);
+    this.updateScreen();
     window.addEventListener("resize", this.updateScreen.bind(this));
   }
   componentWillUnmount() {

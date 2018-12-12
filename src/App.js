@@ -18,9 +18,18 @@ import "./reset.css";
 import ThankYou from "./components/ThankYou/ThankYou";
 
 class App extends Component {
-  // componentDidMount() {
-  //   localStorage.setItem("login", false);
-  // }
+  componentDidMount() {
+    // localStorage.setItem("login", false);
+    window.addEventListener("resize", this.updateScreen.bind(this));
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateScreen.bind(this));
+  }
+  updateScreen = () => {
+    this.props.context.updateInfo("screenWidth", window.innerWidth);
+    this.props.context.updateInfo("screenHeight", window.innerHeight);
+  };
+
   render() {
     // localStorage.clear();
     // let login = localStorage.getItem("login");

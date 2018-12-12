@@ -1,8 +1,9 @@
 .review-wrapper {
-  width: 50%;
+  width: 100%;
   margin: auto;
   display: flex;
   flex-direction: column;
+  margin: 10px 0px;
   // justify-content: left;
   // align-content: left;
 }
@@ -12,8 +13,13 @@
   align-items: flex-start;
 }
 .name {
-  font-size: 24px;
-  margin: 5px;
+  font-size: 20px;
+  // margin: 5px;
+}
+.stars {
+  height: 25px;
+  width: 25px;
+  // margin: 15px 0px;
 }
 .review-title {
   font-size: 30px;
@@ -25,10 +31,10 @@
 .display-inline {
   display: inline;
 }
-.host-photo-box {
-  margin-right: 10px;
-  width: 90px;
-  height: 90px;
+.host-photo {
+  margin-right: 20px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -45,5 +51,5 @@
 .flex-col-space-btw {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }

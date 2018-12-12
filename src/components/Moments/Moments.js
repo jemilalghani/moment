@@ -3,20 +3,41 @@ import axios from "axios";
 import MomentContainer from "./MomentContainer";
 import MomentCard from "./MomentCard";
 import Logo from "../../Image/Moment-M-Word-White.svg";
+import withContext from "../../components/ContextApi/Context_HOC";
 
 class Moments extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       moments: [],
-      user: []
+      user: [],
+      screenWidth: this.props.context.screenWidth,
+      cardsNumber: 0
     };
   }
 
   componentDidMount() {
     this.getMoments();
-    //this.getHost();
   }
+  async componentDidUpdate(prevProps) {
+    const { screenWidth } = this.props.context;
+    if (this.props.context.screenWidth !== prevProps.context.screenWidth) {
+      console.log("screenWidth is ", screenWidth);
+      await this.setState({ screenWidth: screenWidth });
+      this.cardNumberCalc();
+    }
+  }
+
+  cardNumberCalc = () => {
+    const { screenWidth } = this.props.context;
+
+    let cardAreaWidth = screenWidth * 0.85;
+    let cardWidth = 270;
+    let cardsNumber = Math.floor(cardAreaWidth / cardWidth);
+    console.log("cardAreaWidth", cardAreaWidth);
+    console.log("cardsNumber", cardsNumber);
+    this.setState({ cardsNumber: cardsNumber });
+  };
 
   getMoments = () => {
     axios.get("/api/moment/:highlight").then(res => {
@@ -26,9 +47,10 @@ class Moments extends Component {
   };
 
   render() {
-    let mappedMoments1 = this.state.moments.slice(0, 5);
-    console.log("mappedMoments1", mappedMoments1);
-    let mappedMoments = this.state.moments.slice(0, 5).map(moment => {
+    const { cardsNumber } = this.state;
+    // let mappedMoments1 = this.state.moments.slice(0, 5);
+    // console.log("mappedMoments1", mappedMoments1);
+    let mappedMoments = this.state.moments.slice(0, cardsNumber).map(moment => {
       // console.log(moment.photos)
       return <MomentCard moment={moment} />;
     });
@@ -62,7 +84,7 @@ class Moments extends Component {
   }
 }
 
-export default Moments;
+export default withContext(Moments);
 
 // <figure class="swap-on-hover">
 //  <img  class="swap-on-hover__front-image" src="https://c402277.ssl.cf1.rackcdn.com/photos/1620/images/carousel_small/bengal-tiger-why-matter_7341043.jpg?1345548942"/>

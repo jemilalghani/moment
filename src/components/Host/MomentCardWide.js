@@ -4,6 +4,7 @@ import arrow from "../../Image/down-arrow (2).png";
 import { Link } from "react-router-dom";
 import MomentReview from "./MomentReview";
 import "./MomentCard.scss";
+import axios from "axios";
 
 export default class MomentCard extends Component {
   constructor() {
@@ -19,6 +20,13 @@ export default class MomentCard extends Component {
       return { [key]: !prevState[key] };
     });
   }
+
+  alterDeleteColumn = (e, p) => {
+    axios.get(`/api/delete/${e}/${p}`).then(done => {
+      console.log(done);
+      this.setState({ hostInfo: done.data });
+    });
+  };
 
   render() {
     const { moment, pathname } = this.props;
@@ -83,21 +91,40 @@ export default class MomentCard extends Component {
               <div className="HostCards-delete-container">
                 <div
                   className="HostCards-delete"
-                  onClick={() => this.toggle("deleted")}
+                  onClick={() => this.toggle(`delete${moment.id}`)}
                 >
                   <img
                     src={gear}
-                    className={deleted ? "delete-gear" : "delete-gear-rotate"}
+                    className={
+                      this.state[`delete${moment.id}`]
+                        ? "delete-gear"
+                        : "delete-gear-rotate"
+                    }
                     alt=""
                   />
                   <img
-                    className={deleted ? "delete-arrow" : "delete-arrow-rotate"}
+                    className={
+                      this.state[`delete${moment.id}`]
+                        ? "delete-arrow"
+                        : "delete-arrow-rotate"
+                    }
                     src={arrow}
                     alt=""
                   />
                 </div>
-                <div className={deleted ? "delete-visible" : "delete-hidden"}>
-                  <span>Delete</span>
+                <div
+                  className={
+                    this.state[`delete${moment.id}`]
+                      ? "delete-visible"
+                      : "delete-hidden"
+                  }
+                  value={moment.id}
+                  onClick={() => {
+                    this.alterDeleteColumn(moment.id, moment.prof_id);
+                    this.toggle(`delete${moment.id}`);
+                  }}
+                >
+                  Delete
                 </div>
               </div>
             ) : (

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import MomentContainer from "./MomentContainer";
 import MomentCard from "./MomentCard";
+import Logo from "../../Image/Moment-M-Word-White.svg";
 
 class Moments extends Component {
   constructor() {
@@ -34,16 +35,22 @@ class Moments extends Component {
     let blankMap = <></>;
     let title = <h2>Highlighted Trips From Around the World</h2>;
     let title2 = <h2>Trips Found Nearby</h2>;
-    let title3 = <h2>Welcome to Moment</h2>;
+    let title3 = <img className="logo" src={Logo} />;
     let text3 = (
-      <h4>
-        Moment is a platform for people to share their unique knowledge,
-        passions, and abilities to anyone. Hosts create an experience - an event
-        limited to a single day, but which is not limited in creativity. Hosts
-        will provide the opportunity to learn, taste, think, hike, ride see or
-        discover something new. There are unique experiences across the globe
-        waiting for you. Sign up now to find your next adventure!
-      </h4>
+      <div className="front-page">
+        <div className="slogan">
+          Moment is a platform for people to share their unique knowledge,
+          passions, and abilities to anyone by hosting experiences. Discover
+          your next adventure!
+        </div>
+        {/* <div className="slogan">
+          Hosts create an experience - an event limited to a single day, but
+          which is not limited in creativity. Hosts will provide the opportunity
+          to learn, taste, think, hike, ride see or discover something new.
+          There are unique experiences across the globe waiting for you. Sign up
+          now to find your next adventure!
+        </div>{" "} */}
+      </div>
     );
     return (
       <>

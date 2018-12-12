@@ -16,13 +16,16 @@ class CheckOut extends Component {
       user: [],
       moment: [],
       date: "",
-      email: ""
+      email: "",
+      dateId: ""
     };
   }
 
   onToken = stripeToken => {
     console.log("onToken", stripeToken);
-    let expId = this.state.moment.id;
+    // let expId = this.state.moment.id;
+    let dateID = this.state.dateId;
+    //let dateId =
     //let selectedDate = this.props.location.date.sendDate
     axios
       .post("/api/charge", {
@@ -33,7 +36,7 @@ class CheckOut extends Component {
       .then(response => {
         console.log("succcccccessss", response.data);
         axios.post("/api/orderCheckout", {
-          exp_id: expId,
+          date_id: dateID,
           prof_id: this.state.userId,
           group_size: this.state.guests
         });
@@ -97,11 +100,13 @@ class CheckOut extends Component {
       get(this.props.location, "date") ||
       JSON.parse(localStorage.getItem("date"));
 
-    localStorage.setItem("date", JSON.stringify(date));
+    //localStorage.setItem("date", JSON.stringify(date));
 
     this.setState({
       moment: moment,
-      date: date
+      date: date,
+      dateId: this.props.history.location.dateId,
+      group_size_remaining: this.props.history.location.sendGroupRemaining
     });
   }
 
@@ -109,7 +114,7 @@ class CheckOut extends Component {
     //   console.log('checkouttuttt passed props', this.props.location)
     //   console.log('this is the totatttal', this.state.total)
     //   console.log('context in checkout', this.props.context.login)
-    // console.log("moment in moment", this.state.moment);
+    console.log("this.props.history.location.", this.props.history.location);
     // console.log("user id in checkout", this.state.user);
     // console.log("this props location", this.props.location);
     const date =
@@ -118,10 +123,11 @@ class CheckOut extends Component {
     const moment =
       get(this.props.location, "moment.moment") ||
       JSON.parse(localStorage.getItem("moment"));
-    console.log("date in render", this.state.date);
     console.log("formate date", this.state.date);
     console.log("moment in render", this.state.moment);
     console.log("props in checkout", this.props);
+    console.log("trying to get a id", this.state.dateId);
+    console.log("get the dateID", this.state.dateId && this.state.dateId);
 
     // console.log("moment", moment);
     const total = this.state.moment.price * this.state.guests;
@@ -217,7 +223,7 @@ class CheckOut extends Component {
                   </div>
                 </div>
                 <div className="checkout-selected-datetime">
-                  <h4>{`${date.sendDate}`}</h4>
+                  <h4>{`${date}`}</h4>
                   <p>
                     {moment.available_time_start}-{moment.available_time_end}
                   </p>

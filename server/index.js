@@ -49,10 +49,12 @@ app.get("/api/moment/locale", momentController.findLocale);
 app.get("/api/moment", momentController.findAll);
 app.get("/api/moments/:id", momentController.getByID);
 app.get("/api/delete/:id/:hostid", momentController.delete);
+app.post("/api/filtermoment", momentController.filter);
 // ORDERS TABLE
 // app.get('/api/order/hostFind')
 // app.post('/api/order/userCreate')
 // app.get('/api/order/userFind')
+app.get("/api/availabledates/:id", momentController.getAvailDates);
 app.get("/api/order/:id", orderController.getOrders);
 app.post("/api/orderCheckout", orderController.addToOrders);
 // REVIEWS TABLE

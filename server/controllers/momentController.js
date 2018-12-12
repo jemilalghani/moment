@@ -152,7 +152,7 @@ module.exports = {
     const db = req.app.get("db");
     db.get_moment_by_id(req.params.id).then(all => {
       moment = Object.assign(all, {});
-      db.get_photo_host(all[0].id).then(photo => {
+      db.get_photo(all[0].id).then(photo => {
         res.json(addPhotosToMoment(moment, photo));
       });
     });
@@ -166,6 +166,50 @@ module.exports = {
         res.json(addPhotosToMoment(moment, photo));
       });
     });
+  },
+  filter: (req, res) => {
+    const db = req.app.get("db");
+    if (req.body.category) {
+      if (req.body.price > 1) {
+        db.filter([
+          req.body.price,
+          req.body.group_size_limit,
+          req.body.category
+        ])
+          .then(data => {
+            res.json(data);
+          })
+          .catch(error => {
+            console.error("error in filter1", error);
+          });
+      } else {
+        db.filter([5000, req.body.group_size_limit, req.body.category])
+          .then(data => {
+            res.json(data);
+          })
+          .catch(error => {
+            console.error("error in filter2", error);
+          });
+      }
+    } else {
+      if (req.body.price > 1) {
+        db.filter_by_price_guest([req.body.price, req.body.group_size_limit])
+          .then(data => {
+            res.json(data);
+          })
+          .catch(error => {
+            console.error("error in filter3", error);
+          });
+      } else {
+        db.filter_by_price_guest([5000, req.body.group_size_limit])
+          .then(data => {
+            res.json(data);
+          })
+          .catch(error => {
+            console.error("error in filter4", error);
+          });
+      }
+    }
   }
 };
 

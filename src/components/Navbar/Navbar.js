@@ -15,13 +15,30 @@ class Navbar extends Component {
       guest: false,
       price: false,
       categories: false,
-      guestSize: 1
+      guestSize: 1,
+      priceValue: 1,
+      cat: false
     };
+  }
+  filter() {
+    const { cat, priceValue, guestSize } = this.state;
+    axios
+      .post("/api/filtermoment", {
+        price: priceValue,
+        group_size_limit: guestSize,
+        category: cat
+      })
+      .then(response => {
+        console.log(response);
+      });
   }
   componentDidMount() {
     axios.get("/api/sessions").then(user => {
       this.setState({ user: user.data });
     });
+  }
+  clearfilter() {
+    this.setState({ guestSize: 1, priceValue: 1, cat: false });
   }
   toggle = key => {
     this.setState(prevState => {
@@ -29,7 +46,6 @@ class Navbar extends Component {
     });
   };
   filterButton = (key, e) => {
-    console.log(e);
     this.setState({ [key]: e });
   };
   logout = () => {
@@ -47,14 +63,13 @@ class Navbar extends Component {
   increment() {
     let value = this.state.guestSize;
     let addOne = value + 1;
-    console.log(addOne);
     this.setState({ guestSize: addOne });
   }
   decrement() {
     let value = this.state.guestSize;
     let subtractOne = value - 1;
-    if (subtractOne < 0) {
-      this.setState({ guestSize: 0 });
+    if (subtractOne < 1) {
+      this.setState({ guestSize: 1 });
     } else {
       this.setState({ guestSize: subtractOne });
     }
@@ -76,9 +91,6 @@ class Navbar extends Component {
     this.setState({ guest: false, price: false, categories: false });
   };
   render() {
-    console.log(this.props);
-    console.log("navbar sessions data", this.state);
-    // console.log('from contextttttt',this.props.context.user.user)
     return (
       <div className="navbar-container">
         <div className="navbar-wrapper">
@@ -161,7 +173,9 @@ class Navbar extends Component {
                   this.toggle("guest");
                 }}
               >
-                Guest
+                {this.state.guestSize !== 1
+                  ? this.state.guestSize + " guest(s)"
+                  : "Guest"}
               </button>
               <button
                 onClick={() => {
@@ -169,7 +183,9 @@ class Navbar extends Component {
                   this.toggle("price");
                 }}
               >
-                Price
+                {this.state.priceValue !== 1
+                  ? "$" + this.state.priceValue
+                  : "Price"}
               </button>
               <button
                 onClick={() => {
@@ -177,7 +193,15 @@ class Navbar extends Component {
                   this.toggle("categories");
                 }}
               >
-                Categories
+                {this.state.cat ? this.state.cat : "Categories"}
+              </button>
+              <button
+                onClick={() => {
+                  this.clearModal(4);
+                  this.clearfilter();
+                }}
+              >
+                x
               </button>
             </div>
             <div
@@ -195,12 +219,29 @@ class Navbar extends Component {
               }}
               ref={node => (this.node = node)}
             >
-              <button className="guest-button" onClick={() => this.decrement()}>
-                -
-              </button>
-              <p>{this.state.guestSize}+</p>
-              <button className="guest-button" onClick={() => this.increment()}>
-                +
+              <div className="button-flex-apply">
+                <button
+                  className="guest-button"
+                  onClick={() => this.decrement()}
+                >
+                  -
+                </button>
+                <p>{this.state.guestSize}+</p>
+                <button
+                  className="guest-button"
+                  onClick={() => this.increment()}
+                >
+                  +
+                </button>
+              </div>
+              <button
+                className="apply-button"
+                onClick={() => {
+                  this.filter();
+                  this.clearModal(4);
+                }}
+              >
+                Apply
               </button>
             </div>
             <div
@@ -219,6 +260,15 @@ class Navbar extends Component {
                 onChange={e => this.filterButton("priceValue", e.target.value)}
               />
               <p>${this.state.priceValue}</p>
+              <button
+                className="apply-button"
+                onClick={() => {
+                  this.filter();
+                  this.clearModal(4);
+                }}
+              >
+                Apply
+              </button>
             </div>
             <div
               className="categorymodal"
@@ -299,7 +349,15 @@ class Navbar extends Component {
               >
                 Nightlife
               </button>
-              <button className="apply-button">Apply</button>
+              <button
+                className="apply-button"
+                onClick={() => {
+                  this.filter();
+                  this.clearModal(4);
+                }}
+              >
+                Apply
+              </button>
             </div>
           </span>
         )}

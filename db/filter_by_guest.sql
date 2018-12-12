@@ -1,0 +1,1 @@
+select * from experiences where group_size_limit >= $1;

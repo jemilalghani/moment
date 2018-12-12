@@ -116,6 +116,7 @@ class DetailedMoments extends Component {
           </div>
           <Map city={moment.locale} />
         </div>
+
         <div className="detailed-wrapper">
           <Reviews moment={moment} />
         </div>

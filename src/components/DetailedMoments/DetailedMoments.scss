@@ -83,7 +83,7 @@
 
 .box-over-map {
   // max-width: 100%;
-  // max-height: 400px;
+  position: relative;
 }
 
 .smallbox {
@@ -95,19 +95,21 @@
 }
 
 .map-box {
-  left: 50px;
-  top: 420px;
   z-index: 2;
-  position: relative;
+  position: absolute;
   background: white;
   width: 350px;
   height: 400px;
   margin: 0px;
+  bottom: 22px;
+  left: 50px;
 }
 
 .map-box-wrapper {
   height: 90%;
   width: 90%;
+  bottom: 0;
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;

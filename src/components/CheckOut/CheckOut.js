@@ -133,7 +133,7 @@ class CheckOut extends Component {
     const total = this.state.moment.price * this.state.guests;
     // let groupSizeLimit = this.props.location.moment.moment.group_size_limit;
     let array = [];
-    for (let i = 0; i < this.state.moment.group_size_limit; i++) {
+    for (let i = 0; i < this.state.group_size_remaining; i++) {
       array.push(i);
     }
     let options = array.map(el => {

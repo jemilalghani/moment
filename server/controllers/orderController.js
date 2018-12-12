@@ -2,9 +2,16 @@ module.exports = {
   addToOrders: (req, res) => {
     const db = req.app.get("db");
     const { date_id, prof_id, group_size } = req.body;
-    db.add_to_orders([date_id, prof_id, group_size]).then(order => {
-      res.status(200).send(order);
-    });
+    db.add_to_orders([date_id, prof_id, group_size])
+      .then(order => {
+        console.log("success");
+      })
+      .then(data => {
+        db.change_available_dates([group_size, date_id]).then(date => {
+          console.log("success");
+          res.status(200).send(date);
+        });
+      });
   },
 
   getOrders: (req, res) => {

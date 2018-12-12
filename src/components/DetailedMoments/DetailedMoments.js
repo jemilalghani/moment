@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import withContext from "../ContextApi/Context_HOC";
 import Reviews from "./Reviews";
 import axios from "axios";
+import moment from "moment";
 
 class DetailedMoments extends Component {
   constructor() {

@@ -11,7 +11,8 @@ class DetailedMoments extends Component {
   constructor() {
     super();
     this.state = {
-      availableDate: ""
+      availableDate: "",
+      user: ""
     };
   }
   componentDidMount() {
@@ -20,6 +21,9 @@ class DetailedMoments extends Component {
     axios.get(`/api/moments/${id}`).then(moment => {
       // console.log("axiosget by id", moment.data);
       this.setState({ moment: moment.data[0] });
+    });
+    axios.get("/api/sessions").then(user => {
+      this.setState({ user: user.data });
     });
   }
 

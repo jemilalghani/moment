@@ -27,12 +27,14 @@ class DetailedMoments extends Component {
     axios.get("/api/sessions").then(user => {
       this.setState({ user: user.data });
     });
-    axios.get(`/api/availabledates/${this.state.moment.id}`).then(el => {
-      this.setState({
-        availableDate: el.data,
-        groupRemaining: el.data
+    this.state.moment && console.log("CDM state.moment", this.state.moment.id);
+    this.state.moment &&
+      axios.get(`/api/availabledates/${this.state.moment.id}`).then(el => {
+        this.setState({
+          availableDate: el.data,
+          groupRemaining: el.data
+        });
       });
-    });
   }
 
   render() {

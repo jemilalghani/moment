@@ -91,6 +91,7 @@ class Navbar extends Component {
     this.setState({ guest: false, price: false, categories: false });
   };
   render() {
+    console.log("sessions in navbar", this.state.user);
     return (
       <div className="navbar-container">
         <div className="navbar-wrapper">

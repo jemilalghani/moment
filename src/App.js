@@ -21,6 +21,7 @@ class App extends Component {
   componentDidMount() {
     // localStorage.setItem("login", false);
     window.addEventListener("resize", this.updateScreen.bind(this));
+    this.updateScreen();
   }
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateScreen.bind(this));

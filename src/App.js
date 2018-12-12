@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import withContext from "./components/ContextApi/Context_HOC";
 import Navbar from "./components/Navbar/Navbar";
 // import routes from "./routes";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import DetailedMoments from "./components/DetailedMoments/DetailedMoments";
 import LoginRegister from "./components/LoginRegister/LoginRegister";
 import Moments from "./components/Moments/Moments";
@@ -40,7 +40,10 @@ class App extends Component {
                 register ? <Redirect to="/login" /> : <Register />
               }
             />
-            <Route path="/moments/:id" component={DetailedMoments} />
+            <Route
+              path="/moments/:id"
+              component={withRouter(DetailedMoments)}
+            />
             <Route
               path="/login"
               render={() =>

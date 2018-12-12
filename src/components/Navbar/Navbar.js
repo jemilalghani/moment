@@ -98,12 +98,21 @@ class Navbar extends Component {
                   <div>
                     <Link to="/trips">Trips</Link>
                   </div>
-                  <img
-                    src={this.props.context.user.user.prof_photo_url}
-                    className="nav-profile-img"
-                    onClick={() => this.toggle("dropdown")}
-                    alt=""
-                  />
+                  {this.props.context.user.user ? (
+                    <img
+                      src={this.props.context.user.user.prof_photo_url}
+                      className="nav-profile-img"
+                      onClick={() => this.toggle("dropdown")}
+                      alt=""
+                    />
+                  ) : (
+                    <img
+                      src="https://i.stack.imgur.com/l60Hf.png"
+                      className="nav-profile-img"
+                      onClick={() => this.toggle("dropdown")}
+                      alt=""
+                    />
+                  )}
                 </div>
               ) : (
                 this.state.user.user && (

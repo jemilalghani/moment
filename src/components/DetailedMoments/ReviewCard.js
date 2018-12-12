@@ -10,9 +10,9 @@ export default function ReviewCard(props) {
     let starsmapped = [];
     for (let i = 0; i < 5; i++) {
       if (i < stars) {
-        starsmapped.push(<img className="star" src={starFull} />);
+        starsmapped.push(<img className="stars" src={starFull} />);
       } else {
-        starsmapped.push(<img className="star" src={starEmpty} />);
+        starsmapped.push(<img className="stars" src={starEmpty} />);
       }
     }
     return starsmapped;
@@ -21,7 +21,7 @@ export default function ReviewCard(props) {
     <div className="review-wrapper">
       <div className="review-wrapper-inside">
         <div className="flex-row">
-          <img className="host-photo-box" src={review.prof_photo_url} />
+          <img className="host-photo" src={review.prof_photo_url} />
           <div className="flex-col-space-btw">
             <span className="name">
               {review.name_first + " " + review.name_last}

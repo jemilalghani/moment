@@ -1,5 +1,10 @@
 @import "../../variables";
 
+.avail-date {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
 .detailed-container {
   display: flex;
   flex-direction: column;
@@ -65,15 +70,20 @@
 }
 
 .choose-button {
-  width: 100%;
+  width: 70%;
   padding-top: 10px;
   padding-bottom: 10px;
   border-radius: 4px;
   color: white;
-  font-weight: 700;
+  font-weight: bold;
   font-size: 12px;
   background: rgb(0, 121, 126);
   border: none;
+  transition: 0.8s;
+}
+
+.choose-button:hover {
+  background: rgb(0, 90, 94);
 }
 
 .date-price {

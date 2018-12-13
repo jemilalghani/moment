@@ -25,6 +25,13 @@ app.use(
   })
 );
 
+app.use(express.static(`${__dirname}/../build`));
+
+const path = require("path");
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
+});
+
 massive(process.env.CONNECTION_STRING)
   .then(database => {
     app.set("db", database);

@@ -44,12 +44,12 @@ class DetailedMoments extends Component {
     console.log("dateee", this.state.availableDate);
     const { groupRemaining } = this.state;
     const { moment } = this.state;
-    const chooseDate = new Date(this.state.availableDate);
-    const sendDate =
-      this.state.availableDate &&
-      this.state.availableDate.map(dates => {
-        return <div>{dates.available_date}</div>;
-      });
+    // const chooseDate = new Date(this.state.availableDate);
+    // const sendDate =
+    //   this.state.availableDate &&
+    //   this.state.availableDate.map(dates => {
+    //     return <div>{dates.available_date}</div>;
+    //   });
     let mappedDates =
       this.state.availableDate &&
       this.state.availableDate.map(date => {
@@ -60,7 +60,7 @@ class DetailedMoments extends Component {
           date.group_size_remaining
         );
         return (
-          <div>
+          <div className="avail-date">
             {date.available_date}
             <button className="choose-button">
               <Link

@@ -28,6 +28,7 @@ export default class ContextProvider extends React.Component {
       availableDate: null,
       groupSizeLimit: null,
       userId: null,
+      filteredMoments: [],
       screenWidth: null,
       screenHeight: null
     };

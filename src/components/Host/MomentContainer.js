@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router";
+import { Link } from "react-router-dom";
 
-export default class MomentContainer extends Component {
+class MomentContainer extends Component {
   constructor() {
     super();
   }
@@ -12,9 +14,20 @@ export default class MomentContainer extends Component {
         {title}
         <div className="HostCards">
           {text ? text : <></>}
-          {mapped}
+          {this.props.location.pathname === "/trips" && mapped.length === 0 ? (
+            <Link to="/">
+              <img
+                src="https://static.collectui.com/shots/3607374/moving-gif-large"
+                alt=""
+                style={{ height: "450px" }}
+              />
+            </Link>
+          ) : (
+            mapped
+          )}
         </div>
       </div>
     );
   }
 }
+export default withRouter(MomentContainer);

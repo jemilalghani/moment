@@ -24,7 +24,7 @@
   display: flex;
   width: 230px;
   flex-direction: column;
-  margin: 20px;
+  margin-bottom: 10px;
 }
 
 .moment-image {
@@ -96,7 +96,7 @@
 .swap-hover {
   position: relative;
   margin: 0 auto;
-  max-width: 400px;
+  max-width: 350px;
 }
 
 .swap-hover img {
@@ -107,6 +107,7 @@
   //height: 250px;
   width: 100%;
   object-fit: cover;
+  filter: contrast(105%);
 }
 
 .swap-hover .swap-hover-front-image {
@@ -142,7 +143,8 @@ i {
   width: 30%;
 }
 .slogan {
-  font-size: 36px;
-  color: $font-light-grey;
+  font-size: 15px;
+  color: $font-black;
   margin: 5px;
+  font-weight: 500;
 }

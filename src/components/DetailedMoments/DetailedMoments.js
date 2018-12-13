@@ -6,8 +6,34 @@ import { Link } from "react-router-dom";
 import withContext from "../ContextApi/Context_HOC";
 import Reviews from "./Reviews";
 import axios from "axios";
+import Slider from "react-slick";
+import prev from "../../Image/Group 4.svg";
+import next from "../../Image/Group 5.svg";
 import moment from "moment";
 var _ = require("lodash");
+
+function PrevArrow(props) {
+  const { className, onClick } = props;
+  return (
+    <img
+      src={prev}
+      className={className + " detail-prevArrow"}
+      onClick={onClick}
+      alt=""
+    />
+  );
+}
+function NextArrow(props) {
+  const { className, onClick } = props;
+  return (
+    <img
+      src={next}
+      className={className + " detail-nextArrow"}
+      onClick={onClick}
+      alt=""
+    />
+  );
+}
 
 class DetailedMoments extends Component {
   constructor() {
@@ -51,6 +77,15 @@ class DetailedMoments extends Component {
     const { groupRemaining } = this.state;
     const { moment } = this.state;
     const chooseDate = new Date(this.state.availableDate);
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      nextArrow: <NextArrow />,
+      prevArrow: <PrevArrow />
+    };
     const sendDate =
       this.state.availableDate &&
       this.state.availableDate.map(dates => {
@@ -85,14 +120,17 @@ class DetailedMoments extends Component {
           </div>
         );
       });
-    moment && console.log("moment.locale", moment);
-    //console.log('context in detail', this.props.context.login)
     return moment ? (
       <div className="detailed-container">
         <div className="detailed-wrapper">
-          <div>
-            <img className="detailed-img" src={moment.photos[1]} alt="" />
-          </div>
+          <Slider {...settings}>
+            <div>
+              <img className="detailed-img" src={moment.photos[0]} alt="" />
+            </div>
+            <div>
+              <img className="detailed-img" src={moment.photos[1]} alt="" />
+            </div>
+          </Slider>
           <div className="detailed-info-wrapper">
             <div className="detailed-info-box">
               <div className="detailed-category-title">

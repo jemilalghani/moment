@@ -3,7 +3,7 @@ import axios from "axios";
 import MomentContainer from "./MomentContainer";
 import MomentCard from "./MomentCard";
 import Logo from "../../Image/Moment-M-Word-White.svg";
-import withContext from "../../components/ContextApi/Context_HOC";
+import withContext from "../ContextApi/Context_HOC";
 
 class Moments extends Component {
   constructor(props) {
@@ -54,10 +54,16 @@ class Moments extends Component {
       // console.log(moment.photos)
       return <MomentCard moment={moment} />;
     });
+    let filteredMoments =
+      this.props.context.filteredMoments !== [] &&
+      this.props.context.filteredMoments.map(moment => {
+        return <MomentCard moment={moment} />;
+      });
     let blankMap = <></>;
     let title = <h2>Highlighted Trips From Around the World</h2>;
     let title2 = <h2>Trips Found Nearby</h2>;
     let title3 = <img className="logo" src={Logo} />;
+    let title4 = <h2>Filtered Results</h2>;
     let text3 = (
       <div className="front-page">
         <div className="slogan">
@@ -76,6 +82,11 @@ class Moments extends Component {
     );
     return (
       <>
+        <MomentContainer
+          // title={filteredMoments && title4}
+          mapped={filteredMoments}
+        />
+
         <MomentContainer title={title3} text={text3} mapped={blankMap} />
         <MomentContainer title={title} mapped={mappedMoments} />
         <MomentContainer title={title2} mapped={mappedMoments} />

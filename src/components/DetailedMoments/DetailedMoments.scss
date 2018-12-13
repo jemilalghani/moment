@@ -14,6 +14,22 @@
   display: flex;
   width: 80%;
   margin: 0 auto;
+  .slick-list {
+    max-width: 350px;
+  }
+  .slick-slider {
+    height: 500px;
+  }
+
+  .detail-prevArrow {
+    z-index: 3;
+    left: 0;
+    // left: 100px;
+  }
+  .detail-nextArrow {
+    z-index: 3;
+    right: 0;
+  }
 }
 
 .detailed-info-wrapper {
@@ -52,6 +68,7 @@
 
 .detailed-img {
   height: 500px;
+  width: 400px;
 }
 
 .detailed-paragraphs {

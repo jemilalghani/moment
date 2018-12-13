@@ -104,7 +104,7 @@ class Wizard extends Component {
       highlight: true,
       photoOne,
       photoTwo,
-      availableDate: availableDate[0],
+      availableDate,
       userId
     })
       .then(() => {
@@ -132,18 +132,29 @@ class Wizard extends Component {
     ];
     return (
       <div className="wizard">
+        {this.state.pageNumber === 12 && <h2>Review Moment</h2>}
         <form onSubmit={e => this.increment(e)}>
           {array[this.state.pageNumber]}
           <div className="wizard-button-container">
             {this.state.pageNumber === 0 ? (
               <Link to="/host">
-                <button>Back</button>
+                <button className="wizard-nextbutton">Back</button>
               </Link>
             ) : (
-              <button onClick={e => this.decrement(e)}>Previous</button>
+              <button
+                className="wizard-nextbutton"
+                onClick={e => this.decrement(e)}
+              >
+                Previous
+              </button>
             )}
             {this.state.pageNumber === 11 ? (
-              <button onClick={() => this.duration()}>Review</button>
+              <button
+                className="wizard-nextbutton"
+                onClick={() => this.duration()}
+              >
+                Review
+              </button>
             ) : this.state.pageNumber >= 12 ? null : (
               <input
                 className="wizard-nextbutton"

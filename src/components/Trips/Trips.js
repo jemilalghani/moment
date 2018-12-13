@@ -6,6 +6,7 @@ import moment from "moment";
 import MomentCard from "../Moments/MomentCard";
 import MomentCardWide from "../Host/MomentCardWide";
 import MomentContainer from "../Host/MomentContainer";
+import image from "../../Image/upcoming.svg";
 
 class Trips extends Component {
   constructor() {
@@ -60,7 +61,6 @@ class Trips extends Component {
     // })
 
     const upcomingTrips = this.state.trips.map(trip => {
-      console.log(trip);
       if (trip.date_complete === false) {
         return <MomentCardWide moment={trip} />;
       }
@@ -73,11 +73,17 @@ class Trips extends Component {
     });
     let title = this.giveTitle("Completed Trips");
     let title2 = this.giveTitle("Upcoming Trips");
+    let title3 = this.giveTitle("Book Your Next Adventure");
     console.log("Trips, this.state.trips", this.state.trips);
-    return (
+    return this.state.trip ? (
       <>
         <MomentContainer title={title2} mapped={upcomingTrips} />
         <MomentContainer title={title} mapped={completeTrips} />
+        <div className="bottom-border" />
+      </>
+    ) : (
+      <>
+        <MomentContainer title={title3} mapped={upcomingTrips} />
         <div className="bottom-border" />
       </>
     );

@@ -45,14 +45,15 @@ module.exports = {
           .catch(error => {
             console.log("error in photo", error);
           });
-
-        db.add_available_date([data[0].id, availableDate])
-          .then(date => {
-            // console.log(date);
-          })
-          .catch(error => {
-            console.log("error in date", error);
-          });
+        availableDate.forEach(el => {
+          db.add_available_date([data[0].id, el, groupSize])
+            .then(date => {
+              console.log(date);
+            })
+            .catch(error => {
+              console.log("error in date", error);
+            });
+        });
 
         db.add_moment_creator([userId, data[0].id])
           .then(creator => {
@@ -168,6 +169,7 @@ module.exports = {
     });
   },
   filter: (req, res) => {
+    let moment = {};
     const db = req.app.get("db");
     if (req.body.category) {
       if (req.body.price > 1) {
@@ -177,7 +179,14 @@ module.exports = {
           req.body.category
         ])
           .then(data => {
-            res.json(data);
+            moment = Object.assign(data, {});
+            db.filter_photo([
+              req.body.price,
+              req.body.group_size_limit,
+              req.body.category
+            ]).then(photo => {
+              res.json(addPhotosToMoment(moment, photo));
+            });
           })
           .catch(error => {
             console.error("error in filter1", error);
@@ -185,7 +194,14 @@ module.exports = {
       } else {
         db.filter([5000, req.body.group_size_limit, req.body.category])
           .then(data => {
-            res.json(data);
+            moment = Object.assign(data, {});
+            db.filter_photo([
+              5000,
+              req.body.group_size_limit,
+              req.body.category
+            ]).then(photo => {
+              res.json(addPhotosToMoment(moment, photo));
+            });
           })
           .catch(error => {
             console.error("error in filter2", error);
@@ -195,7 +211,13 @@ module.exports = {
       if (req.body.price > 1) {
         db.filter_by_price_guest([req.body.price, req.body.group_size_limit])
           .then(data => {
-            res.json(data);
+            moment = Object.assign(data, {});
+            db.filter_by_price_guest_photo([
+              req.body.price,
+              req.body.group_size_limit
+            ]).then(photo => {
+              res.json(addPhotosToMoment(moment, photo));
+            });
           })
           .catch(error => {
             console.error("error in filter3", error);
@@ -203,7 +225,13 @@ module.exports = {
       } else {
         db.filter_by_price_guest([5000, req.body.group_size_limit])
           .then(data => {
-            res.json(data);
+            moment = Object.assign(data, {});
+            db.filter_by_price_guest_photo([
+              5000,
+              req.body.group_size_limit
+            ]).then(photo => {
+              res.json(addPhotosToMoment(moment, photo));
+            });
           })
           .catch(error => {
             console.error("error in filter4", error);

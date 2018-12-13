@@ -11,7 +11,7 @@ class Navbar extends Component {
   constructor() {
     super();
     this.state = {
-      dropdown: false,
+      dropdown: true,
       guest: false,
       price: false,
       categories: false,
@@ -29,7 +29,7 @@ class Navbar extends Component {
         category: cat
       })
       .then(response => {
-        console.log(response);
+        this.props.context.updateInfo("filteredMoments", response.data);
       });
   }
   componentDidMount() {
@@ -39,11 +39,17 @@ class Navbar extends Component {
   }
   clearfilter() {
     this.setState({ guestSize: 1, priceValue: 1, cat: false });
+    this.props.context.updateInfo("filteredMoments", []);
   }
   toggle = key => {
     this.setState(prevState => {
       return { [key]: !prevState[key] };
     });
+    if (key === "dropdown") {
+      setTimeout(() => {
+        this.setState({ dropdown: true });
+      }, 2000);
+    }
   };
   filterButton = (key, e) => {
     this.setState({ [key]: e });
@@ -110,12 +116,25 @@ class Navbar extends Component {
                   <div>
                     <Link to="/trips">Trips</Link>
                   </div>
-                  <img
-                    src={this.props.context.user.user.prof_photo_url}
-                    className="nav-profile-img"
-                    onClick={() => this.toggle("dropdown")}
-                    alt=""
-                  />
+                  <div>
+                    <Link to="/userprofile">Profile</Link>
+                  </div>
+                  <div className="image-loggedin">
+                    <img
+                      src={this.props.context.user.user.prof_photo_url}
+                      className="nav-profile-img"
+                      onClick={() => this.toggle("dropdown")}
+                      alt=""
+                    />
+                    <button
+                      onClick={this.logout}
+                      style={{
+                        display: this.state.dropdown ? "none" : "inline-block"
+                      }}
+                    >
+                      logout
+                    </button>
+                  </div>
                 </div>
               ) : (
                 this.state.user.user && (
@@ -126,31 +145,28 @@ class Navbar extends Component {
                     <div>
                       <Link to="/trips">Trips</Link>
                     </div>
-                    <img
-                      src={this.state.user.user.prof_photo_url}
-                      className="nav-profile-img"
-                      onClick={() => this.toggle("dropdown")}
-                      alt=""
-                    />
+                    <div>
+                      <Link to="/userprofile">Profile</Link>
+                    </div>
+                    <div className="image-loggedin">
+                      <img
+                        src={this.state.user.user.prof_photo_url}
+                        className="nav-profile-img"
+                        onClick={() => this.toggle("dropdown")}
+                        alt=""
+                      />
+                      <button
+                        onClick={this.logout}
+                        style={{
+                          display: this.state.dropdown ? "none" : "inline-block"
+                        }}
+                      >
+                        logout
+                      </button>
+                    </div>
                   </div>
                 )
               )}
-              <div
-                className={
-                  this.state.dropdown
-                    ? "navbar-dropdown-closed"
-                    : "navbar-dropdown"
-                }
-              >
-                <ul>
-                  <Link to="/userprofile">
-                    <li>Edit Profile</li>
-                  </Link>
-                  <li>
-                    <button onClick={this.logout}>logout</button>
-                  </li>
-                </ul>
-              </div>
             </div>
           ) : (
             <div className="navbar-right">

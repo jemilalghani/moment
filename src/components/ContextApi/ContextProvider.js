@@ -27,7 +27,8 @@ export default class ContextProvider extends React.Component {
       photoTwo: null,
       availableDate: null,
       groupSizeLimit: null,
-      userId: null
+      userId: null,
+      filteredMoments: []
     };
   }
   updateInfo = (key, e) => {

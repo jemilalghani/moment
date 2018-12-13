@@ -48,10 +48,7 @@ class Moments extends Component {
 
   render() {
     const { cardsNumber } = this.state;
-    let mappedMoments1 = this.state.moments.slice(0, 5);
-    console.log("mappedMoments1", mappedMoments1);
     let mappedMoments = this.state.moments.slice(0, cardsNumber).map(moment => {
-      // console.log(moment.photos)
       return <MomentCard moment={moment} />;
     });
     let blankMap = <></>;

@@ -4,6 +4,8 @@ import MomentContainer from "./MomentContainer";
 import MomentCard from "./MomentCard";
 import Logo from "../../Image/Moment-M-Word-White.svg";
 import withContext from "../ContextApi/Context_HOC";
+import imageOne from "../../Image/imageOne.png";
+import imageTwo from "../../Image/imageTwo.png";
 
 class Moments extends Component {
   constructor(props) {
@@ -32,7 +34,7 @@ class Moments extends Component {
     const { screenWidth } = this.props.context;
 
     let cardAreaWidth = screenWidth * 0.85;
-    let cardWidth = 270;
+    let cardWidth = 240;
     let cardsNumber = Math.floor(cardAreaWidth / cardWidth);
     console.log("cardAreaWidth", cardAreaWidth);
     console.log("cardsNumber", cardsNumber);
@@ -86,6 +88,10 @@ class Moments extends Component {
 
         <MomentContainer title={title3} text={text3} mapped={blankMap} />
         <MomentContainer title={title} mapped={mappedMoments} />
+        <div className="filler-images">
+          <img src={imageOne} width="400" />
+          <img src={imageTwo} width="400" />
+        </div>
         <MomentContainer title={title2} mapped={mappedMoments} />
       </>
     );

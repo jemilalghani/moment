@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./UserProfile.scss";
 import Footer from "../Footer/Footer";
+import axios from "axios";
 
 import withContext from "../ContextApi/Context_HOC";
 
@@ -8,16 +9,23 @@ class UserProfile extends Component {
   constructor() {
     super();
     this.state = {
-      toggle: false
+      toggle: false,
+      user: []
     };
+  }
+  componentDidMount() {
+    axios.get("/api/sessions").then(user => {
+      this.setState({ user: user.data });
+    });
   }
   render() {
     console.log("in user profile", this.props.context.user.user);
-    const { user } = this.props.context.user;
-
+    // const { user } = this.props.context.user;
+    const { user } = this.state && this.state.user;
+    console.log(user);
     return (
       <div className="user-profile-container">
-        {this.props.context.user.user ? (
+        {this.state.user.user ? (
           <div className="user-profile-wrapper">
             <div className="user-profile-img">
               <img className="user-img" src={user.prof_photo_url} alt="" />

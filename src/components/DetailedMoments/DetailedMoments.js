@@ -6,6 +6,32 @@ import { Link } from "react-router-dom";
 import withContext from "../ContextApi/Context_HOC";
 import Reviews from "./Reviews";
 import axios from "axios";
+import Slider from "react-slick";
+import prev from "../../Image/Group 4.svg";
+import next from "../../Image/Group 5.svg";
+
+function PrevArrow(props) {
+  const { className, onClick } = props;
+  return (
+    <img
+      src={prev}
+      className={className + " detail-prevArrow"}
+      onClick={onClick}
+      alt=""
+    />
+  );
+}
+function NextArrow(props) {
+  const { className, onClick } = props;
+  return (
+    <img
+      src={next}
+      className={className + " detail-nextArrow"}
+      onClick={onClick}
+      alt=""
+    />
+  );
+}
 
 class DetailedMoments extends Component {
   constructor() {
@@ -18,24 +44,34 @@ class DetailedMoments extends Component {
     const id = this.props.match.params.id;
     window.scrollTo(0, 0);
     axios.get(`/api/moments/${id}`).then(moment => {
-      // console.log("axiosget by id", moment.data);
       this.setState({ moment: moment.data[0] });
     });
   }
 
   render() {
-    console.log("props in detail", this.props);
     const { moment } = this.state;
     const sendDate = this.state.availableDate;
     const chooseDate = new Date(this.state.availableDate);
-    moment && console.log("moment.locale", moment);
-    //console.log('context in detail', this.props.context.login)
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      nextArrow: <NextArrow />,
+      prevArrow: <PrevArrow />
+    };
     return moment ? (
       <div className="detailed-container">
         <div className="detailed-wrapper">
-          <div>
-            <img className="detailed-img" src={moment.photos[1]} alt="" />
-          </div>
+          <Slider {...settings}>
+            <div>
+              <img className="detailed-img" src={moment.photos[0]} alt="" />
+            </div>
+            <div>
+              <img className="detailed-img" src={moment.photos[1]} alt="" />
+            </div>
+          </Slider>
           <div className="detailed-info-wrapper">
             <div className="detailed-info-box">
               <div className="detailed-category-title">

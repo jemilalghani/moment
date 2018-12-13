@@ -14,11 +14,13 @@
   display: flex;
   width: 80%;
   margin: 0 auto;
+
   .slick-list {
     max-width: 350px;
   }
   .slick-slider {
     height: 500px;
+    width: 350px;
   }
 
   .detail-prevArrow {
@@ -34,6 +36,7 @@
 
 .detailed-info-wrapper {
   width: 60%;
+  margin-bottom: 50px;
 }
 
 .detailed-info-box {
@@ -145,4 +148,42 @@
   margin: 0 auto;
   font-size: 17px;
   letter-spacing: 1px;
+  margin-left: 20px;
+}
+
+.detailed-reviews-box {
+  width: 100%;
+}
+
+.detailed-reviews-box-wrapper {
+  margin-top: 50px;
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.detailed-moment-wrapper {
+  margin-top: 25px;
+  width: 60%;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.detailed-reviews-title {
+  margin-top: 25px;
+  font-size: 35px;
+  width: 300px;
+  text-align: left;
+  height: 150px;
+  font-weight: bold;
+}
+
+.detailed-moment-wrapper-inside {
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+  // margin: 0 auto;
+  margin-left: 75px;
 }

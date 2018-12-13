@@ -5,7 +5,6 @@ import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
 import Search from "./Search";
 import logo from "../../Image/Moment-M-Logo-Purple.svg";
-import { VirtualTimeScheduler } from "rxjs";
 
 class Navbar extends Component {
   constructor() {
@@ -97,6 +96,7 @@ class Navbar extends Component {
     this.setState({ guest: false, price: false, categories: false });
   };
   render() {
+    console.log("sessions in navbar", this.state.user);
     return (
       <div className="navbar-container">
         <div className="navbar-wrapper">

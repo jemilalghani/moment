@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import withContext from "./components/ContextApi/Context_HOC";
 import Navbar from "./components/Navbar/Navbar";
 // import routes from "./routes";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import DetailedMoments from "./components/DetailedMoments/DetailedMoments";
 import LoginRegister from "./components/LoginRegister/LoginRegister";
 import Moments from "./components/Moments/Moments";
@@ -18,9 +18,20 @@ import "./reset.css";
 import ThankYou from "./components/ThankYou/ThankYou";
 
 class App extends Component {
-  // componentDidMount() {
-  //   localStorage.setItem("login", false);
-  // }
+  componentDidMount() {
+    // localStorage.setItem("login", false);
+    this.updateScreen();
+    window.addEventListener("resize", this.updateScreen.bind(this));
+    this.updateScreen();
+  }
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.updateScreen.bind(this));
+  }
+  updateScreen = () => {
+    this.props.context.updateInfo("screenWidth", window.innerWidth);
+    this.props.context.updateInfo("screenHeight", window.innerHeight);
+  };
+
   render() {
     // localStorage.clear();
     // let login = localStorage.getItem("login");
@@ -40,7 +51,10 @@ class App extends Component {
                 register ? <Redirect to="/login" /> : <Register />
               }
             />
-            <Route path="/moments/:id" component={DetailedMoments} />
+            <Route
+              path="/moments/:id"
+              component={withRouter(DetailedMoments)}
+            />
             <Route
               path="/login"
               render={() =>

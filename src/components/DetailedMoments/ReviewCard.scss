@@ -1,8 +1,9 @@
 .review-wrapper {
-  width: 50%;
+  width: 100%;
   margin: auto;
   display: flex;
   flex-direction: column;
+  margin: 10px 0px;
   // justify-content: left;
   // align-content: left;
 }
@@ -12,23 +13,41 @@
   align-items: flex-start;
 }
 .name {
-  font-size: 24px;
-  margin: 5px;
+  font-size: 20px;
+  // margin: 5px;
+}
+.stars {
+  height: 25px;
+  width: 25px;
+  // margin: 15px 0px;
 }
 .review-title {
-  font-size: 30px;
-}
-.review-description {
-  font-size: 17px;
+  font-size: 25px;
 }
 
-.display-inline {
-  display: inline;
+.name-date {
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.host-photo-box {
-  margin-right: 10px;
-  width: 90px;
-  height: 90px;
+
+.review-date {
+  font-size: 14px;
+}
+
+.review-description {
+  margin-top: 5px;
+  font-size: 20px;
+}
+
+// .display-inline {
+//   display: inline;
+// }
+.host-photo {
+  margin-right: 20px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -38,6 +57,14 @@
   flex-direction: row;
 }
 
+.review-section {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
 .flex-col {
   display: flex;
   flex-direction: column;
@@ -45,5 +72,5 @@
 .flex-col-space-btw {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
 }

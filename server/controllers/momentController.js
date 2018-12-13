@@ -86,6 +86,17 @@ module.exports = {
     // .then(addDates)
     // .then(addCreators)
   },
+  getAvailDates: (req, res) => {
+    const db = req.app.get("db");
+    db.get_available_dates([req.params.id])
+      .then(dates => {
+        res.json(dates);
+      })
+      .catch(error => {
+        console.log("error dates", error);
+        res.status(500).json({ message: "error in dates" });
+      });
+  },
   // findHost: (req,res) => {
   //   const db = req.app.get('db');
   //   db.get_experience_host([11]).then(host => {

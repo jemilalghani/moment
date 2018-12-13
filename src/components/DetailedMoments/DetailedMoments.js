@@ -7,6 +7,7 @@ import withContext from "../ContextApi/Context_HOC";
 import Reviews from "./Reviews";
 import axios from "axios";
 import moment from "moment";
+var _ = require("lodash");
 
 class DetailedMoments extends Component {
   constructor() {
@@ -30,8 +31,13 @@ class DetailedMoments extends Component {
     this.state.moment && console.log("CDM state.moment", this.state.moment.id);
     this.state.moment &&
       axios.get(`/api/availabledates/${this.state.moment.id}`).then(el => {
+        console.log("el is", el);
+        const dates = el.data;
+        let datesSorted = _.orderBy(dates, function(date) {
+          return new moment(date["available_date"]).format("YYYYMMDD");
+        });
         this.setState({
-          availableDate: el.data,
+          availableDate: datesSorted,
           groupRemaining: el.data
         });
       });

@@ -212,7 +212,7 @@ class CheckOut extends Component {
                 <div className="checkout-title-host">
                   <div className="checkout-blockone">
                     <h6 className="checkout-moment-title">{moment.title}</h6>
-                    <p>{moment.duration} experience</p>
+                    <p>{moment.duration} hours</p>
                   </div>
                   <div className="checkout-title-img">
                     <img

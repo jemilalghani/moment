@@ -10,6 +10,7 @@ import Slider from "react-slick";
 import prev from "../../Image/Group 4.svg";
 import next from "../../Image/Group 5.svg";
 import moment from "moment";
+import BelowFooter from "../BelowFooter/BelowFooter";
 var _ = require("lodash");
 
 function PrevArrow(props) {
@@ -172,6 +173,7 @@ class DetailedMoments extends Component {
           </div>
           <Map city={moment.locale} />
         </div>
+        <BelowFooter />
       </div>
     ) : (
       <img

@@ -4,6 +4,7 @@ import MomentContainer from "./MomentContainer";
 import MomentCard from "./MomentCard";
 import Logo from "../../Image/Moment-M-Word-White.svg";
 import withContext from "../ContextApi/Context_HOC";
+import BelowFooter from "../BelowFooter/BelowFooter";
 
 class Moments extends Component {
   constructor(props) {
@@ -87,6 +88,7 @@ class Moments extends Component {
         <MomentContainer title={title3} text={text3} mapped={blankMap} />
         <MomentContainer title={title} mapped={mappedMoments} />
         <MomentContainer title={title2} mapped={mappedMoments} />
+        <BelowFooter />
       </>
     );
   }

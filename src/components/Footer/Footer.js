@@ -25,13 +25,19 @@ class Footer extends Component {
             </div>
           </div>
           <div className="foot-square">
-            <p className="foot-title">Discovery</p>
+            <p className="foot-title">Discover</p>
             <div className="foot-links">
               <Link className="foot-items" to="#">
                 Trust & Safety
               </Link>
               <Link className="foot-items" to="#">
-                Site Map
+                Invite Friends
+              </Link>
+              <Link className="foot-items" to="#">
+                Guidebooks
+              </Link>
+              <Link className="foot-items" to="#">
+                Momentmag
               </Link>
             </div>
           </div>
@@ -47,6 +53,9 @@ class Footer extends Component {
               <Link className="foot-items" to="#">
                 Open Homes
               </Link>
+              <Link className="foot-items" to="#">
+                Hospitality
+              </Link>
             </div>
           </div>
           <div className="foot-square">
@@ -60,6 +69,9 @@ class Footer extends Component {
               </Link>
               <Link className="foot-items" to="#">
                 Site Map
+              </Link>
+              <Link className="foot-items" to="#">
+                Community Center
               </Link>
             </div>
           </div>

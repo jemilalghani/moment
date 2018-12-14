@@ -6,6 +6,8 @@ import Logo from "../../Image/Moment-M-Word-White.svg";
 import withContext from "../ContextApi/Context_HOC";
 import imageOne from "../../Image/imageOne.png";
 import imageTwo from "../../Image/imageTwo.png";
+import video from "../../Image/Sailing.mp4";
+import video2 from "../../Image/food.mp4";
 
 class Moments extends Component {
   constructor(props) {
@@ -47,7 +49,18 @@ class Moments extends Component {
       this.setState({ moments: res.data });
     });
   };
-
+  playVideo() {
+    this.refs.vidRef.play();
+  }
+  stopVideo() {
+    this.refs.vidRef.pause();
+  }
+  play2Video() {
+    this.refs.vidRef2.play();
+  }
+  stop2Video() {
+    this.refs.vidRef2.pause();
+  }
   render() {
     const { cardsNumber } = this.state;
     let mappedMoments = this.state.moments.slice(0, cardsNumber).map(moment => {
@@ -88,9 +101,49 @@ class Moments extends Component {
 
         <MomentContainer title={title3} text={text3} mapped={blankMap} />
         <MomentContainer title={title} mapped={mappedMoments} />
-        <div className="filler-images">
+        {/* <div className="filler-images">
           <img src={imageOne} width="400" />
           <img src={imageTwo} width="400" />
+        </div> */}
+        <div className="filler-images">
+          <div
+            className="video"
+            // style={{ backgroundImage: `url(${imageOne})` }}
+            onMouseOver={this.playVideo.bind(this)}
+            onMouseOut={this.stopVideo.bind(this)}
+          >
+            <div className="video-container">
+              <video
+                ref="vidRef"
+                className="thevideo"
+                loop
+                preload="none"
+                // style={{ width: "100%", height: "100%" }}
+              >
+                <source src={video} type="video/mp4" />
+              </video>
+            </div>
+            <img className="image-video" src={imageTwo} />
+          </div>
+          <div
+            className="video"
+            // style={{ backgroundImage: `url(${imageOne})` }}
+            onMouseOver={this.play2Video.bind(this)}
+            onMouseOut={this.stop2Video.bind(this)}
+          >
+            <div className="video-container">
+              <video
+                ref="vidRef2"
+                className="thevideo"
+                loop
+                preload="none"
+                // style={{ width: "100%", height: "100%" }}
+              >
+                <source src={video2} type="video/mp4" />
+              </video>
+            </div>
+            <img className="image-video" src={imageOne} />
+          </div>
         </div>
         <MomentContainer title={title2} mapped={mappedMoments} />
       </>

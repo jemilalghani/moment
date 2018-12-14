@@ -4,6 +4,7 @@ import MomentContainer from "./MomentContainer";
 import MomentCard from "./MomentCard";
 import Logo from "../../Image/Moment-M-Word-White.svg";
 import withContext from "../ContextApi/Context_HOC";
+var _ = require("lodash");
 
 class Moments extends Component {
   constructor(props) {
@@ -17,7 +18,12 @@ class Moments extends Component {
   }
 
   componentDidMount() {
+    console.log("component did mount, state is", this.state);
+    this.cardNumberCalc();
     this.getMoments();
+  }
+  componentWillUnmount() {
+    console.log("component did UNmount");
   }
   async componentDidUpdate(prevProps) {
     const { screenWidth } = this.props.context;
@@ -29,28 +35,36 @@ class Moments extends Component {
   }
 
   cardNumberCalc = () => {
-    const { screenWidth } = this.props.context;
-
-    let cardAreaWidth = screenWidth * 0.85;
+    let cardAreaWidth = window.innerWidth * 0.85;
     let cardWidth = 270;
     let cardsNumber = Math.floor(cardAreaWidth / cardWidth);
-    console.log("cardAreaWidth", cardAreaWidth);
-    console.log("cardsNumber", cardsNumber);
     this.setState({ cardsNumber: cardsNumber });
   };
 
   getMoments = () => {
-    axios.get("/api/moment/:highlight").then(res => {
-      //console.log('moment highligghghht',res.data)
-      this.setState({ moments: res.data });
+    axios.get("/api/moment/:highlight").then(async res => {
+      let randomHighlights = _.shuffle(res.data);
+      await this.setState({ momentHighlights: randomHighlights });
+    });
+
+    axios.get(`/api/m/place`).then(async res => {
+      let randomLocals = _.shuffle(res.data);
+      await this.setState({ momentLocals: randomLocals });
     });
   };
 
   render() {
     const { cardsNumber } = this.state;
-    let mappedMoments = this.state.moments.slice(0, cardsNumber).map(moment => {
-      return <MomentCard moment={moment} />;
-    });
+    let mappedHighlights =
+      this.state.momentHighlights &&
+      this.state.momentHighlights.slice(0, cardsNumber).map(moment => {
+        return <MomentCard moment={moment} />;
+      });
+    let mappedLocals =
+      this.state.momentLocals &&
+      this.state.momentLocals.slice(0, cardsNumber).map(moment => {
+        return <MomentCard moment={moment} />;
+      });
     let filteredMoments =
       this.props.context.filteredMoments !== [] &&
       this.props.context.filteredMoments.map(moment => {
@@ -68,13 +82,6 @@ class Moments extends Component {
           passions, and abilities to anyone by hosting experiences. Discover
           your next adventure!
         </div>
-        {/* <div className="slogan">
-          Hosts create an experience - an event limited to a single day, but
-          which is not limited in creativity. Hosts will provide the opportunity
-          to learn, taste, think, hike, ride see or discover something new.
-          There are unique experiences across the globe waiting for you. Sign up
-          now to find your next adventure!
-        </div>{" "} */}
       </div>
     );
     return (
@@ -85,8 +92,8 @@ class Moments extends Component {
         />
 
         <MomentContainer title={title3} text={text3} mapped={blankMap} />
-        <MomentContainer title={title} mapped={mappedMoments} />
-        <MomentContainer title={title2} mapped={mappedMoments} />
+        <MomentContainer title={title} mapped={mappedHighlights} />
+        <MomentContainer title={title2} mapped={mappedLocals} />
       </>
     );
   }

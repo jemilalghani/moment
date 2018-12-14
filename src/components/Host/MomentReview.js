@@ -97,7 +97,7 @@ export default class MomentReview extends Component {
                 score.
               </div>
               {/* <textarea type="text" placeholder="Stars given out of five" /> */}
-              <div className="stars">{starMap}</div>
+              <div className="stars-moment">{starMap}</div>
               <button className="mcw-nextbutton-on" onClick={this.addReview}>
                 Submit
               </button>

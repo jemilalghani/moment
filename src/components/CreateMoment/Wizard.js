@@ -169,3 +169,4 @@ class Wizard extends Component {
   }
 }
 export default withContext(Wizard);
+export const WizardTest = Wizard;

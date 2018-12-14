@@ -138,10 +138,16 @@ module.exports = {
       });
   },
   findLocale: (req, res) => {
+    let moment = {};
     const db = req.app.get("db");
-    db.get_moment_locale(["Phoenix, AZ"])
-      .then(() => {
-        res.json({ moment: res.data.moment });
+    db.get_moment_locale("Phoenix")
+      .then(exp => {
+        moment = Object.assign(exp, {});
+      })
+      .then(data => {
+        db.get_photo_highlight().then(photo => {
+          res.json(addPhotosToMoment(moment, photo));
+        });
       })
       .catch(error => {
         console.log("error", error);

@@ -10,6 +10,7 @@ import Slider from "react-slick";
 import prev from "../../Image/Group 4.svg";
 import next from "../../Image/Group 5.svg";
 import moment from "moment";
+import BelowFooter from "../BelowFooter/BelowFooter";
 var _ = require("lodash");
 
 function PrevArrow(props) {
@@ -151,6 +152,18 @@ class DetailedMoments extends Component {
           <div className="date-price">{mappedDates}</div>
           <div />
         </div>
+        <div className="detailed-reviews-box">
+          <div className="detailed-reviews-box-wrapper">
+            <span className="detailed-reviews-title">
+              Reviews from people who took this experience{" "}
+            </span>
+            <div className="detailed-moment-wrapper">
+              <div className="detailed-moment-wrapper-inside">
+                <Reviews moment={moment} />
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="box-over-map">
           <div className="map-box">
             <div className="map-box-wrapper">
@@ -160,10 +173,7 @@ class DetailedMoments extends Component {
           </div>
           <Map city={moment.locale} />
         </div>
-
-        <div className="detailed-wrapper">
-          <Reviews moment={moment} />
-        </div>
+        <BelowFooter />
       </div>
     ) : (
       <img

@@ -8,6 +8,8 @@ import imageOne from "../../Image/imageOne.png";
 import imageTwo from "../../Image/imageTwo.png";
 import video from "../../Image/Sailing.mp4";
 import video2 from "../../Image/food.mp4";
+import BelowFooter from "../BelowFooter/BelowFooter";
+var _ = require("lodash");
 
 class Moments extends Component {
   constructor(props) {
@@ -21,7 +23,12 @@ class Moments extends Component {
   }
 
   componentDidMount() {
+    console.log("component did mount, state is", this.state);
+    this.cardNumberCalc();
     this.getMoments();
+  }
+  componentWillUnmount() {
+    console.log("component did UNmount");
   }
   async componentDidUpdate(prevProps) {
     const { screenWidth } = this.props.context;
@@ -33,20 +40,21 @@ class Moments extends Component {
   }
 
   cardNumberCalc = () => {
-    const { screenWidth } = this.props.context;
-
-    let cardAreaWidth = screenWidth * 0.85;
+    let cardAreaWidth = window.innerWidth * 0.85;
     let cardWidth = 240;
     let cardsNumber = Math.floor(cardAreaWidth / cardWidth);
-    console.log("cardAreaWidth", cardAreaWidth);
-    console.log("cardsNumber", cardsNumber);
     this.setState({ cardsNumber: cardsNumber });
   };
 
   getMoments = () => {
-    axios.get("/api/moment/:highlight").then(res => {
-      //console.log('moment highligghghht',res.data)
-      this.setState({ moments: res.data });
+    axios.get("/api/moment/:highlight").then(async res => {
+      let randomHighlights = _.shuffle(res.data);
+      await this.setState({ momentHighlights: randomHighlights });
+    });
+
+    axios.get(`/api/m/place`).then(async res => {
+      let randomLocals = _.shuffle(res.data);
+      await this.setState({ momentLocals: randomLocals });
     });
   };
   playVideo() {
@@ -63,9 +71,16 @@ class Moments extends Component {
   }
   render() {
     const { cardsNumber } = this.state;
-    let mappedMoments = this.state.moments.slice(0, cardsNumber).map(moment => {
-      return <MomentCard moment={moment} />;
-    });
+    let mappedHighlights =
+      this.state.momentHighlights &&
+      this.state.momentHighlights.slice(0, cardsNumber).map(moment => {
+        return <MomentCard moment={moment} />;
+      });
+    let mappedLocals =
+      this.state.momentLocals &&
+      this.state.momentLocals.slice(0, cardsNumber).map(moment => {
+        return <MomentCard moment={moment} />;
+      });
     let filteredMoments =
       this.props.context.filteredMoments !== [] &&
       this.props.context.filteredMoments.map(moment => {
@@ -75,7 +90,7 @@ class Moments extends Component {
     let title = <h2>Highlighted Trips From Around the World</h2>;
     let title2 = <h2>Trips Found Nearby</h2>;
     let title3 = <img className="logo" src={Logo} />;
-    let title4 = <h2>Filtered Results</h2>;
+    // let title4 = <h2>Filtered Results</h2>;
     let text3 = (
       <div className="front-page">
         <div className="slogan">
@@ -83,13 +98,6 @@ class Moments extends Component {
           passions, and abilities to anyone by hosting experiences. Discover
           your next adventure!
         </div>
-        {/* <div className="slogan">
-          Hosts create an experience - an event limited to a single day, but
-          which is not limited in creativity. Hosts will provide the opportunity
-          to learn, taste, think, hike, ride see or discover something new.
-          There are unique experiences across the globe waiting for you. Sign up
-          now to find your next adventure!
-        </div>{" "} */}
       </div>
     );
     return (
@@ -100,7 +108,7 @@ class Moments extends Component {
         />
 
         <MomentContainer title={title3} text={text3} mapped={blankMap} />
-        <MomentContainer title={title} mapped={mappedMoments} />
+        <MomentContainer title={title} mapped={mappedHighlights} />
         {/* <div className="filler-images">
           <img src={imageOne} width="400" />
           <img src={imageTwo} width="400" />
@@ -145,7 +153,8 @@ class Moments extends Component {
             <img className="image-video" src={imageOne} />
           </div>
         </div>
-        <MomentContainer title={title2} mapped={mappedMoments} />
+        <MomentContainer title={title2} mapped={mappedLocals} />
+        <BelowFooter />
       </>
     );
   }

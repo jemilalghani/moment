@@ -45,7 +45,7 @@ app.post("/api/moment/admin", momentController.addDummy); // FRONTEND READY
 //app.get('/api/moment/hostFind', momentController.findHost)
 // app.get('/api/moment/:id', momentController.findId);
 app.get("/api/moment/:highlight", momentController.findHighlight);
-app.get("/api/moment/locale", momentController.findLocale);
+app.get("/api/m/place", momentController.findLocale);
 app.get("/api/moment", momentController.findAll);
 app.get("/api/moments/:id", momentController.getByID);
 app.get("/api/delete/:id/:hostid", momentController.delete);

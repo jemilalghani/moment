@@ -101,7 +101,7 @@ class DetailedMoments extends Component {
           date.group_size_remaining
         );
         return (
-          <div>
+          <div className="avail-date">
             {date.available_date}
             <button className="choose-button">
               <Link
@@ -160,6 +160,7 @@ class DetailedMoments extends Component {
           </div>
           <Map city={moment.locale} />
         </div>
+
         <div className="detailed-wrapper">
           <Reviews moment={moment} />
         </div>

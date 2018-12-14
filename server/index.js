@@ -69,8 +69,13 @@ app.post("/api/charge", bookingController.stripeCharge);
 /////////////////email//////////////
 app.post("/api/email", emailController.sendEmail);
 app.post("/api/confirmation", emailController.sendConfirmation);
+app.use(express.static(`${__dirname}/../build`));
 
 const SERVER_PORT = 4000;
 app.listen(SERVER_PORT, () => {
   console.log(`Tuning into Port ${SERVER_PORT} 📡`);
+});
+const path = require("path");
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../build/index.html"));
 });

@@ -75,7 +75,7 @@ class Trips extends Component {
     let title2 = this.giveTitle("Upcoming Trips");
     let title3 = this.giveTitle("Book Your Next Adventure");
     console.log("Trips, this.state.trips", this.state.trips);
-    return this.state.trip ? (
+    return this.state.trips.length ? (
       <>
         <MomentContainer title={title2} mapped={upcomingTrips} />
         <MomentContainer title={title} mapped={completeTrips} />

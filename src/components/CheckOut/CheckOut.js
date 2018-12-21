@@ -114,7 +114,7 @@ class CheckOut extends Component {
     //   console.log('checkouttuttt passed props', this.props.location)
     //   console.log('this is the totatttal', this.state.total)
     //   console.log('context in checkout', this.props.context.login)
-    console.log("this.props.history.location.", this.props.history.location);
+    // console.log("this.props.history.location.", this.props.history.location);
     // console.log("user id in checkout", this.state.user);
     // console.log("this props location", this.props.location);
     const date =
@@ -123,11 +123,11 @@ class CheckOut extends Component {
     const moment =
       get(this.props.location, "moment.moment") ||
       JSON.parse(localStorage.getItem("moment"));
-    console.log("formate date", this.state.date);
-    console.log("moment in render", this.state.moment);
-    console.log("props in checkout", this.props);
-    console.log("trying to get a id", this.state.dateId);
-    console.log("get the dateID", this.state.dateId && this.state.dateId);
+    // console.log("formate date", this.state.date);
+    // console.log("moment in render", this.state.moment);
+    // console.log("props in checkout", this.props);
+    // console.log("trying to get a id", this.state.dateId);
+    // console.log("get the dateID", this.state.dateId && this.state.dateId);
 
     // console.log("moment", moment);
     const total = this.state.moment.price * this.state.guests;
@@ -260,3 +260,4 @@ class CheckOut extends Component {
 }
 
 export default withContext(CheckOut);
+export const TestCheckOut = CheckOut;

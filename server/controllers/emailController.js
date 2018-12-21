@@ -16,7 +16,7 @@ module.exports = {
       from: process.env.X, // sender address
       to: email, // list of receivers
       subject: "EMAIL HAS BEEN VERIFIED", // Subject line
-      html: "<p>LETS GO</p>" // plain text body
+       // plain text body
     };
 
     transporter.sendMail(mailOptions, function(err, info) {
@@ -39,8 +39,8 @@ module.exports = {
     const mailOptions = {
       from: process.env.X, // sender address
       to: req.body.body.email, // list of receivers
-      subject: "LETS GOOOOOOOOOOOOOOOOOOOOO", // Subject line
-      html: "<p>You've purchased an experience</p>" // plain text body
+      subject: "Your Trip is Booked", // Subject line
+      text: 'Thank you for your purchase!' // plain text body
     };
 
     transporter.sendMail(mailOptions, function(err, info) {

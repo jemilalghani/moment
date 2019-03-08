@@ -46,7 +46,11 @@ _Number Four_
 _Number Six_ 
 
 The video is placed directly under the image. On hover, the image transitions to opacity 0. 
+<<<<<<< HEAD
 ![](./videogif.gif)
+=======
+![Alt](./videoLp.mov "Images/Video")
+>>>>>>> 998a43cb2fe4e1eed99e735f0ff30a6c2edee607
 ### Wizard
 I created a wizard for a host to use when creating a new experience. The wizard consists of 13 steps. Each step is a index of an array (displayed below). When a host clicks the next button the index of the array is incremented and the previous button decrements. The information provided is preserved by Context Api, so all previously input information is preserved. 
 

@@ -20,7 +20,7 @@ The application uses PostgreSQL, Node, Express and Massive to manage the backend
 
 I individually implemented and researched Context Api, Cloudinary and Bcrypt. 
 
-###Styling 
+### Styling 
 
 Site-wide I lead the styling choices and template. For the most part, the styling is meant to mimic Airbnb's. 
 
